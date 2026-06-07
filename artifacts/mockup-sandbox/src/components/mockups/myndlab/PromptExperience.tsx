@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plus, ExternalLink, Share2, MoreHorizontal, Zap, Globe, TrendingUp } from 'lucide-react';
+import { Plus, ExternalLink, Share2, MoreHorizontal, Zap, Globe, TrendingUp, Check, ArrowRight, Users } from 'lucide-react';
 import './_group.css';
 
 const myApps = [
@@ -137,35 +137,58 @@ export function PromptExperience() {
             </div>
           ))}
 
-          {/* New app placeholder cards */}
-          {[1, 2].map(i => (
-            <div key={i} className="new-card-hover" style={{ background: '#FFFFFF', border: '2px dashed #E2E8F0', borderRadius: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '320px', cursor: 'pointer', transition: 'all 0.2s', gap: '12px', padding: '32px' }}>
-              <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: '#F1F5F9', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Plus size={22} color="#94A3B8" />
-              </div>
-              <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '14px', fontWeight: 700, color: '#64748B', marginBottom: '4px' }}>Start a new app</div>
-                <div style={{ fontSize: '12px', color: '#94A3B8' }}>Describe your idea and build</div>
-              </div>
+          {/* Upsell card */}
+          <div style={{ background: 'linear-gradient(145deg, #FFFBF0, #FFF7E6)', border: '1.5px solid #FFD580', borderRadius: '20px', padding: '24px', display: 'flex', flexDirection: 'column', minHeight: '320px', boxShadow: '0 2px 8px rgba(255,159,10,0.08)' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#FF9F0A', color: '#fff', fontSize: '11px', fontWeight: 700, padding: '4px 10px', borderRadius: '999px', marginBottom: '16px', alignSelf: 'flex-start' }}>
+              <Zap size={11} strokeWidth={2.5} /> Go Pro
             </div>
-          ))}
-        </div>
-
-        {/* Plan usage */}
-        <div className="pe-d3" style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '16px', padding: '20px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
-          <div>
-            <div style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A', marginBottom: '4px' }}>Free plan · 2 builds remaining</div>
-            <div style={{ fontSize: '12px', color: '#64748B' }}>Upgrade to build unlimited apps</div>
+            <div style={{ fontSize: '18px', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.4px', marginBottom: '6px', lineHeight: 1.25 }}>Build without limits</div>
+            <div style={{ fontSize: '12px', color: '#92400E', marginBottom: '20px', lineHeight: 1.5 }}>Stop counting builds. Ship as many apps as your ideas demand.</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '9px', flex: 1 }}>
+              {['Unlimited app builds', 'Custom domain per app', 'Priority AI generation', 'Advanced analytics'].map((f, i) => (
+                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12.5px', fontWeight: 500, color: '#78350F' }}>
+                  <div style={{ width: '18px', height: '18px', borderRadius: '50%', background: '#FF9F0A', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <Check size={10} color="#fff" strokeWidth={3} />
+                  </div>
+                  {f}
+                </div>
+              ))}
+            </div>
+            <button style={{ marginTop: '20px', width: '100%', padding: '11px', background: '#FF9F0A', color: '#fff', border: 'none', borderRadius: '12px', fontSize: '13px', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', boxShadow: '0 4px 12px rgba(255,159,10,0.35)' }}>
+              Upgrade now <ArrowRight size={14} strokeWidth={2.5} />
+            </button>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <div style={{ width: '120px' }}>
-              <div style={{ height: '6px', background: '#E2E8F0', borderRadius: '3px', overflow: 'hidden' }}>
-                <div style={{ height: '100%', width: '33%', background: '#0066FF', borderRadius: '3px' }} />
+
+          {/* Community card */}
+          <div style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '20px', padding: '24px', display: 'flex', flexDirection: 'column', minHeight: '320px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+              <div style={{ width: '30px', height: '30px', borderRadius: '9px', background: '#EEF4FF', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Users size={15} color="#0066FF" />
               </div>
-              <div style={{ fontSize: '10px', color: '#94A3B8', marginTop: '4px', textAlign: 'right' }}>1 of 3 used</div>
+              <div style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A' }}>Founders building now</div>
             </div>
-            <button style={{ padding: '9px 18px', background: '#FF9F0A', color: '#fff', border: 'none', borderRadius: '10px', fontSize: '13px', fontWeight: 700, cursor: 'pointer', boxShadow: '0 2px 8px rgba(255,159,10,0.3)' }}>
-              Upgrade
+            <div style={{ fontSize: '11.5px', color: '#94A3B8', marginBottom: '20px' }}>See what the GCC community is shipping</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', flex: 1 }}>
+              {[
+                { color: '#0066FF', bg: '#EEF4FF', name: 'Riyadh Salon Booking', cat: 'Beauty', flag: '🇸🇦' },
+                { color: '#10B981', bg: '#ECFDF5', name: 'Abu Dhabi Grocery', cat: 'Food & Delivery', flag: '🇦🇪' },
+                { color: '#8B5CF6', bg: '#F3F0FF', name: 'Cairo Fitness Tracker', cat: 'Health', flag: '🇪🇬' },
+                { color: '#FF9F0A', bg: '#FFF7E6', name: 'Kuwait Car Rentals', cat: 'Transport', flag: '🇰🇼' },
+              ].map((app, i) => (
+                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: app.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: '16px' }}>
+                    {app.flag}
+                  </div>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontSize: '12.5px', fontWeight: 600, color: '#0F172A', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{app.name}</div>
+                    <div style={{ fontSize: '11px', color: '#94A3B8' }}>{app.cat}</div>
+                  </div>
+                  <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10B981', flexShrink: 0 }} />
+                </div>
+              ))}
+            </div>
+            <button style={{ marginTop: '16px', background: 'none', border: 'none', color: '#0066FF', fontSize: '12.5px', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px', padding: 0 }}>
+              Explore community <ArrowRight size={13} strokeWidth={2.5} />
             </button>
           </div>
         </div>
