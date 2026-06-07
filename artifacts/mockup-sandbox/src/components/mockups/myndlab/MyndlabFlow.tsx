@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import "./_group.css";
 import { Landing } from "./Landing";
 import { Signup } from "./Signup";
+import { Onboarding, OnboardingAnswers } from "./Onboarding";
 import { Dashboard } from "./Dashboard";
 import { BuildProgress } from "./BuildProgress";
 import { BuildComplete } from "./BuildComplete";
@@ -10,33 +11,41 @@ import { PromptExperience } from "./PromptExperience";
 import { Code2, Rocket } from "lucide-react";
 
 const SCREENS = [
-  { label: "Hero", hint: "GCC · Benefits · CTA", component: "Landing" },
-  { label: "Sign Up", hint: "Auth · Founder type", component: "Signup" },
-  { label: "Prompt Home", hint: "AI Adviser · Templates", component: "Dashboard" },
-  { label: "Build in Progress", hint: "Live status · Reassurance", component: "BuildProgress" },
-  { label: "App Ready", hint: "PWA · Distribution", component: "BuildComplete" },
-  { label: "You're Live", hint: "Share · WhatsApp · QR", component: "ShareApp" },
-  { label: "Dashboard", hint: "My Apps · Portfolio", component: "PromptExperience" },
+  { label: "Hero",           hint: "GCC · Benefits · CTA",              component: "Landing" },
+  { label: "Sign Up",        hint: "Auth · Founder type",               component: "Signup" },
+  { label: "Onboarding",     hint: "App type · Experience · Language",  component: "Onboarding" },
+  { label: "Prompt Home",    hint: "AI Adviser · Personalised",         component: "Dashboard" },
+  { label: "Build Progress", hint: "Live status · Reassurance",         component: "BuildProgress" },
+  { label: "App Ready",      hint: "PWA · Distribution",                component: "BuildComplete" },
+  { label: "You're Live",    hint: "Share · WhatsApp · QR",             component: "ShareApp" },
+  { label: "Dashboard",      hint: "My Apps · Portfolio",               component: "PromptExperience" },
 ];
 
 type ScreenKey = typeof SCREENS[number]["component"];
 
-function renderScreen(key: ScreenKey, isTechnical: boolean) {
+function renderScreen(
+  key: ScreenKey,
+  isTechnical: boolean,
+  answers: OnboardingAnswers | null,
+  onOnboardingComplete: (a: OnboardingAnswers) => void,
+) {
   switch (key) {
-    case "Landing": return <Landing />;
-    case "Signup": return <Signup />;
-    case "Dashboard": return <Dashboard isTechnical={isTechnical} />;
-    case "BuildProgress": return <BuildProgress />;
-    case "BuildComplete": return <BuildComplete isTechnical={isTechnical} />;
-    case "ShareApp": return <ShareApp />;
+    case "Landing":          return <Landing />;
+    case "Signup":           return <Signup />;
+    case "Onboarding":       return <Onboarding onComplete={onOnboardingComplete} />;
+    case "Dashboard":        return <Dashboard isTechnical={isTechnical} appType={answers?.appType} language={answers?.language} />;
+    case "BuildProgress":    return <BuildProgress />;
+    case "BuildComplete":    return <BuildComplete isTechnical={isTechnical} />;
+    case "ShareApp":         return <ShareApp />;
     case "PromptExperience": return <PromptExperience />;
-    default: return null;
+    default:                 return null;
   }
 }
 
 export function MyndlabFlow() {
   const [current, setCurrent] = useState(0);
   const [isTechnical, setIsTechnical] = useState(false);
+  const [onboardingAnswers, setOnboardingAnswers] = useState<OnboardingAnswers | null>(null);
   const [animDir, setAnimDir] = useState<"left" | "right" | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -48,6 +57,11 @@ export function MyndlabFlow() {
       setAnimDir(null);
       if (scrollRef.current) scrollRef.current.scrollTop = 0;
     }, 180);
+  };
+
+  const handleOnboardingComplete = (answers: OnboardingAnswers) => {
+    setOnboardingAnswers(answers);
+    go(current + 1);
   };
 
   const prev = () => current > 0 && go(current - 1);
@@ -154,7 +168,7 @@ export function MyndlabFlow() {
         transform: animDir === "left" ? "translateX(-18px)" : animDir === "right" ? "translateX(18px)" : "translateX(0)",
         transition: "opacity 0.18s ease, transform 0.18s ease",
       }}>
-        {renderScreen(SCREENS[current].component, isTechnical)}
+        {renderScreen(SCREENS[current].component, isTechnical, onboardingAnswers, handleOnboardingComplete)}
       </div>
     </div>
   );

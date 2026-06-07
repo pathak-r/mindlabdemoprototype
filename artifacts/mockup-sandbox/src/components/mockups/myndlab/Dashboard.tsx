@@ -2,7 +2,25 @@ import React, { useState } from 'react';
 import { Sparkles, SlidersHorizontal, Calendar, UtensilsCrossed, Building2, ChevronRight, ToggleLeft, ToggleRight, Zap, Users, Globe } from 'lucide-react';
 import './_group.css';
 
-export function Dashboard({ isTechnical = false }: { isTechnical?: boolean }) {
+const APP_TYPE_LABELS: Record<string, string> = {
+  booking:   'booking & appointments',
+  food:      'food & delivery',
+  retail:    'retail & store',
+  portfolio: 'portfolio & CV',
+  health:    'healthcare',
+  education: 'education & training',
+};
+
+const APP_TYPE_PLACEHOLDERS: Record<string, string> = {
+  booking:   'e.g. A booking app for a Dubai personal trainer that accepts WhatsApp enquiries…',
+  food:      'e.g. A food delivery app for a Riyadh restaurant with Arabic menu and cash on delivery…',
+  retail:    'e.g. An online store selling abayas in Jeddah with Instagram-style product photos…',
+  portfolio: 'e.g. A portfolio site for a UAE freelance designer with Arabic and English versions…',
+  health:    'e.g. A patient booking app for a private clinic in Abu Dhabi with SMS reminders…',
+  education: 'e.g. An online tutoring platform for Saudi students with video lessons and quizzes…',
+};
+
+export function Dashboard({ isTechnical = false, appType, language }: { isTechnical?: boolean; appType?: string; language?: 'ar' | 'en' }) {
   const [prompt, setPrompt] = useState('');
   const [adviserOn, setAdviserOn] = useState(true);
   const [showOptions, setShowOptions] = useState(false);
@@ -24,6 +42,14 @@ export function Dashboard({ isTechnical = false }: { isTechnical?: boolean }) {
     { text: 'Food delivery app for a Riyadh restaurant', Icon: UtensilsCrossed, chipBg: '#FFF7E6', chipColor: '#FF9F0A' },
     { text: 'Property listings platform for Abu Dhabi', Icon: Building2, chipBg: '#ECFDF5', chipColor: '#10B981' },
   ];
+
+  const personalizedPlaceholder = appType
+    ? (APP_TYPE_PLACEHOLDERS[appType] ?? 'Describe your app idea in detail…')
+    : 'Describe your app idea — the more detail, the better your build…';
+
+  const personalizedGreeting = appType
+    ? `Let's build your ${APP_TYPE_LABELS[appType] ?? 'app'}`
+    : 'What will you build today?';
 
   const templates = [
     { label: 'Booking & Appointments', ar: 'احجز موعد', color: '#0066FF', bg: '#EEF4FF' },
@@ -68,11 +94,16 @@ export function Dashboard({ isTechnical = false }: { isTechnical?: boolean }) {
           {/* Headline */}
           <div style={{ textAlign: 'center' }}>
             <h1 style={{ fontSize: '38px', fontWeight: 800, letterSpacing: '-1px', lineHeight: 1.15, margin: '0 0 12px 0', color: '#0F172A' }}>
-              What do you want to build,{' '}
-              <span style={{ background: 'linear-gradient(135deg, #0066FF, #FF9F0A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Rohit?</span>
+              {appType ? (
+                <>{personalizedGreeting},{' '}<span style={{ background: 'linear-gradient(135deg, #0066FF, #FF9F0A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Rohit</span></>
+              ) : (
+                <>What do you want to build,{' '}<span style={{ background: 'linear-gradient(135deg, #0066FF, #FF9F0A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Rohit?</span></>
+              )}
             </h1>
             <p style={{ fontSize: '17px', color: '#64748B', margin: 0, lineHeight: 1.5 }}>
-              Describe your idea. We'll have your app ready in minutes.
+              {language === 'ar'
+                ? 'صف فكرتك — سيكون تطبيقك جاهزاً في دقائق.'
+                : 'Describe your idea. We\'ll have your app ready in minutes.'}
             </p>
           </div>
 
@@ -81,7 +112,7 @@ export function Dashboard({ isTechnical = false }: { isTechnical?: boolean }) {
             <textarea
               value={prompt}
               onChange={e => setPrompt(e.target.value)}
-              placeholder="Build me a booking app for a Dubai personal trainer — Arabic checkout, WhatsApp notifications, admin dashboard…"
+              placeholder={personalizedPlaceholder}
               style={{
                 width: '100%', background: 'transparent', border: 'none', outline: 'none',
                 resize: 'none', padding: '24px 24px 8px', fontSize: '17px', color: '#0F172A',

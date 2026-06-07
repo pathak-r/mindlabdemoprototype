@@ -6,6 +6,7 @@ export const modules: ModuleMap = {
   "./components/mockups/myndlab/Dashboard.tsx": () => import("../components/mockups/myndlab/Dashboard.tsx"),
   "./components/mockups/myndlab/Landing.tsx": () => import("../components/mockups/myndlab/Landing.tsx"),
   "./components/mockups/myndlab/MyndlabFlow.tsx": () => import("../components/mockups/myndlab/MyndlabFlow.tsx"),
+  "./components/mockups/myndlab/Onboarding.tsx": () => import("../components/mockups/myndlab/Onboarding.tsx"),
   "./components/mockups/myndlab/PromptExperience.tsx": () => import("../components/mockups/myndlab/PromptExperience.tsx"),
   "./components/mockups/myndlab/ShareApp.tsx": () => import("../components/mockups/myndlab/ShareApp.tsx"),
   "./components/mockups/myndlab/Signup.tsx": () => import("../components/mockups/myndlab/Signup.tsx")
