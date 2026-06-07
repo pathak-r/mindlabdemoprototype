@@ -152,10 +152,20 @@ export function Signup() {
             <p style={{ fontSize: '13px', color: '#64748B', margin: '0 0 16px 0', lineHeight: 1.5 }}>
               I want control over my stack, deployments, GitHub, and source code.
             </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-              {['Choose your tech stack', 'Connect to GitHub', 'Deploy to Vercel'].map((f, i) => (
-                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '7px', fontSize: '12px', fontWeight: 600, color: '#64748B' }}>
-                  <div style={{ width: '12px', height: '12px', borderRadius: '50%', border: '1.5px solid #CBD5E1', flexShrink: 0 }} /> {f}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5px 10px' }}>
+              {[
+                'Choose your stack',
+                'One-click cloud deploy',
+                'Connect to GitHub',
+                'Export to ZIP',
+                'Deploy to Vercel',
+                'Self-hosted runtime',
+                'CI/CD ready',
+                'Bring your own domain',
+                'Environment management',
+              ].map((f, i) => (
+                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', fontWeight: 600, color: '#64748B', gridColumn: i === 8 ? '1 / -1' : undefined }}>
+                  <div style={{ width: '10px', height: '10px', borderRadius: '50%', border: '1.5px solid #CBD5E1', flexShrink: 0 }} /> {f}
                 </div>
               ))}
             </div>
