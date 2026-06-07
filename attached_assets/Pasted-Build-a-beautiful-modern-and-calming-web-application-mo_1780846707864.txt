@@ -1,0 +1,121 @@
+Build a beautiful, modern, and calming web application mockup for an AI app builder platform called Myndlab. The entire experience should feel clean, uncluttered, trustworthy, and visually stunning. Think Linear meets Notion meets a premium GCC-aware product. Every screen should feel like it was designed with intention — nothing is there by accident, nothing is missing.
+Design Language (apply globally across all screens):
+	•	Colour palette: deep navy (#0A0F1E) as the primary background, soft white (#F8F9FC) for content surfaces, electric cyan (#00D4FF) as the primary accent, warm purple (#7C3AED) as the secondary accent. Gradients between cyan and purple where used sparingly for hero elements.
+	•	Typography: "Inter" for all UI text. Bold 600–700 weight for headlines, 400 for body. Never use more than two font sizes on a single screen.
+	•	Spacing: generous. Every element should breathe. No crowding.
+	•	Animations: subtle fade-ins and slide-ups on scroll. Nothing distracting.
+	•	No stock photos of people. Use UI mockups, phone screens, and product previews only.
+	•	Arabic RTL text should appear naturally inside app mockups and template previews as a real product signal, not decoration.
+	•	Overall tone: calm confidence. This platform knows what it is and who it is for.
+
+SCREEN 1 — Landing Page (Homepage)
+The landing page has one primary job: get the user building immediately. The prompt input is the hero. Everything else is supporting context below it.
+Layout:
+Top navigation bar: Myndlab logo left-aligned. Right side: "Templates" link, "How it works" link, "Pricing" link, a ghost "Sign in" button, and a solid cyan "Start building free" button. Navigation is minimal and clean.
+Hero section (full viewport height):
+	•	Small label above the headline: "The GCC's AI App Builder" in cyan, uppercase, letter-spaced
+	•	Large bold headline, two lines: "Never Get Stuck." on line one, "Get your app out there." on line two. Headline uses a gradient from cyan to purple on the word "out there."
+	•	Subheadline beneath (smaller, muted white): "Build in Arabic or English. Publish in minutes. No code, no agency, no App Store waiting room."
+	•	Directly below the subheadline: a large, prominent prompt input box — the most prominent element on the page. Placeholder text inside reads: "Describe your app... e.g. A booking app for a Dubai personal trainer with Arabic checkout and WhatsApp confirmations." The input box has a soft glowing cyan border. To the right of the input box, a solid "Build it →" button in cyan.
+	•	Below the input box, three small tap-card options in a row: "🎤 Talk it through instead" / "⚡ Start from a template" / "💡 Surprise me" — subtle, small, no borders, just text with an icon
+	•	Below those cards, a thin trust bar: "ISO 27001 + 9001 Certified · GCC Sovereign Infrastructure · Your code, your servers · 2,400+ apps built this month"
+Template section (immediately below the hero, no click required to reach it):
+	•	Section label: "Start from something real" in small cyan uppercase
+	•	Bold headline: "Pick a template. We'll handle the rest."
+	•	Horizontally scrollable row of 6 template cards. Each card shows:
+	◦	A live app UI preview (phone mockup or browser frame)
+	◦	App category name bold at the bottom: "Food Delivery" / "Booking & Appointments" / "Property Listings" / "Service Marketplace" / "Community Directory" / "Events Platform"
+	◦	A subtle "Use template →" link at the bottom of each card
+	◦	Arabic text visible naturally inside the app preview UI
+	•	Cards are rounded, have a soft drop shadow, and feel like real finished apps
+Benefits section (below templates): Three columns, each with an icon, a bold headline, and two lines of supporting text:
+	•	Column 1: ⚡ "Build in minutes, not months" — From prompt to working app in under 5 minutes. No development team needed.
+	•	Column 2: 🌍 "Arabic and English, natively" — Not an afterthought. RTL support, Arabic checkout, bilingual apps built in.
+	•	Column 3: 🚀 "Publish without the App Store" — We assess your app and guide you to the fastest distribution path. Most apps go live via a WhatsApp-shareable link.
+Distribution differentiator section (dark background panel):
+	•	Bold headline: "No App Store. No waiting. Just a link."
+	•	Left side: phone screen showing a WhatsApp message with a PWA install prompt appearing. The install prompt says "Add Myndlab App to Home Screen."
+	•	Right side: three bullet points with cyan checkmarks: "We automatically assess whether your app needs the App Store or can go live instantly as a PWA" / "Most GCC business apps don't need the App Store — they need a shareable link" / "Your users install in two taps, straight from WhatsApp."
+Trust section: Three cards in a row on a white background:
+	•	"ISO 27001 + 9001 Certified" with a shield icon
+	•	"GCC Sovereign Data Infrastructure" with a location pin icon
+	•	"Compliance built in from day one — RLS, PII encryption, input sanitisation" with a lock icon
+Final CTA banner: Full width, cyan-to-purple gradient background. Large white text: "Your idea deserves to be live." Single white outlined button: "Build for free — no credit card needed."
+
+SCREEN 2 — Sign-up Flow
+Clean, centred, single-column layout. Dark navy background.
+Step 1: Auth screen
+	•	Myndlab logo centred at top
+	•	Headline: "Let's get you building."
+	•	Three sign-up options as large, clean buttons stacked vertically: "Continue with Google" / "Continue with Apple" / "Continue with email"
+	•	Small text below: "Free to start. No credit card needed."
+Step 2: Onboarding survey (appears immediately after auth, before dashboard) Three screens in sequence, each showing one question at a time as large tap cards. Progress dots at the top (1 of 3, 2 of 3, 3 of 3). No typing required on any screen.
+Screen 2a: "What do you want to build?" Six large tap cards in a 2x3 grid, each with an icon and a label: 🍔 Food Delivery / 📅 Booking & Appointments / 🏠 Property Listings / 🛍️ Marketplace / 👥 Community App / ✨ Something else
+Screen 2b: "Have you built an app before?" Three tap cards horizontally: "Never — this is my first time" / "Once or twice" / "Yes, regularly"
+Screen 2c: "Which language do you prefer?" Three tap cards: "العربية (Arabic)" / "Both — Arabic and English" / "English"
+After Screen 2c: brief animated transition — a subtle build animation — then drop the user directly into their personalised dashboard.
+
+SCREEN 3 — Dashboard / First Experience (Empty State)
+The dashboard should never feel empty. Even for a brand new user, it feels like a place full of possibility and direction.
+Layout:
+	•	Left sidebar: Myndlab logo, navigation items (My Apps / Templates / Community / Settings), and at the bottom a small user avatar with name
+	•	Main content area (right of sidebar):
+Top of main area: personalised welcome banner based on onboarding answers. Example: "Welcome, Rohit. Let's build your booking app." Subtext: "Start below, pick a template, or describe your idea and we'll do the rest." The banner has a subtle cyan gradient background.
+Below the banner: the prompt input — large, prominent, centred. Placeholder: "Describe your app in Arabic or English..." Small row of options beneath it: "🎤 Use voice instead" / "⚡ Pick a template"
+Below the prompt: "Or start from a template" section header, followed by a 3-column grid of template cards matching the style from the homepage. Cards show live app previews with Arabic text visible naturally.
+Bottom of main area: "Built by GCC founders this week" — a subtle row of 3 app showcase cards. Each shows a phone mockup of a real-looking app, the app name, the founder's first name and city, and a "View live app →" link. These demonstrate what success looks like before the user has built anything.
+
+SCREEN 4 — First Prompt Experience
+The user has typed or tapped a prompt. This screen shows the Plan Mode — the clarification step before building begins.
+Layout: dark background, centred content, clean and focused.
+Top: the user's prompt displayed in a soft input box: "Build me a booking app for a Dubai personal trainer — Arabic checkout, WhatsApp confirmation, admin dashboard"
+Prompt quality indicator: a small horizontal bar beneath the prompt showing "Prompt quality: Detailed ✓" in cyan. This updates as the user types.
+Below the prompt quality indicator: three pre-written example prompts displayed as tappable cards in a vertical stack, each styled like a real user story in a soft dark card with a subtle left cyan border. Label above them: "Or try one of these:" in small muted text.
+Card 1: "Build me a booking app for a Dubai personal trainer — Arabic checkout, WhatsApp confirmation, and a simple admin dashboard."
+Card 2: "Create a food delivery app for a Riyadh restaurant — Arabic and English menu, online payment, and live order tracking."
+Card 3: "Build a property listings platform for Abu Dhabi — Arabic descriptions, WhatsApp enquiry button, and an agent admin panel."
+Each card has a subtle "Use this →" link in cyan at the bottom right. Tapping any card populates the prompt input above with that text and automatically updates the prompt quality indicator to "Detailed ✓". The cards disappear once the user starts typing their own prompt.
+Below the prompt: "A few quick choices" — presented as tap cards, not dropdowns:
+Row 1 — "What type of app?" — 4 cards: Booking · E-commerce · Marketplace · SaaS — one pre-selected based on their prompt (Booking, highlighted in cyan)
+Row 2 — "Language?" — 3 cards: Arabic-first · Bilingual · English — one pre-selected (Arabic-first, highlighted)
+No backend stack. No framework. No infrastructure options visible. These are selected silently by the system.
+Below the cards: a large "Build it →" button in solid cyan.
+Small text beneath the button: "Your first build takes about 2 minutes. You'll get a working app you can customise, share, and publish."
+Inline prompt coach: a soft suggestion box to the right of or below the prompt: "💡 Tip: Adding your target audience makes the build smarter. Try: 'for busy Dubai professionals who book via Instagram.'"
+
+SCREEN 5 — Build Progress
+Full screen, dark navy background. Centred. This is the 2-minute wait screen — it should build trust, not anxiety.
+Top: the app name generated from the prompt — "Dubai PT Booking App" — in large, calm white text.
+Below: a vertical progress timeline, each step appearing sequentially with a soft fade-in: ✓ Understanding your idea ✓ Designing your app structure ⟳ Setting up your database (currently active, pulsing cyan dot) ○ Building your Arabic checkout ○ Running security checks ○ Final polish
+Each completed step has a cyan checkmark. The active step has a pulsing cyan dot. Pending steps are muted grey circles.
+Below the timeline: a calm reassurance line that changes every 30 seconds: "Your data stays in the GCC region." → "We're configuring row-level security on your database." → "Arabic RTL is being applied to all screens." → "Almost ready."
+No percentage bar. No spinning loader. Just a calm, narrated timeline.
+
+SCREEN 6 — Build Complete + Distribution Decision
+The build is done. This screen should feel like a moment of arrival.
+Top: large, calm headline: "Your app is ready." Subtext: "Here's what we built for you."
+Centre: a phone mockup showing the live app preview — the booking app with Arabic text visible, a clean UI, and a bottom navigation bar.
+Below the mockup: three action buttons stacked vertically:
+	1	Primary (cyan, solid): "Publish as PWA — share a link instantly" — with a subline: "✓ Your app is perfect for PWA distribution. Your users can install it directly from WhatsApp."
+	2	Secondary (outlined): "Customise before publishing"
+	3	Tertiary (text link): "I need App Store distribution instead →"
+Below the buttons: a small "Your app is secure" summary card — three items in a row with green checkmarks: "Row-level security configured" / "Inputs sanitised" / "PII encryption active"
+
+SCREEN 7 — Post-Publish: Share Your App
+The user has published. This is the celebration and activation moment.
+Full screen. Centred. Calm.
+Top: animated checkmark (subtle, not over the top). Large headline: "You're live." Subtext: "Share your app with your first users."
+PWA install link displayed in a clean box: "myndlab.app/dubai-pt-booking" with a copy button and a QR code to the right.
+Two large share buttons below: "📱 Share on WhatsApp" (green, prominent) / "🔗 Copy link"
+Below the share buttons: a soft prompt — "Who do you want to share this with first?" — with three tap-card suggestions: "My first customer" / "A friend to test it" / "My social media"
+Bottom: small "Built with Myndlab" badge preview — "Your app carries this badge. Upgrade to Pro to remove it and add your custom domain."
+
+SCREEN 8 — Vibe Ops: Post-Launch Dashboard
+The user's app has been live for a week. This screen shows Myndlab acting as an always-on business partner.
+Layout: same sidebar as dashboard. Main content area:
+Top: app name and live status indicator — green dot — "Dubai PT Booking App · Live · 63 visitors this week"
+Below: a clean analytics summary — 4 stat cards in a row: "63 Visitors" / "41 Sessions" / "8 Drop-offs at checkout" / "3 Bookings completed"
+Below the stats: a cyan alert card — this is the Vibe Ops moment: "⚡ We noticed something." Bold subheadline: "8 users dropped off at your checkout step." Body: "This is likely because the payment confirmation screen is only in English. Want me to add Arabic to the checkout and redeploy?" Two buttons: "Yes, fix it →" (cyan, solid) / "Show me what changed first"
+Below the alert: a "Recent activity" feed — clean list: "App deployed · 7 days ago" / "47 new visitors · this week" / "Version 1 saved · 7 days ago"
+
+Make all screens pixel-perfect, visually cohesive, and production-quality in appearance. Every screen should feel like it belongs to the same design system. Use consistent spacing, consistent component styles, consistent colour usage. The experience as a whole should communicate: this platform is calm, trustworthy, beautiful, and it will get your app out there.

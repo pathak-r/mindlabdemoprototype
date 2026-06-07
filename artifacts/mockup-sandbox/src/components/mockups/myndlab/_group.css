@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --mn-navy: #0A0F1E;
+  --mn-navy-mid: #111827;
+  --mn-navy-light: #1a2235;
+  --mn-surface: #F8F9FC;
+  --mn-cyan: #00D4FF;
+  --mn-purple: #7C3AED;
+  --mn-cyan-glow: rgba(0, 212, 255, 0.15);
+  --mn-purple-glow: rgba(124, 58, 237, 0.15);
+  --mn-text-muted: rgba(248, 249, 252, 0.55);
+  --mn-text-dim: rgba(248, 249, 252, 0.35);
+  --mn-border: rgba(248, 249, 252, 0.08);
+  --mn-card: rgba(255, 255, 255, 0.04);
+  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
