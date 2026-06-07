@@ -148,18 +148,18 @@ export function BuildComplete({ isTechnical = false }: { isTechnical?: boolean }
         {/* Technical deploy options */}
         {isTechnical && (
           <div className="bc-d4" style={{ width: '100%', marginBottom: '12px' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '14px' }}>
               {[
-                { icon: <Rocket size={18} color="#0066FF" />, label: 'Deploy to Vercel', sublabel: 'Setup required', bg: '#EEF4FF' },
-                { icon: <Github size={18} color="#0F172A" />, label: 'Connect GitHub', sublabel: 'Push to repo', bg: '#F1F5F9' },
-                { icon: <Download size={18} color="#64748B" />, label: 'Download Source', sublabel: 'ZIP archive', bg: '#F1F5F9' },
+                { icon: <Rocket size={26} color="#0066FF" />, label: 'Deploy to Vercel', sublabel: 'Setup required', bg: '#EEF4FF' },
+                { icon: <Github size={26} color="#0F172A" />, label: 'Connect GitHub', sublabel: 'Push to repo', bg: '#F1F5F9' },
+                { icon: <Download size={26} color="#64748B" />, label: 'Download Source', sublabel: 'ZIP archive', bg: '#F1F5F9' },
               ].map((item, i) => (
-                <button key={i} className="bc-tech-btn" style={{ padding: '14px 10px', background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '12px', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', boxShadow: '0 1px 4px rgba(0,0,0,0.04)', transition: 'all 0.2s' }}>
-                  <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: item.bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <button key={i} className="bc-tech-btn" style={{ padding: '24px 16px', background: '#FFFFFF', border: '1.5px solid #E2E8F0', borderRadius: '16px', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.06)', transition: 'all 0.2s' }}>
+                  <div style={{ width: '56px', height: '56px', borderRadius: '16px', background: item.bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     {item.icon}
                   </div>
-                  <div style={{ fontSize: '11px', fontWeight: 700, color: '#0F172A', textAlign: 'center', lineHeight: 1.3 }}>{item.label}</div>
-                  <div style={{ fontSize: '10px', color: '#94A3B8', textAlign: 'center' }}>{item.sublabel}</div>
+                  <div style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A', textAlign: 'center', lineHeight: 1.3 }}>{item.label}</div>
+                  <div style={{ fontSize: '12px', color: '#94A3B8', textAlign: 'center' }}>{item.sublabel}</div>
                 </button>
               ))}
             </div>
@@ -167,8 +167,8 @@ export function BuildComplete({ isTechnical = false }: { isTechnical?: boolean }
         )}
 
         {/* App store escape */}
-        <button className="bc-text-link bc-d4" style={{ background: 'none', border: 'none', color: '#94A3B8', fontSize: '13px', fontWeight: 500, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px', padding: '8px', marginTop: '4px', transition: 'color 0.15s' }}>
-          I need App Store distribution instead <ChevronRight size={13} />
+        <button className="bc-text-link bc-d4" style={{ background: '#FFFFFF', border: '1.5px solid #E2E8F0', borderRadius: '14px', color: '#475569', fontSize: '15px', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '16px 24px', width: '100%', marginTop: '4px', transition: 'color 0.15s', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
+          I need App Store distribution instead <ChevronRight size={16} />
         </button>
 
       </div>
