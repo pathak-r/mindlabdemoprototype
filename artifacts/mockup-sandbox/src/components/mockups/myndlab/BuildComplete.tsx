@@ -1,209 +1,317 @@
 import React from 'react';
-import { Check, ChevronRight, Share, Calendar, User, Clock, ArrowRight } from 'lucide-react';
+import { Check, ArrowRight } from 'lucide-react';
 import './_group.css';
 
 export function BuildComplete() {
   return (
-    <div 
-      className="min-h-screen w-full flex flex-col items-center justify-center p-6 sm:p-12 font-sans"
-      style={{ 
-        backgroundColor: 'var(--mn-navy)', 
-        color: 'var(--mn-surface)',
-        fontFamily: 'var(--font-main)'
-      }}
-    >
-      <div className="max-w-4xl w-full flex flex-col items-center gap-12">
+    <div style={{
+      minHeight: '100vh',
+      width: '100%',
+      backgroundColor: '#FAFBFF',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '40px 24px',
+      fontFamily: 'system-ui, -apple-system, sans-serif',
+      position: 'relative',
+      overflow: 'hidden'
+    }}>
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-8px); }
+        }
+        .anim-fade-up {
+          animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          opacity: 0;
+        }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
         
-        {/* 1. TOP HEADLINE */}
-        <div className="text-center space-y-3">
-          <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight" style={{ color: 'var(--mn-surface)' }}>
-            Your app is ready.
+        .gradient-text {
+          background: linear-gradient(135deg, #0066FF 0%, #FF9F0A 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
+        .btn-primary:hover { opacity: 0.95; transform: scale(1.02); }
+        .btn-secondary:hover { background-color: #F8FAFC !important; }
+        .btn-tertiary:hover { color: #0F172A !important; }
+      `}} />
+
+      <div style={{ maxWidth: '600px', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        
+        {/* LOGO */}
+        <div className="anim-fade-up" style={{
+          width: '56px',
+          height: '56px',
+          borderRadius: '16px',
+          background: 'linear-gradient(135deg, #0066FF 0%, #FF9F0A 100%)',
+          marginBottom: '24px',
+          boxShadow: '0 8px 16px rgba(0, 102, 255, 0.2)'
+        }} />
+
+        {/* HEADLINE */}
+        <div className="anim-fade-up delay-100" style={{ textAlign: 'center', marginBottom: '40px' }}>
+          <h1 style={{
+            fontSize: '40px',
+            fontWeight: 800,
+            color: '#0F172A',
+            letterSpacing: '-0.02em',
+            margin: '0 0 12px 0',
+            lineHeight: 1.1
+          }}>
+            Your app is <span className="gradient-text">ready.</span>
           </h1>
-          <p className="text-lg sm:text-xl" style={{ color: 'var(--mn-text-muted)' }}>
+          <p style={{
+            fontSize: '18px',
+            color: '#64748B',
+            margin: 0,
+            fontWeight: 400
+          }}>
             Here's what we built for you.
           </p>
         </div>
 
-        {/* 2. PHONE MOCKUP */}
-        <div 
-          className="relative w-[320px] h-[650px] rounded-[48px] p-2 sm:w-[350px] sm:h-[700px] flex-shrink-0"
-          style={{ 
-            backgroundColor: 'var(--mn-navy-mid)', 
-            boxShadow: '0 0 0 1px var(--mn-border), 0 25px 50px -12px rgba(0,0,0,0.5), 0 0 80px -20px var(--mn-cyan-glow)',
-          }}
-        >
-          {/* Inner Screen */}
-          <div className="w-full h-full bg-white rounded-[40px] overflow-hidden relative flex flex-col">
-            {/* Notch */}
-            <div className="absolute top-0 inset-x-0 h-6 flex justify-center z-20">
-              <div className="w-32 h-6 bg-black rounded-b-2xl"></div>
-            </div>
+        {/* PHONE MOCKUP */}
+        <div className="anim-fade-up delay-200" style={{
+          position: 'relative',
+          width: '260px',
+          height: '540px',
+          backgroundColor: '#0F172A',
+          borderRadius: '32px',
+          padding: '8px',
+          boxShadow: '0 0 0 1px rgba(15,23,42,0.05), 0 24px 48px rgba(0,102,255,0.2)',
+          marginBottom: '48px',
+          flexShrink: 0,
+          animation: 'fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards 200ms, float 6s ease-in-out infinite 800ms'
+        }}>
+          {/* Screen Inner */}
+          <div style={{
+            width: '100%',
+            height: '100%',
+            backgroundColor: '#FAFBFF',
+            borderRadius: '24px',
+            overflow: 'hidden',
+            position: 'relative',
+            display: 'flex',
+            flexDirection: 'column'
+          }}>
+            {/* Reflection Overlay */}
+            <div style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              height: '50%',
+              background: 'linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 50%)',
+              pointerEvents: 'none',
+              zIndex: 10
+            }} />
 
-            {/* Status Bar Fake */}
-            <div className="h-12 w-full bg-white relative z-10"></div>
+            {/* Notch */}
+            <div style={{
+              position: 'absolute',
+              top: 0,
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: '100px',
+              height: '24px',
+              backgroundColor: '#0F172A',
+              borderBottomLeftRadius: '12px',
+              borderBottomRightRadius: '12px',
+              zIndex: 20
+            }} />
 
             {/* App Content */}
-            <div className="flex-1 flex flex-col text-slate-900 overflow-y-auto pb-20">
-              
-              {/* App Header */}
-              <div className="px-6 pb-4 pt-2 border-b border-slate-100 flex flex-col">
-                <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Fitness App</span>
-                <div className="flex justify-between items-end">
-                  <h2 className="text-xl font-bold text-slate-900 leading-none">Dubai PT</h2>
-                  <span className="text-lg font-bold text-slate-900 leading-none" dir="rtl">حجز مدرب</span>
-                </div>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', paddingTop: '32px' }}>
+              {/* Header */}
+              <div style={{
+                padding: '16px 20px',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'baseline',
+                borderBottom: '1px solid #E2E8F0',
+                backgroundColor: '#FFFFFF'
+              }}>
+                <span style={{ fontSize: '15px', fontWeight: 700, color: '#0F172A' }}>Dubai PT Booking</span>
+                <span style={{ fontSize: '12px', fontWeight: 600, color: '#0066FF' }} dir="rtl">حجز دبي</span>
               </div>
 
-              <div className="p-6 space-y-6 flex-1 bg-slate-50">
+              {/* Body */}
+              <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', gap: '16px', flex: 1 }}>
                 
                 {/* Greeting */}
-                <div className="space-y-1">
-                  <h3 className="text-2xl font-bold" dir="rtl">احجز موعدك الآن</h3>
-                  <p className="text-sm text-slate-500">Book your next session</p>
+                <div style={{ backgroundColor: '#EEF4FF', padding: '16px', borderRadius: '12px', textAlign: 'center' }}>
+                  <div style={{ fontSize: '18px', fontWeight: 800, color: '#0066FF', marginBottom: '4px' }} dir="rtl">احجز موعدك الآن</div>
+                  <div style={{ fontSize: '12px', color: '#64748B' }}>Book your session</div>
                 </div>
 
-                {/* Date Picker Mock */}
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <h4 className="text-sm font-semibold">This Week <span className="text-slate-400 ml-1 text-xs font-normal" dir="rtl">هذا الأسبوع</span></h4>
-                    <span className="text-xs text-indigo-600 font-medium">See all</span>
+                {/* Slots */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <div style={{ fontSize: '12px', fontWeight: 600, color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Upcoming</div>
+                  
+                  <div style={{ backgroundColor: '#FFFFFF', padding: '12px', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.04)', display: 'flex', alignItems: 'center', gap: '12px', border: '1px solid #E2E8F0' }}>
+                    <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#0066FF' }} />
+                    <div>
+                      <div style={{ fontSize: '13px', fontWeight: 600, color: '#0F172A' }}>Today, 10:00 AM</div>
+                      <div style={{ fontSize: '11px', color: '#64748B' }}>Marina Studio</div>
+                    </div>
                   </div>
-                  <div className="flex gap-2 overflow-hidden">
-                    {[
-                      { day: 'Mon', num: '12', active: false },
-                      { day: 'Tue', num: '13', active: true },
-                      { day: 'Wed', num: '14', active: false },
-                      { day: 'Thu', num: '15', active: false },
-                    ].map((d, i) => (
-                      <div key={i} className={`flex flex-col items-center justify-center p-3 rounded-2xl w-16 flex-shrink-0 ${d.active ? 'bg-indigo-600 text-white shadow-md' : 'bg-white border border-slate-100 text-slate-600'}`}>
-                        <span className={`text-xs ${d.active ? 'text-indigo-100' : 'text-slate-400'}`}>{d.day}</span>
-                        <span className="text-lg font-bold mt-1">{d.num}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
 
-                {/* Available Slots */}
-                <div className="space-y-3">
-                  <h4 className="text-sm font-semibold">Morning Slots <span className="text-slate-400 ml-1 text-xs font-normal" dir="rtl">الفترة الصباحية</span></h4>
-                  <div className="grid grid-cols-2 gap-2">
-                    <div className="p-3 border border-indigo-100 bg-indigo-50/50 rounded-xl flex items-center justify-center text-sm font-medium text-indigo-700">08:00 AM</div>
-                    <div className="p-3 border border-slate-200 bg-white rounded-xl flex items-center justify-center text-sm font-medium text-slate-600">09:00 AM</div>
-                    <div className="p-3 border border-slate-200 bg-white rounded-xl flex items-center justify-center text-sm font-medium text-slate-400 line-through">10:00 AM</div>
-                    <div className="p-3 border border-slate-200 bg-white rounded-xl flex items-center justify-center text-sm font-medium text-slate-600">11:00 AM</div>
+                  <div style={{ backgroundColor: '#FFFFFF', padding: '12px', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.04)', display: 'flex', alignItems: 'center', gap: '12px', border: '1px solid #E2E8F0' }}>
+                    <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#FF9F0A' }} />
+                    <div>
+                      <div style={{ fontSize: '13px', fontWeight: 600, color: '#0F172A' }}>Tomorrow, 2:00 PM</div>
+                      <div style={{ fontSize: '11px', color: '#64748B' }}>JLT Branch</div>
+                    </div>
                   </div>
-                </div>
-
-                {/* Action Button Inside Mockup */}
-                <div className="mt-4 p-4 bg-indigo-600 rounded-2xl text-white flex justify-between items-center shadow-lg shadow-indigo-200">
-                  <span className="font-medium">Confirm Booking</span>
-                  <span className="font-bold text-sm bg-white/20 px-2 py-1 rounded-lg">250 AED</span>
                 </div>
 
               </div>
+
+              {/* Bottom Tab Bar */}
+              <div style={{
+                height: '60px',
+                backgroundColor: '#FFFFFF',
+                borderTop: '1px solid #E2E8F0',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-evenly',
+                paddingBottom: '12px'
+              }}>
+                <div style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: '#0066FF' }} />
+                <div style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: '#CBD5E1' }} />
+                <div style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: '#CBD5E1' }} />
+              </div>
+
             </div>
-
-            {/* Bottom Nav Mock */}
-            <div className="absolute bottom-0 inset-x-0 h-20 bg-white border-t border-slate-100 flex items-center justify-around px-6 pb-4">
-              <div className="flex flex-col items-center gap-1 text-indigo-600">
-                <Calendar className="w-5 h-5" />
-                <span className="text-[10px] font-medium">Book</span>
-              </div>
-              <div className="flex flex-col items-center gap-1 text-slate-400">
-                <Clock className="w-5 h-5" />
-                <span className="text-[10px] font-medium">History</span>
-              </div>
-              <div className="flex flex-col items-center gap-1 text-slate-400">
-                <User className="w-5 h-5" />
-                <span className="text-[10px] font-medium">Profile</span>
-              </div>
-            </div>
-            
-            {/* Home Indicator */}
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-slate-900 rounded-full"></div>
           </div>
         </div>
 
-        {/* 3. THREE ACTION BUTTONS */}
-        <div className="w-full max-w-[400px] flex flex-col gap-4">
-          
-          <button 
-            className="group w-full flex flex-col items-center justify-center py-4 px-6 rounded-xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
-            style={{ 
-              backgroundColor: 'var(--mn-cyan)', 
-              color: 'var(--mn-navy)',
-              boxShadow: '0 0 20px var(--mn-cyan-glow)'
-            }}
-          >
-            <span className="text-base font-semibold flex items-center gap-2">
+        {/* THREE ACTION BUTTONS */}
+        <div className="anim-fade-up delay-300" style={{
+          width: '100%',
+          maxWidth: '420px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '12px',
+          marginBottom: '32px'
+        }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '8px' }}>
+            <button className="btn-primary" style={{
+              backgroundColor: '#0066FF',
+              color: '#FFFFFF',
+              border: 'none',
+              borderRadius: '12px',
+              padding: '16px 24px',
+              fontSize: '16px',
+              fontWeight: 600,
+              cursor: 'pointer',
+              boxShadow: '0 2px 8px rgba(0,102,255,0.25)',
+              transition: 'all 0.2s',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+              width: '100%'
+            }}>
               Publish as PWA — share a link instantly
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </span>
-            <span className="text-xs font-medium mt-1 opacity-80 text-center">
+            </button>
+            <p style={{
+              fontSize: '13px',
+              color: '#64748B',
+              textAlign: 'center',
+              margin: 0,
+              lineHeight: 1.4
+            }}>
               Your app is perfect for PWA distribution. Your users can install it directly from WhatsApp.
-            </span>
+            </p>
+          </div>
+
+          <button className="btn-secondary" style={{
+            backgroundColor: '#FFFFFF',
+            color: '#0F172A',
+            border: '1px solid #E2E8F0',
+            borderRadius: '12px',
+            padding: '16px 24px',
+            fontSize: '15px',
+            fontWeight: 600,
+            cursor: 'pointer',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.02)',
+            transition: 'background-color 0.2s',
+            width: '100%'
+          }}>
+            Customise before publishing
           </button>
 
-          <button 
-            className="w-full flex items-center justify-center py-4 px-6 rounded-xl transition-colors duration-200"
-            style={{ 
-              backgroundColor: 'transparent', 
-              color: 'var(--mn-surface)',
-              border: '1px solid var(--mn-border)'
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--mn-card)'}
-            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
-          >
-            <span className="text-sm font-medium">
-              Customise before publishing
-            </span>
-          </button>
-
-          <button 
-            className="w-full flex items-center justify-center py-3 px-6 rounded-xl transition-colors duration-200 group"
-            style={{ 
-              backgroundColor: 'transparent', 
-              color: 'var(--mn-text-dim)',
-            }}
-          >
-            <span className="text-sm font-medium group-hover:text-white transition-colors">
-              I need App Store distribution instead <span className="ml-1">→</span>
-            </span>
+          <button className="btn-tertiary" style={{
+            backgroundColor: 'transparent',
+            color: '#64748B',
+            border: 'none',
+            padding: '12px',
+            fontSize: '14px',
+            fontWeight: 500,
+            cursor: 'pointer',
+            transition: 'color 0.2s',
+            width: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '4px'
+          }}>
+            I need App Store distribution instead <ArrowRight size={14} />
           </button>
         </div>
 
-        {/* 4. SECURITY SUMMARY CARD */}
-        <div 
-          className="w-full max-w-2xl mt-4 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 py-4 px-6 rounded-2xl"
-          style={{ 
-            backgroundColor: 'var(--mn-card)', 
-            border: '1px solid var(--mn-border)' 
-          }}
-        >
-          <div className="flex items-center gap-2">
-            <div className="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400">
-              <Check className="w-3 h-3" strokeWidth={3} />
+        {/* SECURITY SUMMARY */}
+        <div className="anim-fade-up delay-400" style={{
+          backgroundColor: '#FFFFFF',
+          border: '1px solid #E2E8F0',
+          borderRadius: '16px',
+          padding: '16px 24px',
+          boxShadow: '0 4px 16px rgba(0,0,0,0.04)',
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '20px',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+          {[
+            "Row-level security",
+            "Inputs sanitised",
+            "PII encryption"
+          ].map((item, idx) => (
+            <div key={idx} style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              fontSize: '13px',
+              fontWeight: 600,
+              color: '#0F172A'
+            }}>
+              <div style={{
+                width: '16px',
+                height: '16px',
+                borderRadius: '50%',
+                backgroundColor: '#10B981',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <Check size={10} color="#FFFFFF" strokeWidth={3} />
+              </div>
+              {item}
             </div>
-            <span className="text-xs font-medium" style={{ color: 'var(--mn-text-muted)' }}>Row-level security configured</span>
-          </div>
-          
-          <div className="hidden sm:block w-1 h-1 rounded-full" style={{ backgroundColor: 'var(--mn-border)' }}></div>
-          
-          <div className="flex items-center gap-2">
-            <div className="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400">
-              <Check className="w-3 h-3" strokeWidth={3} />
-            </div>
-            <span className="text-xs font-medium" style={{ color: 'var(--mn-text-muted)' }}>Inputs sanitised</span>
-          </div>
-
-          <div className="hidden sm:block w-1 h-1 rounded-full" style={{ backgroundColor: 'var(--mn-border)' }}></div>
-
-          <div className="flex items-center gap-2">
-            <div className="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400">
-              <Check className="w-3 h-3" strokeWidth={3} />
-            </div>
-            <span className="text-xs font-medium" style={{ color: 'var(--mn-text-muted)' }}>PII encryption active</span>
-          </div>
+          ))}
         </div>
 
       </div>

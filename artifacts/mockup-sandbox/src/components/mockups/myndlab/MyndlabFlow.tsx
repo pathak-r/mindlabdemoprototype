@@ -47,7 +47,7 @@ export function MyndlabFlow() {
       display: "flex",
       flexDirection: "column",
       height: "100vh",
-      background: "#0A0F1E",
+      background: "#FAFBFF",
       fontFamily: "var(--font-main, 'Inter', sans-serif)",
       overflow: "hidden",
     }}>
@@ -59,9 +59,10 @@ export function MyndlabFlow() {
         padding: "0 20px",
         height: "52px",
         flexShrink: 0,
-        background: "#0d1526",
-        borderBottom: "1px solid rgba(248,249,252,0.08)",
+        background: "#FFFFFF",
+        borderBottom: "1px solid #E2E8F0",
         gap: "16px",
+        boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
       }}>
         {/* Left: prev button */}
         <button
@@ -72,8 +73,8 @@ export function MyndlabFlow() {
             alignItems: "center",
             gap: "6px",
             background: "transparent",
-            border: "1px solid rgba(248,249,252,0.12)",
-            color: current === 0 ? "rgba(248,249,252,0.2)" : "rgba(248,249,252,0.7)",
+            border: "1px solid #E2E8F0",
+            color: current === 0 ? "#CBD5E1" : "#0F172A",
             padding: "6px 14px",
             borderRadius: "7px",
             fontSize: "13px",
@@ -91,24 +92,24 @@ export function MyndlabFlow() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          gap: "6px",
+          gap: "5px",
           flex: 1,
         }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
             {SCREENS.map((s, i) => (
               <button
                 key={i}
                 onClick={() => go(i)}
                 title={s.label}
                 style={{
-                  width: i === current ? "28px" : "8px",
+                  width: i === current ? "24px" : "8px",
                   height: "8px",
                   borderRadius: "4px",
                   background: i === current
-                    ? "#00D4FF"
+                    ? "#0066FF"
                     : i < current
-                    ? "rgba(0,212,255,0.35)"
-                    : "rgba(248,249,252,0.15)",
+                    ? "#BFDBFE"
+                    : "#E2E8F0",
                   border: "none",
                   cursor: "pointer",
                   padding: 0,
@@ -118,10 +119,10 @@ export function MyndlabFlow() {
             ))}
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            <span style={{ color: "#F8F9FC", fontSize: "13px", fontWeight: 600 }}>
+            <span style={{ color: "#0F172A", fontSize: "13px", fontWeight: 600 }}>
               {current + 1}. {SCREENS[current].label}
             </span>
-            <span style={{ color: "rgba(248,249,252,0.35)", fontSize: "12px" }}>
+            <span style={{ color: "#94A3B8", fontSize: "12px" }}>
               — {SCREENS[current].hint}
             </span>
           </div>
@@ -135,9 +136,9 @@ export function MyndlabFlow() {
             display: "flex",
             alignItems: "center",
             gap: "6px",
-            background: current === SCREENS.length - 1 ? "transparent" : "#00D4FF",
-            border: current === SCREENS.length - 1 ? "1px solid rgba(248,249,252,0.12)" : "none",
-            color: current === SCREENS.length - 1 ? "rgba(248,249,252,0.2)" : "#0A0F1E",
+            background: current === SCREENS.length - 1 ? "transparent" : "#0066FF",
+            border: current === SCREENS.length - 1 ? "1px solid #E2E8F0" : "none",
+            color: current === SCREENS.length - 1 ? "#CBD5E1" : "#FFFFFF",
             padding: "6px 14px",
             borderRadius: "7px",
             fontSize: "13px",
@@ -145,6 +146,7 @@ export function MyndlabFlow() {
             cursor: current === SCREENS.length - 1 ? "default" : "pointer",
             transition: "all 0.15s",
             flexShrink: 0,
+            boxShadow: current === SCREENS.length - 1 ? "none" : "0 2px 6px rgba(0,102,255,0.25)",
           }}
         >
           Next →

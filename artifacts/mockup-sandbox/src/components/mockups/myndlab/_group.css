@@ -1,17 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  --mn-navy: #0A0F1E;
-  --mn-navy-mid: #111827;
-  --mn-navy-light: #1a2235;
-  --mn-surface: #F8F9FC;
-  --mn-cyan: #00D4FF;
-  --mn-purple: #7C3AED;
-  --mn-cyan-glow: rgba(0, 212, 255, 0.15);
-  --mn-purple-glow: rgba(124, 58, 237, 0.15);
-  --mn-text-muted: rgba(248, 249, 252, 0.55);
-  --mn-text-dim: rgba(248, 249, 252, 0.35);
-  --mn-border: rgba(248, 249, 252, 0.08);
-  --mn-card: rgba(255, 255, 255, 0.04);
+  --mn-bg: #FAFBFF;
+  --mn-surface: #FFFFFF;
+  --mn-surface-2: #F1F5F9;
+  --mn-surface-3: #E8EFFF;
+  --mn-text: #0F172A;
+  --mn-text-muted: #64748B;
+  --mn-text-dim: #94A3B8;
+  --mn-blue: #0066FF;
+  --mn-blue-hover: #0052CC;
+  --mn-blue-light: #EEF4FF;
+  --mn-blue-mid: #BFDBFE;
+  --mn-amber: #FF9F0A;
+  --mn-amber-light: #FFF7E6;
+  --mn-amber-deep: #E8890A;
+  --mn-green: #10B981;
+  --mn-green-light: #ECFDF5;
+  --mn-border: #E2E8F0;
+  --mn-border-strong: #CBD5E1;
+  --mn-shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --mn-shadow-md: 0 4px 16px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
+  --mn-shadow-lg: 0 8px 32px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.05);
+  --mn-blue-glow: 0 0 0 3px rgba(0,102,255,0.15);
   --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }

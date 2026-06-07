@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Check } from 'lucide-react';
+import { Check, Shield } from 'lucide-react';
 import './_group.css';
 
 export function BuildProgress() {
@@ -23,18 +23,18 @@ export function BuildProgress() {
     <div 
       className="min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden"
       style={{ 
-        backgroundColor: 'var(--mn-navy)',
-        fontFamily: 'var(--font-main)'
+        backgroundColor: '#FAFBFF',
+        fontFamily: 'var(--font-main, sans-serif)'
       }}
     >
       <style dangerouslySetInnerHTML={{__html: `
-        @keyframes subtle-pulse {
-          0% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.4); transform: scale(1); }
-          70% { box-shadow: 0 0 0 10px rgba(0, 212, 255, 0); transform: scale(1.1); }
-          100% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0); transform: scale(1); }
+        @keyframes pulse-blue {
+          0% { box-shadow: 0 0 0 0 rgba(0, 102, 255, 0.4); transform: scale(1); }
+          70% { box-shadow: 0 0 0 10px rgba(0, 102, 255, 0); transform: scale(1.1); }
+          100% { box-shadow: 0 0 0 0 rgba(0, 102, 255, 0); transform: scale(1); }
         }
-        .pulse-dot {
-          animation: subtle-pulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
+        .pulse-dot-blue {
+          animation: pulse-blue 2s infinite cubic-bezier(0.66, 0, 0, 1);
         }
         .reassurance-enter {
           animation: fade-in-up 0.5s ease-out forwards;
@@ -47,62 +47,63 @@ export function BuildProgress() {
 
       {/* Background Decoration */}
       <div 
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle at 50% 30%, rgba(124, 58, 237, 0.08) 0%, transparent 60%)',
-        }}
+        className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full blur-[100px] pointer-events-none opacity-40"
+        style={{ background: '#0066FF' }}
       />
       <div 
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle at 50% 70%, rgba(0, 212, 255, 0.05) 0%, transparent 60%)',
-        }}
+        className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full blur-[100px] pointer-events-none opacity-30"
+        style={{ background: '#FF9F0A' }}
       />
 
       <div className="relative z-10 w-full max-w-md mx-auto px-6 flex flex-col items-center">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <h1 
-            className="text-3xl md:text-4xl font-bold mb-3 tracking-tight"
-            style={{ color: 'var(--mn-surface)' }}
+            className="text-3xl md:text-4xl font-bold mb-2 tracking-tight"
+            style={{ color: '#0F172A' }}
           >
             Dubai PT Booking App
           </h1>
           <p 
-            className="text-lg"
-            style={{ color: 'var(--mn-text-muted)' }}
+            className="text-base"
+            style={{ color: '#64748B' }}
           >
             Building your app...
           </p>
         </div>
 
-        {/* Timeline */}
-        <div className="w-full relative mb-16">
+        {/* Timeline Card */}
+        <div 
+          className="w-full max-w-[420px] rounded-2xl p-8 mb-8 relative"
+          style={{ 
+            backgroundColor: '#FFFFFF',
+            border: '1px solid #E2E8F0',
+            boxShadow: '0 4px 16px rgba(0,0,0,0.08)'
+          }}
+        >
           <div 
-            className="absolute left-[15px] top-4 bottom-4 w-[2px] rounded-full"
-            style={{ backgroundColor: 'var(--mn-border)' }}
+            className="absolute left-[47px] top-[48px] bottom-[48px] w-[2px] rounded-full"
+            style={{ backgroundColor: '#E2E8F0' }}
           ></div>
           
           <div 
-            className="absolute left-[15px] top-4 h-[40%] w-[2px] rounded-full"
-            style={{ 
-              background: 'linear-gradient(to bottom, var(--mn-cyan), rgba(0, 212, 255, 0))' 
-            }}
+            className="absolute left-[47px] top-[48px] h-[40%] w-[2px] rounded-full"
+            style={{ backgroundColor: '#0066FF' }}
           ></div>
 
           <div className="space-y-8 relative">
             {/* Step 1: Completed */}
-            <div className="flex items-start gap-5">
+            <div className="flex items-start gap-4">
               <div 
                 className="w-8 h-8 rounded-full flex items-center justify-center relative z-10 flex-shrink-0"
-                style={{ backgroundColor: 'var(--mn-cyan)', color: 'var(--mn-navy)' }}
+                style={{ backgroundColor: '#0066FF', color: '#FFFFFF' }}
               >
-                <Check size={18} strokeWidth={3} />
+                <Check size={16} strokeWidth={3} />
               </div>
               <div className="pt-1">
                 <span 
-                  className="text-base font-semibold"
-                  style={{ color: 'var(--mn-surface)' }}
+                  className="text-base font-bold"
+                  style={{ color: '#0F172A' }}
                 >
                   Understanding your idea
                 </span>
@@ -110,17 +111,17 @@ export function BuildProgress() {
             </div>
 
             {/* Step 2: Completed */}
-            <div className="flex items-start gap-5">
+            <div className="flex items-start gap-4">
               <div 
                 className="w-8 h-8 rounded-full flex items-center justify-center relative z-10 flex-shrink-0"
-                style={{ backgroundColor: 'var(--mn-cyan)', color: 'var(--mn-navy)' }}
+                style={{ backgroundColor: '#0066FF', color: '#FFFFFF' }}
               >
-                <Check size={18} strokeWidth={3} />
+                <Check size={16} strokeWidth={3} />
               </div>
               <div className="pt-1">
                 <span 
-                  className="text-base font-semibold"
-                  style={{ color: 'var(--mn-surface)' }}
+                  className="text-base font-bold"
+                  style={{ color: '#0F172A' }}
                 >
                   Designing your app structure
                 </span>
@@ -128,17 +129,17 @@ export function BuildProgress() {
             </div>
 
             {/* Step 3: Active */}
-            <div className="flex items-start gap-5">
+            <div className="flex items-start gap-4">
               <div className="w-8 h-8 rounded-full flex items-center justify-center relative z-10 flex-shrink-0">
                 <div 
-                  className="w-4 h-4 rounded-full pulse-dot"
-                  style={{ backgroundColor: 'var(--mn-cyan)' }}
+                  className="w-4 h-4 rounded-full pulse-dot-blue"
+                  style={{ backgroundColor: '#0066FF' }}
                 ></div>
               </div>
               <div className="pt-1">
                 <span 
-                  className="text-base font-medium"
-                  style={{ color: 'var(--mn-cyan)' }}
+                  className="text-base font-bold"
+                  style={{ color: '#0066FF' }}
                 >
                   Setting up your database
                 </span>
@@ -146,15 +147,15 @@ export function BuildProgress() {
             </div>
 
             {/* Step 4: Pending */}
-            <div className="flex items-start gap-5 opacity-60">
+            <div className="flex items-start gap-4">
               <div 
-                className="w-8 h-8 rounded-full border-2 flex items-center justify-center relative z-10 flex-shrink-0"
-                style={{ borderColor: 'var(--mn-border)', backgroundColor: 'var(--mn-navy)' }}
+                className="w-8 h-8 rounded-full flex items-center justify-center relative z-10 flex-shrink-0"
+                style={{ backgroundColor: '#E2E8F0' }}
               ></div>
               <div className="pt-1">
                 <span 
                   className="text-base"
-                  style={{ color: 'var(--mn-text-dim)' }}
+                  style={{ color: '#94A3B8' }}
                 >
                   Building your Arabic checkout
                 </span>
@@ -162,15 +163,15 @@ export function BuildProgress() {
             </div>
 
             {/* Step 5: Pending */}
-            <div className="flex items-start gap-5 opacity-60">
+            <div className="flex items-start gap-4">
               <div 
-                className="w-8 h-8 rounded-full border-2 flex items-center justify-center relative z-10 flex-shrink-0"
-                style={{ borderColor: 'var(--mn-border)', backgroundColor: 'var(--mn-navy)' }}
+                className="w-8 h-8 rounded-full flex items-center justify-center relative z-10 flex-shrink-0"
+                style={{ backgroundColor: '#E2E8F0' }}
               ></div>
               <div className="pt-1">
                 <span 
                   className="text-base"
-                  style={{ color: 'var(--mn-text-dim)' }}
+                  style={{ color: '#94A3B8' }}
                 >
                   Running security checks
                 </span>
@@ -178,15 +179,15 @@ export function BuildProgress() {
             </div>
 
             {/* Step 6: Pending */}
-            <div className="flex items-start gap-5 opacity-60">
+            <div className="flex items-start gap-4">
               <div 
-                className="w-8 h-8 rounded-full border-2 flex items-center justify-center relative z-10 flex-shrink-0"
-                style={{ borderColor: 'var(--mn-border)', backgroundColor: 'var(--mn-navy)' }}
+                className="w-8 h-8 rounded-full flex items-center justify-center relative z-10 flex-shrink-0"
+                style={{ backgroundColor: '#E2E8F0' }}
               ></div>
               <div className="pt-1">
                 <span 
                   className="text-base"
-                  style={{ color: 'var(--mn-text-dim)' }}
+                  style={{ color: '#94A3B8' }}
                 >
                   Final polish
                 </span>
@@ -197,19 +198,20 @@ export function BuildProgress() {
 
         {/* Reassurance Message */}
         <div 
-          className="px-6 py-4 rounded-xl border w-full max-w-sm text-center flex items-center justify-center min-h-[72px]"
+          className="px-6 py-4 rounded-xl flex items-center justify-center gap-3 w-full max-w-[420px]"
           style={{ 
-            backgroundColor: 'var(--mn-card)', 
-            borderColor: 'var(--mn-border)',
-            backdropFilter: 'blur(8px)'
+            backgroundColor: '#FFFFFF',
+            border: '1px solid #E2E8F0',
+            boxShadow: '0 4px 16px rgba(0,0,0,0.04)'
           }}
         >
+          <Shield size={20} style={{ color: '#0066FF' }} className="flex-shrink-0" />
           <p 
             key={activeReassurance}
-            className="italic text-sm reassurance-enter"
-            style={{ color: 'var(--mn-text-muted)' }}
+            className="italic text-sm reassurance-enter m-0"
+            style={{ color: '#64748B' }}
           >
-            "{reassurances[activeReassurance]}"
+            {reassurances[activeReassurance]}
           </p>
         </div>
       </div>

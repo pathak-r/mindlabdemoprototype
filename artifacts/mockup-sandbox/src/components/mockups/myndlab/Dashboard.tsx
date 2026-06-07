@@ -6,12 +6,12 @@ const templates = [
   {
     title: "Food Delivery",
     arabic: "قائمة الطعام",
-    color: "#EF4444",
+    color: "#FF9F0A",
   },
   {
     title: "Booking & Appointments",
     arabic: "احجز الآن",
-    color: "#3B82F6",
+    color: "#0066FF",
   },
   {
     title: "Property Listings",
@@ -24,141 +24,273 @@ const builtThisWeek = [
   {
     app: "Al Barakat Delivery",
     founder: "Fatima · Dubai",
-    color: "#F59E0B",
+    color: "#FF9F0A",
   },
   {
     app: "Oasis Properties",
     founder: "Omar · Riyadh",
-    color: "#8B5CF6",
+    color: "#0066FF",
   },
   {
     app: "Care Clinic",
     founder: "Sara · Doha",
-    color: "#EC4899",
+    color: "#10B981",
   },
 ];
 
 export function Dashboard() {
   const [isFocused, setIsFocused] = useState(false);
+  const [prompt, setPrompt] = useState("");
 
   return (
     <AppLayout activeItem="My Apps">
-      <div className="p-8 max-w-5xl mx-auto w-full font-sans pb-24">
+      <div style={{ padding: "40px", maxWidth: "1000px", margin: "0 auto", width: "100%", fontFamily: "var(--font-main)", paddingBottom: "100px" }}>
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            .dashboard-card-hover {
+              transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            .dashboard-card-hover:hover {
+              transform: translateY(-4px);
+              box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+            }
+            .dashboard-btn-primary {
+              transition: all 0.2s ease;
+            }
+            .dashboard-btn-primary:hover {
+              background: #0052CC !important;
+              box-shadow: 0 4px 12px rgba(0,102,255,0.3) !important;
+            }
+            .dashboard-text-link {
+              transition: color 0.2s ease;
+            }
+            .dashboard-text-link:hover {
+              color: #0052CC !important;
+            }
+          `
+        }} />
+
         {/* Welcome Banner */}
         <div
-          className="rounded-2xl p-8 mb-12 relative overflow-hidden"
           style={{
-            background: "linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(124,58,237,0.05) 100%)",
-            border: "1px solid var(--mn-border)",
+            background: "linear-gradient(135deg, #EEF4FF 0%, #FFF7E6 100%)",
+            border: "1px solid #E2E8F0",
+            borderRadius: "20px",
+            padding: "40px",
+            marginBottom: "48px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            position: "relative",
+            overflow: "hidden",
           }}
         >
+          <div style={{ position: "relative", zIndex: 2 }}>
+            <h1
+              style={{
+                fontSize: "28px",
+                fontWeight: 800,
+                color: "#0F172A",
+                margin: "0 0 12px 0",
+                letterSpacing: "-0.02em",
+              }}
+            >
+              Welcome, Rohit. Let's build your booking app.
+            </h1>
+            <p style={{ fontSize: "16px", color: "#64748B", margin: 0, lineHeight: 1.5 }}>
+              Start below, pick a template, or describe your idea and we'll do the rest.
+            </p>
+          </div>
           <div
-            className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl opacity-20 pointer-events-none"
-            style={{ background: "var(--mn-cyan)", transform: "translate(30%, -30%)" }}
-          />
-          <h1 className="text-3xl font-bold mb-3 tracking-tight" style={{ color: "var(--mn-surface)" }}>
-            Welcome, Rohit. Let's build your booking app.
-          </h1>
-          <p className="text-lg" style={{ color: "var(--mn-text-muted)" }}>
-            Start below, pick a template, or describe your idea and we'll do the rest.
-          </p>
+            style={{
+              width: "64px",
+              height: "64px",
+              borderRadius: "16px",
+              background: "linear-gradient(135deg, #0066FF, #FF9F0A)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              boxShadow: "0 8px 24px rgba(0,102,255,0.25)",
+              position: "relative",
+              zIndex: 2,
+              flexShrink: 0
+            }}
+          >
+            <span style={{ color: "#FFFFFF", fontWeight: 800, fontSize: "28px", letterSpacing: "-1px" }}>M</span>
+          </div>
         </div>
 
         {/* Prompt Input */}
-        <div className="mb-16 max-w-3xl mx-auto">
+        <div style={{ marginBottom: "64px", maxWidth: "800px", margin: "0 auto 64px auto" }}>
           <div
-            className="rounded-2xl p-2 transition-all duration-300"
             style={{
-              background: "rgba(255,255,255,0.02)",
-              border: `1px solid ${isFocused ? "var(--mn-cyan)" : "var(--mn-border)"}`,
-              boxShadow: isFocused ? "0 0 20px var(--mn-cyan-glow)" : "none",
+              background: "#FFFFFF",
+              border: `1px solid ${isFocused ? "#0066FF" : "#E2E8F0"}`,
+              borderRadius: "24px",
+              padding: "8px",
+              boxShadow: isFocused ? "0 0 0 4px rgba(0,102,255,0.1), 0 4px 16px rgba(0,0,0,0.08)" : "0 4px 16px rgba(0,0,0,0.08)",
+              transition: "all 0.3s ease",
             }}
           >
             <textarea
-              className="w-full bg-transparent border-none outline-none resize-none p-4 text-lg"
-              style={{ color: "var(--mn-surface)", minHeight: "120px" }}
+              style={{
+                width: "100%",
+                background: "transparent",
+                border: "none",
+                outline: "none",
+                resize: "none",
+                padding: "24px 24px 12px 24px",
+                fontSize: "18px",
+                color: "#0F172A",
+                minHeight: "140px",
+                fontFamily: "inherit",
+              }}
               placeholder="Describe your app in Arabic or English..."
+              value={prompt}
+              onChange={(e) => setPrompt(e.target.value)}
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)}
             />
-            <div className="flex justify-between items-center px-4 pb-2">
-              <div className="flex gap-4">
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "0 24px 16px 24px" }}>
+              <div style={{ display: "flex", gap: "24px" }}>
                 <button
-                  className="text-sm transition-colors"
-                  style={{ color: "var(--mn-text-dim)" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--mn-cyan)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--mn-text-dim)")}
+                  className="dashboard-text-link"
+                  style={{
+                    background: "none",
+                    border: "none",
+                    color: "#0066FF",
+                    fontSize: "14px",
+                    fontWeight: 600,
+                    cursor: "pointer",
+                    padding: 0,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "6px"
+                  }}
                 >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
                   Use voice instead
                 </button>
                 <button
-                  className="text-sm transition-colors"
-                  style={{ color: "var(--mn-text-dim)" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--mn-cyan)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--mn-text-dim)")}
+                  className="dashboard-text-link"
+                  style={{
+                    background: "none",
+                    border: "none",
+                    color: "#0066FF",
+                    fontSize: "14px",
+                    fontWeight: 600,
+                    cursor: "pointer",
+                    padding: 0,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "6px"
+                  }}
                 >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
                   Pick a template
                 </button>
               </div>
               <button
-                className="px-6 py-2 rounded-lg font-medium transition-all"
+                className="dashboard-btn-primary"
                 style={{
-                  background: "var(--mn-cyan)",
-                  color: "var(--mn-navy)",
+                  background: "#0066FF",
+                  color: "#FFFFFF",
+                  border: "none",
+                  padding: "12px 32px",
+                  borderRadius: "12px",
+                  fontSize: "16px",
+                  fontWeight: 700,
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  boxShadow: "0 2px 8px rgba(0,102,255,0.25)",
                 }}
               >
-                Generate
+                Build it &rarr;
               </button>
             </div>
           </div>
         </div>
 
         {/* Templates */}
-        <div className="mb-16">
+        <div style={{ marginBottom: "64px" }}>
           <h2
-            className="text-sm font-semibold tracking-widest uppercase mb-6"
-            style={{ color: "var(--mn-text-dim)" }}
+            style={{
+              fontSize: "14px",
+              fontWeight: 800,
+              color: "#0F172A",
+              textTransform: "uppercase",
+              letterSpacing: "0.05em",
+              marginBottom: "24px",
+            }}
           >
             Or start from a template
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px" }}>
             {templates.map((tpl, i) => (
               <div
                 key={i}
-                className="group cursor-pointer"
+                className="dashboard-card-hover"
+                style={{
+                  background: "#FFFFFF",
+                  border: "1px solid #E2E8F0",
+                  borderRadius: "20px",
+                  padding: "24px",
+                  boxShadow: "0 4px 16px rgba(0,0,0,0.08)",
+                  cursor: "pointer",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
               >
                 <div
-                  className="rounded-xl aspect-[4/5] p-6 mb-4 flex items-center justify-center transition-transform duration-300 group-hover:-translate-y-1"
                   style={{
-                    background: "rgba(255,255,255,0.02)",
-                    border: "1px solid var(--mn-border)",
+                    width: "100%",
+                    height: "220px",
+                    borderRadius: "16px",
+                    background: "#F1F5F9",
+                    marginBottom: "20px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    overflow: "hidden"
                   }}
                 >
                   {/* Phone Mockup */}
                   <div
-                    className="w-[120px] h-[240px] rounded-2xl border-4 relative overflow-hidden flex flex-col"
                     style={{
-                      borderColor: "rgba(255,255,255,0.1)",
-                      background: "var(--mn-navy)",
+                      width: "120px",
+                      height: "240px",
+                      background: "#FFFFFF",
+                      borderRadius: "20px",
+                      border: "6px solid #CBD5E1",
+                      marginTop: "40px", /* peeking from bottom */
+                      display: "flex",
+                      flexDirection: "column",
+                      padding: "12px",
+                      boxShadow: "0 4px 12px rgba(0,0,0,0.1)"
                     }}
                   >
-                    <div className="h-6 w-full flex justify-center mt-2">
-                      <div className="w-10 h-3 rounded-full bg-black/50" />
-                    </div>
-                    <div className="flex-1 p-3 flex flex-col gap-3">
-                      <div className="w-full h-16 rounded-lg" style={{ background: tpl.color, opacity: 0.8 }} />
-                      <div className="w-2/3 h-4 rounded" style={{ background: "rgba(255,255,255,0.1)" }} />
-                      <div className="w-full h-8 rounded" style={{ background: "rgba(255,255,255,0.05)" }} />
-                      <div className="w-full h-8 rounded" style={{ background: "rgba(255,255,255,0.05)" }} />
-                      
-                      <div className="mt-auto self-center text-xs font-bold" style={{ color: tpl.color }}>
-                        {tpl.arabic}
-                      </div>
+                    <div style={{ width: "100%", height: "40px", borderRadius: "8px", background: tpl.color, opacity: 0.1, marginBottom: "12px" }} />
+                    <div style={{ width: "60%", height: "8px", borderRadius: "4px", background: "#E2E8F0", marginBottom: "8px" }} />
+                    <div style={{ width: "80%", height: "8px", borderRadius: "4px", background: "#E2E8F0", marginBottom: "auto" }} />
+                    
+                    <div style={{ 
+                      color: tpl.color, 
+                      fontWeight: 800, 
+                      fontSize: "14px", 
+                      textAlign: "center",
+                      marginTop: "16px"
+                    }}>
+                      {tpl.arabic}
                     </div>
                   </div>
                 </div>
-                <div className="font-medium" style={{ color: "var(--mn-surface)" }}>
+                <div style={{ fontWeight: 700, color: "#0F172A", fontSize: "18px", marginBottom: "8px" }}>
                   {tpl.title}
+                </div>
+                <div className="dashboard-text-link" style={{ color: "#0066FF", fontSize: "14px", fontWeight: 600 }}>
+                  Use template &rarr;
                 </div>
               </div>
             ))}
@@ -168,42 +300,60 @@ export function Dashboard() {
         {/* Built This Week */}
         <div>
           <h2
-            className="text-sm font-semibold tracking-widest uppercase mb-6"
-            style={{ color: "var(--mn-text-dim)" }}
+            style={{
+              fontSize: "14px",
+              fontWeight: 800,
+              color: "#0F172A",
+              textTransform: "uppercase",
+              letterSpacing: "0.05em",
+              marginBottom: "24px",
+            }}
           >
             Built by GCC founders this week
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px" }}>
             {builtThisWeek.map((item, i) => (
               <div
                 key={i}
-                className="p-5 rounded-xl flex gap-4 items-center group cursor-pointer transition-colors hover:bg-[rgba(255,255,255,0.03)]"
+                className="dashboard-card-hover"
                 style={{
-                  border: "1px solid var(--mn-border)",
-                  background: "rgba(255,255,255,0.01)",
+                  background: "#FFFFFF",
+                  border: "1px solid #E2E8F0",
+                  borderRadius: "16px",
+                  padding: "20px",
+                  boxShadow: "0 4px 16px rgba(0,0,0,0.04)",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "16px",
+                  cursor: "pointer"
                 }}
               >
                 {/* Mini Phone Mockup */}
                 <div
-                  className="w-12 h-20 rounded-md border-2 relative overflow-hidden flex-shrink-0"
                   style={{
-                    borderColor: "rgba(255,255,255,0.1)",
-                    background: "var(--mn-navy)",
+                    width: "48px",
+                    height: "72px",
+                    borderRadius: "10px",
+                    border: "3px solid #CBD5E1",
+                    background: "#F1F5F9",
+                    flexShrink: 0,
+                    display: "flex",
+                    flexDirection: "column",
+                    padding: "4px",
+                    alignItems: "center"
                   }}
                 >
-                  <div className="w-full h-8 mt-2" style={{ background: item.color, opacity: 0.6 }} />
+                  <div style={{ width: "100%", height: "20px", borderRadius: "4px", background: item.color, opacity: 0.15 }} />
                 </div>
-                <div>
-                  <div className="font-medium mb-1" style={{ color: "var(--mn-surface)" }}>
+                
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontWeight: 700, color: "#0F172A", fontSize: "16px", marginBottom: "4px" }}>
                     {item.app}
                   </div>
-                  <div className="text-xs mb-2" style={{ color: "var(--mn-text-muted)" }}>
+                  <div style={{ color: "#64748B", fontSize: "13px", marginBottom: "8px" }}>
                     {item.founder}
                   </div>
-                  <div
-                    className="text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity"
-                    style={{ color: "var(--mn-cyan)" }}
-                  >
+                  <div className="dashboard-text-link" style={{ color: "#0066FF", fontSize: "13px", fontWeight: 600 }}>
                     View live app &rarr;
                   </div>
                 </div>

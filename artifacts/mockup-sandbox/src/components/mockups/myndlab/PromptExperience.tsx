@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Lightbulb, Check, Sparkles } from 'lucide-react';
+import { Lightbulb, Check, ArrowRight } from 'lucide-react';
 import './_group.css';
 
 export function PromptExperience() {
@@ -8,115 +8,170 @@ export function PromptExperience() {
   const [language, setLanguage] = useState("Arabic-first");
 
   return (
-    <div 
-      className="min-h-screen w-full flex justify-center py-16 px-4 md:px-8 font-sans"
-      style={{ backgroundColor: 'var(--mn-navy)', color: 'var(--mn-surface)' }}
-    >
-      <div className="w-full max-w-[720px] flex flex-col gap-10">
+    <div style={{
+      backgroundColor: '#FAFBFF',
+      minHeight: '100vh',
+      fontFamily: 'system-ui, -apple-system, sans-serif',
+      color: '#0F172A',
+      padding: '64px 24px',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      width: '100%',
+      boxSizing: 'border-box'
+    }}>
+      <style dangerouslySetInnerHTML={{__html: `
+        * { box-sizing: border-box; }
+        .prompt-card { transition: all 0.2s ease; }
+        .prompt-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+        .choice-btn { transition: all 0.2s ease; }
+        .choice-btn:hover { transform: translateY(-1px); }
+        .choice-btn:active { transform: translateY(0); }
+        .build-btn { transition: all 0.2s ease; }
+        .build-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,102,255,0.35); }
+        .build-btn:active { transform: translateY(0); box-shadow: 0 2px 8px rgba(0,102,255,0.25); }
+        .example-card { transition: all 0.2s ease; }
+        .example-card:hover { transform: translateX(4px); border-color: #CBD5E1; }
+      `}} />
+
+      <div style={{ width: '100%', maxWidth: '720px', display: 'flex', flexDirection: 'column', gap: '32px' }}>
         
-        {/* Header/Title */}
-        <div className="flex flex-col gap-2">
-          <h1 className="text-3xl font-semibold tracking-tight">What do you want to build?</h1>
-          <p style={{ color: 'var(--mn-text-muted)' }} className="text-sm">
+        {/* HEADER */}
+        <div style={{ textAlign: 'center', marginBottom: '8px' }}>
+          <h1 style={{
+            fontSize: '32px',
+            fontWeight: 700,
+            margin: '0 0 12px 0',
+            letterSpacing: '-0.02em',
+            background: 'linear-gradient(135deg, #0066FF, #FF9F0A)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            display: 'inline-block'
+          }}>
+            What do you want to build?
+          </h1>
+          <p style={{ color: '#64748B', fontSize: '16px', margin: 0 }}>
             Describe your idea, or start with a template.
           </p>
         </div>
 
-        {/* Prompt Input Section */}
-        <div className="flex flex-col gap-3">
-          <div 
-            className="w-full rounded-xl p-4 transition-all duration-300"
-            style={{ 
-              backgroundColor: 'var(--mn-card)', 
-              border: '1px solid var(--mn-cyan)',
-              boxShadow: 'var(--mn-cyan-glow) 0px 0px 15px -3px'
-            }}
-          >
+        {/* PROMPT DISPLAY */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div className="prompt-card" style={{
+            backgroundColor: '#FFFFFF',
+            borderRadius: '16px',
+            padding: '24px',
+            border: '1px solid #E2E8F0',
+            boxShadow: '0 4px 16px rgba(0,0,0,0.08)'
+          }}>
             <textarea
-              className="w-full bg-transparent border-none outline-none resize-none text-lg leading-relaxed placeholder:text-opacity-30 min-h-[120px]"
-              style={{ color: 'var(--mn-surface)' }}
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
-              placeholder="Describe your app..."
+              style={{
+                width: '100%',
+                fontSize: '18px',
+                lineHeight: '1.6',
+                color: '#0F172A',
+                margin: 0,
+                fontWeight: 500,
+                border: 'none',
+                outline: 'none',
+                resize: 'none',
+                minHeight: '100px',
+                backgroundColor: 'transparent',
+                fontFamily: 'inherit'
+              }}
+              placeholder="Describe your app idea..."
             />
           </div>
-          
-          <div className="flex items-center gap-3">
-            <div className="flex-1 h-1.5 rounded-full overflow-hidden" style={{ backgroundColor: 'var(--mn-border)' }}>
-              <div className="h-full rounded-full transition-all duration-500 w-[85%]" style={{ backgroundColor: 'var(--mn-cyan)' }} />
+
+          {/* PROMPT QUALITY INDICATOR */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            paddingLeft: '12px'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <Check size={16} color="#0066FF" strokeWidth={3} />
+              <span style={{ fontSize: '13px', color: '#64748B', fontWeight: 600 }}>Prompt quality: Detailed</span>
             </div>
-            <div className="flex items-center gap-1.5 text-xs font-medium" style={{ color: 'var(--mn-cyan)' }}>
-              <span>Prompt quality: Detailed</span>
-              <Check className="w-3.5 h-3.5" />
+            <div style={{ flex: 1, height: '4px', backgroundColor: '#E2E8F0', borderRadius: '2px', overflow: 'hidden' }}>
+              <div style={{ width: '85%', height: '100%', backgroundColor: '#0066FF', borderRadius: '2px' }}></div>
             </div>
           </div>
         </div>
 
-        {/* Coach tip */}
-        <div 
-          className="flex items-start gap-3 p-4 rounded-lg"
-          style={{ backgroundColor: 'rgba(255, 255, 255, 0.02)', border: '1px solid var(--mn-border)' }}
-        >
-          <Lightbulb className="w-5 h-5 shrink-0 mt-0.5" style={{ color: 'var(--mn-purple)' }} />
-          <p className="text-sm leading-relaxed" style={{ color: 'var(--mn-text-muted)' }}>
-            <strong style={{ color: 'var(--mn-surface)' }} className="font-medium">Tip:</strong> Adding your target audience makes the build smarter. Try: 'for busy Dubai professionals who book via Instagram.'
+        {/* INLINE PROMPT COACH */}
+        <div style={{
+          backgroundColor: '#FFF7E6',
+          borderRadius: '12px',
+          padding: '16px 20px',
+          display: 'flex',
+          gap: '12px',
+          alignItems: 'flex-start'
+        }}>
+          <Lightbulb size={20} color="#FF9F0A" strokeWidth={2.5} style={{ flexShrink: 0, marginTop: '2px' }} />
+          <p style={{ margin: 0, fontSize: '14px', lineHeight: '1.5', color: '#0F172A' }}>
+            <strong style={{ color: '#FF9F0A', fontWeight: 600 }}>Tip:</strong> Adding your target audience makes the build smarter. Try: <em>'for busy Dubai professionals who book via Instagram.'</em>
           </p>
         </div>
 
-        {/* Example Prompts */}
-        <div className="flex flex-col gap-4">
-          <div className="text-sm font-medium tracking-wide uppercase" style={{ color: 'var(--mn-text-muted)' }}>
-            Or try one of these:
-          </div>
-          <div className="flex flex-col gap-3">
+        {/* EXAMPLE PROMPTS */}
+        <div>
+          <h3 style={{ fontSize: '13px', color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '16px', fontWeight: 700 }}>Or try one of these:</h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {[
-              "Build me a booking app for a Dubai personal trainer — Arabic checkout, WhatsApp confirmation, and a simple admin dashboard.",
-              "Create a food delivery app for a Riyadh restaurant — Arabic and English menu, online payment, and live order tracking.",
-              "Build a property listings platform for Abu Dhabi — Arabic descriptions, WhatsApp enquiry button, and an agent admin panel."
-            ].map((example, i) => (
-              <button 
-                key={i}
-                onClick={() => setPrompt(example)}
-                className="group relative flex flex-col items-start gap-3 p-5 rounded-xl text-left transition-all duration-200 hover:translate-x-1"
-                style={{ 
-                  backgroundColor: 'var(--mn-card)', 
-                  border: '1px solid var(--mn-border)',
-                  borderLeft: '3px solid var(--mn-cyan)'
+              "Build me a booking app for a Dubai personal trainer...",
+              "Create a food delivery app for a Riyadh restaurant...",
+              "Build a property listings platform for Abu Dhabi..."
+            ].map((examplePrompt, i) => (
+              <div 
+                key={i} 
+                className="example-card"
+                onClick={() => setPrompt(examplePrompt)}
+                style={{
+                  backgroundColor: '#FFFFFF',
+                  borderRadius: '8px',
+                  padding: '16px 20px',
+                  border: '1px solid #E2E8F0',
+                  borderLeft: '3px solid #0066FF',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  cursor: 'pointer'
                 }}
               >
-                <p className="text-sm leading-relaxed pr-8" style={{ color: 'var(--mn-surface)' }}>
-                  {example}
-                </p>
-                <div 
-                  className="self-end text-xs font-medium flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity" 
-                  style={{ color: 'var(--mn-cyan)' }}
-                >
-                  Use this <span>→</span>
-                </div>
-              </button>
+                <span style={{ color: '#0F172A', fontSize: '14px', fontWeight: 500 }}>{examplePrompt}</span>
+                <span style={{ color: '#0066FF', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px', whiteSpace: 'nowrap', marginLeft: '16px' }}>
+                  Use this <ArrowRight size={14} strokeWidth={2.5} />
+                </span>
+              </div>
             ))}
           </div>
         </div>
 
-        {/* Quick Choices */}
-        <div className="flex flex-col gap-8 pt-4">
-          
-          {/* App Type */}
-          <div className="flex flex-col gap-3">
-            <div className="text-sm font-medium tracking-wide uppercase" style={{ color: 'var(--mn-text-muted)' }}>
-              What type of app?
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        {/* A FEW QUICK CHOICES */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', paddingTop: '8px' }}>
+          <div>
+            <h3 style={{ fontSize: '13px', color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '12px', fontWeight: 700 }}>What type of app?</h3>
+            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
               {['Booking', 'E-commerce', 'Marketplace', 'SaaS'].map((type) => (
-                <button
-                  key={type}
+                <button 
+                  key={type} 
+                  className="choice-btn"
                   onClick={() => setAppType(type)}
-                  className="py-3 px-4 rounded-lg text-sm font-medium transition-all"
                   style={{
-                    backgroundColor: appType === type ? 'rgba(0, 212, 255, 0.08)' : 'var(--mn-card)',
-                    border: `1px solid ${appType === type ? 'var(--mn-cyan)' : 'var(--mn-border)'}`,
-                    color: appType === type ? 'var(--mn-cyan)' : 'var(--mn-surface)',
-                    boxShadow: appType === type ? 'var(--mn-cyan-glow) 0px 0px 10px 0px' : 'none'
+                    padding: '12px 20px',
+                    borderRadius: '8px',
+                    border: `1px solid ${appType === type ? '#0066FF' : '#E2E8F0'}`,
+                    backgroundColor: appType === type ? '#EEF4FF' : '#FFFFFF',
+                    color: appType === type ? '#0066FF' : '#0F172A',
+                    fontSize: '14px',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    outline: 'none',
+                    margin: 0
                   }}
                 >
                   {type}
@@ -125,22 +180,25 @@ export function PromptExperience() {
             </div>
           </div>
 
-          {/* Language */}
-          <div className="flex flex-col gap-3">
-            <div className="text-sm font-medium tracking-wide uppercase" style={{ color: 'var(--mn-text-muted)' }}>
-              Language?
-            </div>
-            <div className="grid grid-cols-3 gap-3">
+          <div>
+            <h3 style={{ fontSize: '13px', color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '12px', fontWeight: 700 }}>Language?</h3>
+            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
               {['Arabic-first', 'Bilingual', 'English'].map((lang) => (
-                <button
-                  key={lang}
+                <button 
+                  key={lang} 
+                  className="choice-btn"
                   onClick={() => setLanguage(lang)}
-                  className="py-3 px-4 rounded-lg text-sm font-medium transition-all"
                   style={{
-                    backgroundColor: language === lang ? 'rgba(0, 212, 255, 0.08)' : 'var(--mn-card)',
-                    border: `1px solid ${language === lang ? 'var(--mn-cyan)' : 'var(--mn-border)'}`,
-                    color: language === lang ? 'var(--mn-cyan)' : 'var(--mn-surface)',
-                    boxShadow: language === lang ? 'var(--mn-cyan-glow) 0px 0px 10px 0px' : 'none'
+                    padding: '12px 20px',
+                    borderRadius: '8px',
+                    border: `1px solid ${language === lang ? '#0066FF' : '#E2E8F0'}`,
+                    backgroundColor: language === lang ? '#EEF4FF' : '#FFFFFF',
+                    color: language === lang ? '#0066FF' : '#0F172A',
+                    fontSize: '14px',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    outline: 'none',
+                    margin: 0
                   }}
                 >
                   {lang}
@@ -148,19 +206,31 @@ export function PromptExperience() {
               ))}
             </div>
           </div>
-
         </div>
 
-        {/* CTA */}
-        <div className="flex flex-col gap-4 mt-8 pb-12">
-          <button 
-            className="w-full py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] active:scale-[0.98]"
-            style={{ backgroundColor: 'var(--mn-cyan)', color: 'var(--mn-navy)' }}
-          >
-            <Sparkles className="w-5 h-5" />
-            Build it →
+        {/* BUILD CTA */}
+        <div style={{ textAlign: 'center', marginTop: '16px' }}>
+          <button className="build-btn" style={{
+            width: '100%',
+            backgroundColor: '#0066FF',
+            color: '#FFFFFF',
+            border: 'none',
+            borderRadius: '12px',
+            padding: '20px 24px',
+            fontSize: '18px',
+            fontWeight: 700,
+            cursor: 'pointer',
+            boxShadow: '0 4px 16px rgba(0,102,255,0.25)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '8px',
+            marginBottom: '16px',
+            outline: 'none'
+          }}>
+            Build it <ArrowRight size={20} strokeWidth={3} />
           </button>
-          <p className="text-center text-xs" style={{ color: 'var(--mn-text-muted)' }}>
+          <p style={{ color: '#64748B', fontSize: '13px', margin: 0, lineHeight: '1.5', fontWeight: 500 }}>
             Your first build takes about 2 minutes. You'll get a working app you can customise, share, and publish.
           </p>
         </div>
@@ -169,3 +239,5 @@ export function PromptExperience() {
     </div>
   );
 }
+
+export default PromptExperience;

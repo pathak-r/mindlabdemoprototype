@@ -1,10 +1,11 @@
 import { ReactNode } from "react";
+import "../_group.css";
 
 const navItems = [
-  { icon: "⊞", label: "My Apps", active: false },
-  { icon: "⊡", label: "Templates", active: false },
-  { icon: "◈", label: "Community", active: false },
-  { icon: "⚙", label: "Settings", active: false },
+  { icon: "⊞", label: "My Apps" },
+  { icon: "⊡", label: "Templates" },
+  { icon: "◈", label: "Community" },
+  { icon: "⚙", label: "Settings" },
 ];
 
 export function AppLayout({
@@ -19,7 +20,7 @@ export function AppLayout({
       style={{
         display: "flex",
         height: "100vh",
-        background: "#0A0F1E",
+        background: "#FAFBFF",
         fontFamily: "var(--font-main)",
         overflow: "hidden",
       }}
@@ -28,8 +29,8 @@ export function AppLayout({
         style={{
           width: "220px",
           flexShrink: 0,
-          background: "#0d1526",
-          borderRight: "1px solid rgba(248,249,252,0.07)",
+          background: "#FFFFFF",
+          borderRight: "1px solid #E2E8F0",
           display: "flex",
           flexDirection: "column",
           padding: "24px 0",
@@ -45,20 +46,21 @@ export function AppLayout({
         >
           <div
             style={{
-              width: "28px",
-              height: "28px",
+              width: "30px",
+              height: "30px",
               borderRadius: "8px",
-              background: "linear-gradient(135deg, #00D4FF, #7C3AED)",
+              background: "linear-gradient(135deg, #0066FF, #FF9F0A)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              boxShadow: "0 2px 8px rgba(0,102,255,0.25)",
             }}
           >
-            <span style={{ color: "#fff", fontWeight: 800, fontSize: "13px" }}>M</span>
+            <span style={{ color: "#fff", fontWeight: 800, fontSize: "14px" }}>M</span>
           </div>
           <span
             style={{
-              color: "#F8F9FC",
+              color: "#0F172A",
               fontWeight: 700,
               fontSize: "16px",
               letterSpacing: "-0.3px",
@@ -78,17 +80,17 @@ export function AppLayout({
                   display: "flex",
                   alignItems: "center",
                   gap: "10px",
-                  padding: "10px 12px",
+                  padding: "9px 12px",
                   borderRadius: "8px",
                   marginBottom: "2px",
-                  background: isActive ? "rgba(0,212,255,0.08)" : "transparent",
+                  background: isActive ? "#EEF4FF" : "transparent",
                   cursor: "pointer",
                 }}
               >
                 <span
                   style={{
                     fontSize: "15px",
-                    color: isActive ? "#00D4FF" : "rgba(248,249,252,0.45)",
+                    color: isActive ? "#0066FF" : "#94A3B8",
                   }}
                 >
                   {item.icon}
@@ -97,7 +99,7 @@ export function AppLayout({
                   style={{
                     fontSize: "14px",
                     fontWeight: isActive ? 600 : 400,
-                    color: isActive ? "#F8F9FC" : "rgba(248,249,252,0.55)",
+                    color: isActive ? "#0066FF" : "#64748B",
                   }}
                 >
                   {item.label}
@@ -110,7 +112,7 @@ export function AppLayout({
         <div
           style={{
             padding: "16px 20px",
-            borderTop: "1px solid rgba(248,249,252,0.07)",
+            borderTop: "1px solid #E2E8F0",
             display: "flex",
             alignItems: "center",
             gap: "10px",
@@ -118,34 +120,23 @@ export function AppLayout({
         >
           <div
             style={{
-              width: "30px",
-              height: "30px",
+              width: "32px",
+              height: "32px",
               borderRadius: "50%",
-              background: "linear-gradient(135deg, #7C3AED, #00D4FF)",
+              background: "linear-gradient(135deg, #0066FF, #FF9F0A)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               flexShrink: 0,
             }}
           >
-            <span style={{ color: "#fff", fontWeight: 700, fontSize: "12px" }}>R</span>
+            <span style={{ color: "#fff", fontWeight: 700, fontSize: "13px" }}>R</span>
           </div>
           <div>
-            <div
-              style={{
-                color: "#F8F9FC",
-                fontSize: "13px",
-                fontWeight: 500,
-              }}
-            >
+            <div style={{ color: "#0F172A", fontSize: "13px", fontWeight: 600 }}>
               Rohit Sharma
             </div>
-            <div
-              style={{
-                color: "rgba(248,249,252,0.4)",
-                fontSize: "11px",
-              }}
-            >
+            <div style={{ color: "#94A3B8", fontSize: "11px" }}>
               Free plan
             </div>
           </div>
@@ -156,7 +147,7 @@ export function AppLayout({
         style={{
           flex: 1,
           overflow: "auto",
-          background: "#0A0F1E",
+          background: "#FAFBFF",
         }}
       >
         {children}
