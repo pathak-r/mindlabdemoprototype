@@ -152,21 +152,21 @@ export function Signup() {
             <p style={{ fontSize: '13px', color: '#64748B', margin: '0 0 16px 0', lineHeight: 1.5 }}>
               I want control over my stack, deployments, GitHub, and source code.
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5px 10px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '7px 8px' }}>
               {[
-                'Choose your stack',
-                'One-click cloud deploy',
-                'Connect to GitHub',
-                'Export to ZIP',
-                'Deploy to Vercel',
-                'Self-hosted runtime',
-                'CI/CD ready',
-                'Bring your own domain',
-                'Environment management',
-              ].map((f, i) => (
-                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', fontWeight: 600, color: '#64748B', gridColumn: i === 8 ? '1 / -1' : undefined }}>
-                  <div style={{ width: '10px', height: '10px', borderRadius: '50%', border: '1.5px solid #CBD5E1', flexShrink: 0 }} /> {f}
-                </div>
+                ['Your tech stack',     'Cloud deploy'],
+                ['Connect GitHub',      'Export to ZIP'],
+                ['Deploy to Vercel',    'Self-hosted'],
+                ['CI/CD ready',         'Custom domain'],
+                ['Environment mgmt',    null],
+              ].map(([left, right], row) => (
+                <React.Fragment key={row}>
+                  {[left, right].map((f, col) => f && (
+                    <div key={col} style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '11.5px', fontWeight: 500, color: '#475569', whiteSpace: 'nowrap', gridColumn: !right ? '1 / -1' : undefined }}>
+                      <Check size={11} color="#94A3B8" strokeWidth={2.5} style={{ flexShrink: 0 }} /> {f}
+                    </div>
+                  ))}
+                </React.Fragment>
               ))}
             </div>
           </div>
