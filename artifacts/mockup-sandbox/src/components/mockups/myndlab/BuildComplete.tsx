@@ -148,9 +148,6 @@ export function BuildComplete({ isTechnical = false }: { isTechnical?: boolean }
         {/* Technical deploy options */}
         {isTechnical && (
           <div className="bc-d4" style={{ width: '100%', marginBottom: '12px' }}>
-            <div style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.07em', color: '#94A3B8', textTransform: 'uppercase', margin: '20px 0 12px', textAlign: 'center' }}>
-              Also available for technical founders
-            </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px' }}>
               {[
                 { icon: <Rocket size={18} color="#0066FF" />, label: 'Deploy to Vercel', sublabel: 'Setup required', bg: '#EEF4FF' },
