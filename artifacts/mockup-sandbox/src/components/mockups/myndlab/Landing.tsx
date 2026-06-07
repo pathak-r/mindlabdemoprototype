@@ -244,18 +244,18 @@ export function Landing() {
         <div style={{ maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "48px" }}>
           {[
             {
-              title: "Build in minutes, not months",
-              desc: "From prompt to working app in under 5 minutes.",
-              icon: "⚡"
-            },
-            {
               title: "Arabic and English, natively",
-              desc: "RTL support, bilingual apps built in.",
+              desc: "Full RTL support, bilingual UI, and localised checkout — built in from day one.",
               icon: "🌍"
             },
             {
-              title: "Publish without the App Store",
-              desc: "We assess your app and guide you to the fastest path.",
+              title: "Build in minutes, not months",
+              desc: "From prompt to working app in under 5 minutes. Full stack, not a prototype.",
+              icon: "⚡"
+            },
+            {
+              title: "Easy distribution, no App Store wait",
+              desc: "We assess your app and guide you to the fastest path to your first users.",
               icon: "🚀"
             }
           ].map((benefit, i) => (

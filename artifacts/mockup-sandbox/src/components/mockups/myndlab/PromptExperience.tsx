@@ -1,256 +1,175 @@
-import React, { useState } from 'react';
-import { Lightbulb, Check, ArrowRight, Calendar, UtensilsCrossed, Building2 } from 'lucide-react';
+import React from 'react';
+import { Plus, ExternalLink, Share2, MoreHorizontal, Zap, Globe, TrendingUp } from 'lucide-react';
 import './_group.css';
 
-export function PromptExperience() {
-  const [prompt, setPrompt] = useState("Build me a booking app for a Dubai personal trainer — Arabic checkout, WhatsApp confirmation, admin dashboard");
-  const [appType, setAppType] = useState("Booking");
-  const [language, setLanguage] = useState("Arabic-first");
+const myApps = [
+  {
+    name: 'Dubai PT Booking',
+    description: 'Booking app for personal trainer',
+    status: 'Live',
+    statusColor: '#10B981',
+    statusBg: '#ECFDF5',
+    url: 'myndlab.app/dubai-pt-booking',
+    views: 47,
+    installs: 12,
+    color: '#0066FF',
+    ar: 'احجز',
+    lastBuilt: 'Just now',
+  },
+];
 
+export function PromptExperience() {
   return (
-    <div style={{
-      backgroundColor: '#FAFBFF',
-      minHeight: '100vh',
-      fontFamily: 'system-ui, -apple-system, sans-serif',
-      color: '#0F172A',
-      padding: '64px 24px',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      width: '100%',
-      boxSizing: 'border-box'
-    }}>
+    <div style={{ minHeight: '100vh', backgroundColor: '#FAFBFF', fontFamily: 'var(--font-main)', display: 'flex', flexDirection: 'column' }}>
       <style dangerouslySetInnerHTML={{__html: `
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        .pe-d1 { animation: fadeUp 0.45s ease-out 0.05s both; }
+        .pe-d2 { animation: fadeUp 0.45s ease-out 0.15s both; }
+        .pe-d3 { animation: fadeUp 0.45s ease-out 0.25s both; }
+        .app-card-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,0.1) !important; }
+        .new-card-hover:hover { border-color: #0066FF !important; background: #EEF4FF !important; }
+        .action-btn:hover { background: #F1F5F9 !important; }
         * { box-sizing: border-box; }
-        .prompt-card { transition: all 0.2s ease; }
-        .prompt-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
-        .choice-btn { transition: all 0.2s ease; }
-        .choice-btn:hover { transform: translateY(-1px); }
-        .choice-btn:active { transform: translateY(0); }
-        .build-btn { transition: all 0.2s ease; }
-        .build-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,102,255,0.35); }
-        .build-btn:active { transform: translateY(0); box-shadow: 0 2px 8px rgba(0,102,255,0.25); }
-        .example-card { transition: all 0.2s ease; }
-        .example-card:hover { transform: translateX(4px); border-color: #CBD5E1; }
       `}} />
 
-      <div style={{ width: '100%', maxWidth: '720px', display: 'flex', flexDirection: 'column', gap: '32px' }}>
-        
-        {/* HEADER */}
-        <div style={{ textAlign: 'center', marginBottom: '8px' }}>
-          <h1 style={{
-            fontSize: '32px',
-            fontWeight: 700,
-            margin: '0 0 12px 0',
-            letterSpacing: '-0.02em',
-            background: 'linear-gradient(135deg, #0066FF, #FF9F0A)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            display: 'inline-block'
-          }}>
-            What do you want to build?
-          </h1>
-          <p style={{ color: '#64748B', fontSize: '16px', margin: 0 }}>
-            Describe your idea, or start with a template.
-          </p>
-        </div>
-
-        {/* PROMPT DISPLAY */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <div className="prompt-card" style={{
-            backgroundColor: '#FFFFFF',
-            borderRadius: '16px',
-            padding: '24px',
-            border: '1px solid #E2E8F0',
-            boxShadow: '0 4px 16px rgba(0,0,0,0.08)'
-          }}>
-            <textarea
-              value={prompt}
-              onChange={(e) => setPrompt(e.target.value)}
-              style={{
-                width: '100%',
-                fontSize: '18px',
-                lineHeight: '1.6',
-                color: '#0F172A',
-                margin: 0,
-                fontWeight: 500,
-                border: 'none',
-                outline: 'none',
-                resize: 'none',
-                minHeight: '100px',
-                backgroundColor: 'transparent',
-                fontFamily: 'inherit'
-              }}
-              placeholder="Describe your app idea..."
-            />
+      {/* Top Nav */}
+      <nav style={{ height: '60px', background: '#FFFFFF', borderBottom: '1px solid #E2E8F0', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 32px', flexShrink: 0, boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <div style={{ width: '32px', height: '32px', borderRadius: '9px', background: 'linear-gradient(135deg, #0066FF, #FF9F0A)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <span style={{ color: '#fff', fontWeight: 800, fontSize: '16px' }}>M</span>
           </div>
-
-          {/* PROMPT QUALITY INDICATOR */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
-            paddingLeft: '12px'
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <Check size={16} color="#0066FF" strokeWidth={3} />
-              <span style={{ fontSize: '13px', color: '#64748B', fontWeight: 600 }}>Prompt quality: Detailed</span>
-            </div>
-            <div style={{ flex: 1, height: '4px', backgroundColor: '#E2E8F0', borderRadius: '2px', overflow: 'hidden' }}>
-              <div style={{ width: '85%', height: '100%', backgroundColor: '#0066FF', borderRadius: '2px' }}></div>
-            </div>
+          <span style={{ fontWeight: 800, fontSize: '17px', letterSpacing: '-0.3px' }}>Myndlab</span>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <button style={{ background: 'none', border: 'none', color: '#0066FF', fontSize: '14px', fontWeight: 700, cursor: 'pointer' }}>My Apps</button>
+          <button style={{ background: 'none', border: 'none', color: '#64748B', fontSize: '14px', fontWeight: 500, cursor: 'pointer' }}>Templates</button>
+          <button style={{ background: 'none', border: 'none', color: '#64748B', fontSize: '14px', fontWeight: 500, cursor: 'pointer' }}>Settings</button>
+          <div style={{ width: '34px', height: '34px', borderRadius: '50%', background: 'linear-gradient(135deg, #0066FF, #6366F1)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
+            <span style={{ color: '#fff', fontWeight: 700, fontSize: '13px' }}>R</span>
           </div>
         </div>
+      </nav>
 
-        {/* INLINE PROMPT COACH */}
-        <div style={{
-          backgroundColor: '#FFF7E6',
-          borderRadius: '12px',
-          padding: '16px 20px',
-          display: 'flex',
-          gap: '12px',
-          alignItems: 'flex-start'
-        }}>
-          <Lightbulb size={20} color="#FF9F0A" strokeWidth={2.5} style={{ flexShrink: 0, marginTop: '2px' }} />
-          <p style={{ margin: 0, fontSize: '14px', lineHeight: '1.5', color: '#0F172A' }}>
-            <strong style={{ color: '#FF9F0A', fontWeight: 600 }}>Tip:</strong> Adding your target audience makes the build smarter. Try: <em>'for busy Dubai professionals who book via Instagram.'</em>
-          </p>
-        </div>
+      <main style={{ flex: 1, padding: '40px 48px', overflowY: 'auto', maxWidth: '1000px', margin: '0 auto', width: '100%' }}>
 
-        {/* EXAMPLE PROMPTS */}
-        <div>
-          <h3 style={{ fontSize: '13px', color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '16px', fontWeight: 700 }}>Or try one of these:</h3>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            {[
-              { text: "Build me a booking app for a Dubai personal trainer...", Icon: Calendar, chipBg: '#EEF4FF', chipColor: '#0066FF' },
-              { text: "Create a food delivery app for a Riyadh restaurant...", Icon: UtensilsCrossed, chipBg: '#FFF7E6', chipColor: '#FF9F0A' },
-              { text: "Build a property listings platform for Abu Dhabi...", Icon: Building2, chipBg: '#ECFDF5', chipColor: '#10B981' },
-            ].map(({ text, Icon, chipBg, chipColor }, i) => (
-              <div
-                key={i}
-                className="example-card"
-                onClick={() => setPrompt(text)}
-                style={{
-                  backgroundColor: '#FFFFFF',
-                  borderRadius: '10px',
-                  padding: '14px 18px',
-                  border: '1px solid #E2E8F0',
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  cursor: 'pointer',
-                  gap: '14px',
-                  boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '14px', minWidth: 0 }}>
-                  <div style={{
-                    width: '36px',
-                    height: '36px',
-                    borderRadius: '9px',
-                    background: chipBg,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexShrink: 0,
-                  }}>
-                    <Icon size={17} color={chipColor} strokeWidth={2} />
-                  </div>
-                  <span style={{ color: '#0F172A', fontSize: '14px', fontWeight: 500, lineHeight: '1.4' }}>{text}</span>
-                </div>
-                <span style={{ color: '#0066FF', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px', whiteSpace: 'nowrap', flexShrink: 0 }}>
-                  Use this <ArrowRight size={14} strokeWidth={2.5} />
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* A FEW QUICK CHOICES */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', paddingTop: '8px' }}>
+        {/* Header */}
+        <div className="pe-d1" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '36px' }}>
           <div>
-            <h3 style={{ fontSize: '13px', color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '12px', fontWeight: 700 }}>What type of app?</h3>
-            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-              {['Booking', 'E-commerce', 'Marketplace', 'SaaS'].map((type) => (
-                <button 
-                  key={type} 
-                  className="choice-btn"
-                  onClick={() => setAppType(type)}
-                  style={{
-                    padding: '12px 20px',
-                    borderRadius: '8px',
-                    border: `1px solid ${appType === type ? '#0066FF' : '#E2E8F0'}`,
-                    backgroundColor: appType === type ? '#EEF4FF' : '#FFFFFF',
-                    color: appType === type ? '#0066FF' : '#0F172A',
-                    fontSize: '14px',
-                    fontWeight: 600,
-                    cursor: 'pointer',
-                    outline: 'none',
-                    margin: 0
-                  }}
-                >
-                  {type}
-                </button>
-              ))}
-            </div>
+            <h1 style={{ fontSize: '28px', fontWeight: 800, letterSpacing: '-0.6px', margin: '0 0 4px 0', color: '#0F172A' }}>My Apps</h1>
+            <p style={{ fontSize: '14px', color: '#64748B', margin: 0 }}>1 app live · Free plan · 2 builds remaining</p>
           </div>
-
-          <div>
-            <h3 style={{ fontSize: '13px', color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '12px', fontWeight: 700 }}>Language?</h3>
-            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-              {['Arabic-first', 'Bilingual', 'English'].map((lang) => (
-                <button 
-                  key={lang} 
-                  className="choice-btn"
-                  onClick={() => setLanguage(lang)}
-                  style={{
-                    padding: '12px 20px',
-                    borderRadius: '8px',
-                    border: `1px solid ${language === lang ? '#0066FF' : '#E2E8F0'}`,
-                    backgroundColor: language === lang ? '#EEF4FF' : '#FFFFFF',
-                    color: language === lang ? '#0066FF' : '#0F172A',
-                    fontSize: '14px',
-                    fontWeight: 600,
-                    cursor: 'pointer',
-                    outline: 'none',
-                    margin: 0
-                  }}
-                >
-                  {lang}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* BUILD CTA */}
-        <div style={{ textAlign: 'center', marginTop: '16px' }}>
-          <button className="build-btn" style={{
-            width: '100%',
-            backgroundColor: '#0066FF',
-            color: '#FFFFFF',
-            border: 'none',
-            borderRadius: '12px',
-            padding: '20px 24px',
-            fontSize: '18px',
-            fontWeight: 700,
-            cursor: 'pointer',
-            boxShadow: '0 4px 16px rgba(0,102,255,0.25)',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            gap: '8px',
-            marginBottom: '16px',
-            outline: 'none'
-          }}>
-            Build it <ArrowRight size={20} strokeWidth={3} />
+          <button style={{ display: 'flex', alignItems: 'center', gap: '7px', padding: '11px 20px', background: '#0066FF', color: '#fff', border: 'none', borderRadius: '12px', fontSize: '14px', fontWeight: 700, cursor: 'pointer', boxShadow: '0 4px 12px rgba(0,102,255,0.3)' }}>
+            <Plus size={16} strokeWidth={2.5} /> Build another app
           </button>
-          <p style={{ color: '#64748B', fontSize: '13px', margin: 0, lineHeight: '1.5', fontWeight: 500 }}>
-            Your first build takes about 2 minutes. You'll get a working app you can customise, share, and publish.
-          </p>
         </div>
 
-      </div>
+        {/* Stats bar */}
+        <div className="pe-d1" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '32px' }}>
+          {[
+            { icon: <Globe size={18} color="#0066FF" />, label: 'Apps live', value: '1', bg: '#EEF4FF' },
+            { icon: <TrendingUp size={18} color="#FF9F0A" />, label: 'Total views', value: '47', bg: '#FFF7E6' },
+            { icon: <Zap size={18} color="#10B981" />, label: 'Installs', value: '12', bg: '#ECFDF5' },
+          ].map((stat, i) => (
+            <div key={i} style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '14px', padding: '18px 20px', display: 'flex', alignItems: 'center', gap: '14px', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
+              <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: stat.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                {stat.icon}
+              </div>
+              <div>
+                <div style={{ fontSize: '22px', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.5px' }}>{stat.value}</div>
+                <div style={{ fontSize: '12px', color: '#64748B', fontWeight: 500 }}>{stat.label}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Apps grid */}
+        <div className="pe-d2" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', marginBottom: '48px' }}>
+
+          {/* Published app card */}
+          {myApps.map((app, i) => (
+            <div key={i} className="app-card-hover" style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '20px', overflow: 'hidden', boxShadow: '0 2px 8px rgba(0,0,0,0.06)', transition: 'all 0.2s', cursor: 'pointer' }}>
+              {/* App preview */}
+              <div style={{ height: '140px', background: 'linear-gradient(135deg, #EEF4FF, #E0E7FF)', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+                <div style={{ width: '80px', height: '140px', background: '#FFFFFF', borderRadius: '14px', border: '4px solid #CBD5E1', marginTop: '30px', display: 'flex', flexDirection: 'column', padding: '8px', gap: '6px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
+                  <div style={{ height: '20px', background: '#EEF4FF', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <span style={{ fontSize: '9px', fontWeight: 800, color: '#0066FF' }}>{app.ar}</span>
+                  </div>
+                  <div style={{ height: '8px', background: '#E2E8F0', borderRadius: '3px' }} />
+                  <div style={{ height: '8px', background: '#E2E8F0', borderRadius: '3px', width: '70%' }} />
+                </div>
+                {/* Status badge */}
+                <div style={{ position: 'absolute', top: '10px', right: '10px', background: app.statusBg, color: app.statusColor, fontSize: '11px', fontWeight: 700, padding: '3px 9px', borderRadius: '999px', border: `1px solid ${app.statusColor}30` }}>
+                  ● {app.status}
+                </div>
+              </div>
+
+              {/* App info */}
+              <div style={{ padding: '18px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '4px' }}>
+                  <div style={{ fontSize: '15px', fontWeight: 700, color: '#0F172A' }}>{app.name}</div>
+                  <button className="action-btn" style={{ width: '28px', height: '28px', borderRadius: '8px', border: 'none', background: 'transparent', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'background 0.15s' }}>
+                    <MoreHorizontal size={15} color="#94A3B8" />
+                  </button>
+                </div>
+                <div style={{ fontSize: '12px', color: '#94A3B8', marginBottom: '12px' }}>{app.lastBuilt}</div>
+
+                <div style={{ display: 'flex', gap: '12px', marginBottom: '14px' }}>
+                  {[{ val: app.views, label: 'views' }, { val: app.installs, label: 'installs' }].map((s, j) => (
+                    <div key={j} style={{ fontSize: '12px', color: '#64748B' }}>
+                      <span style={{ fontWeight: 700, color: '#0F172A' }}>{s.val}</span> {s.label}
+                    </div>
+                  ))}
+                </div>
+
+                <div style={{ fontSize: '11px', color: '#0066FF', fontFamily: 'monospace', marginBottom: '14px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  {app.url}
+                </div>
+
+                <div style={{ display: 'flex', gap: '8px' }}>
+                  <button style={{ flex: 1, padding: '8px', background: '#EEF4FF', border: 'none', borderRadius: '8px', fontSize: '12px', fontWeight: 600, color: '#0066FF', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px' }}>
+                    <ExternalLink size={12} /> Open
+                  </button>
+                  <button style={{ flex: 1, padding: '8px', background: '#F1F5F9', border: 'none', borderRadius: '8px', fontSize: '12px', fontWeight: 600, color: '#0F172A', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px' }}>
+                    <Share2 size={12} /> Share
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+
+          {/* New app placeholder cards */}
+          {[1, 2].map(i => (
+            <div key={i} className="new-card-hover" style={{ background: '#FFFFFF', border: '2px dashed #E2E8F0', borderRadius: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '320px', cursor: 'pointer', transition: 'all 0.2s', gap: '12px', padding: '32px' }}>
+              <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: '#F1F5F9', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Plus size={22} color="#94A3B8" />
+              </div>
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ fontSize: '14px', fontWeight: 700, color: '#64748B', marginBottom: '4px' }}>Start a new app</div>
+                <div style={{ fontSize: '12px', color: '#94A3B8' }}>Describe your idea and build</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Plan usage */}
+        <div className="pe-d3" style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '16px', padding: '20px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
+          <div>
+            <div style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A', marginBottom: '4px' }}>Free plan · 2 builds remaining</div>
+            <div style={{ fontSize: '12px', color: '#64748B' }}>Upgrade to build unlimited apps</div>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div style={{ width: '120px' }}>
+              <div style={{ height: '6px', background: '#E2E8F0', borderRadius: '3px', overflow: 'hidden' }}>
+                <div style={{ height: '100%', width: '33%', background: '#0066FF', borderRadius: '3px' }} />
+              </div>
+              <div style={{ fontSize: '10px', color: '#94A3B8', marginTop: '4px', textAlign: 'right' }}>1 of 3 used</div>
+            </div>
+            <button style={{ padding: '9px 18px', background: '#FF9F0A', color: '#fff', border: 'none', borderRadius: '10px', fontSize: '13px', fontWeight: 700, cursor: 'pointer', boxShadow: '0 2px 8px rgba(255,159,10,0.3)' }}>
+              Upgrade
+            </button>
+          </div>
+        </div>
+      </main>
     </div>
   );
 }
