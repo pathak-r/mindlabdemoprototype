@@ -61,7 +61,7 @@ export function Landing() {
             marginBottom: "24px",
             color: "var(--mn-text)"
           }}>
-            Never Get Stuck.<br />
+            <span style={{ color: "var(--mn-blue)" }}>Never Get Stuck.</span><br />
             Get your app <span className="gradient-text">out there.</span>
           </h1>
 
