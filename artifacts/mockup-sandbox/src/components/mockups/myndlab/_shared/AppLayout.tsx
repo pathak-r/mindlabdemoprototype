@@ -134,7 +134,7 @@ export function AppLayout({
           </div>
           <div>
             <div style={{ color: "#0F172A", fontSize: "13px", fontWeight: 600 }}>
-              Rohit Sharma
+              Rohit Pathak
             </div>
             <div style={{ color: "#94A3B8", fontSize: "11px" }}>
               Free plan

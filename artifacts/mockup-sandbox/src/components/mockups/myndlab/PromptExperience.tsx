@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Lightbulb, Check, ArrowRight } from 'lucide-react';
+import { Lightbulb, Check, ArrowRight, Calendar, UtensilsCrossed, Building2 } from 'lucide-react';
 import './_group.css';
 
 export function PromptExperience() {
@@ -122,28 +122,43 @@ export function PromptExperience() {
           <h3 style={{ fontSize: '13px', color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '16px', fontWeight: 700 }}>Or try one of these:</h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {[
-              "Build me a booking app for a Dubai personal trainer...",
-              "Create a food delivery app for a Riyadh restaurant...",
-              "Build a property listings platform for Abu Dhabi..."
-            ].map((examplePrompt, i) => (
-              <div 
-                key={i} 
+              { text: "Build me a booking app for a Dubai personal trainer...", Icon: Calendar, chipBg: '#EEF4FF', chipColor: '#0066FF' },
+              { text: "Create a food delivery app for a Riyadh restaurant...", Icon: UtensilsCrossed, chipBg: '#FFF7E6', chipColor: '#FF9F0A' },
+              { text: "Build a property listings platform for Abu Dhabi...", Icon: Building2, chipBg: '#ECFDF5', chipColor: '#10B981' },
+            ].map(({ text, Icon, chipBg, chipColor }, i) => (
+              <div
+                key={i}
                 className="example-card"
-                onClick={() => setPrompt(examplePrompt)}
+                onClick={() => setPrompt(text)}
                 style={{
                   backgroundColor: '#FFFFFF',
-                  borderRadius: '8px',
-                  padding: '16px 20px',
+                  borderRadius: '10px',
+                  padding: '14px 18px',
                   border: '1px solid #E2E8F0',
-                  borderLeft: '3px solid #0066FF',
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  gap: '14px',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
                 }}
               >
-                <span style={{ color: '#0F172A', fontSize: '14px', fontWeight: 500 }}>{examplePrompt}</span>
-                <span style={{ color: '#0066FF', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px', whiteSpace: 'nowrap', marginLeft: '16px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '14px', minWidth: 0 }}>
+                  <div style={{
+                    width: '36px',
+                    height: '36px',
+                    borderRadius: '9px',
+                    background: chipBg,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0,
+                  }}>
+                    <Icon size={17} color={chipColor} strokeWidth={2} />
+                  </div>
+                  <span style={{ color: '#0F172A', fontSize: '14px', fontWeight: 500, lineHeight: '1.4' }}>{text}</span>
+                </div>
+                <span style={{ color: '#0066FF', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px', whiteSpace: 'nowrap', flexShrink: 0 }}>
                   Use this <ArrowRight size={14} strokeWidth={2.5} />
                 </span>
               </div>
