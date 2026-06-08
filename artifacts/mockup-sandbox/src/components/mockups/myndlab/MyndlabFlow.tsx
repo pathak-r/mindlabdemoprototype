@@ -113,10 +113,16 @@ export function MyndlabFlow() {
       background: "#F4EDE1", fontFamily: "var(--font-main, 'Inter', sans-serif)", overflow: "hidden",
     }}>
       <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes mn-pulse-next { 0%,100% { box-shadow: 0 2px 6px rgba(15,93,84,.28); } 50% { box-shadow: 0 2px 6px rgba(15,93,84,.28), 0 0 0 7px rgba(15,93,84,.12); } }
+        @keyframes mn-pulse-next { 0%,100% { box-shadow: 0 2px 6px rgba(15,93,84,.28); } 50% { box-shadow: 0 2px 6px rgba(15,93,84,.28), 0 0 0 7px rgba(15,93,84,.14); } }
         @keyframes mn-pulse-back { 0%,100% { box-shadow: 0 0 0 0 rgba(22,48,44,0); } 50% { box-shadow: 0 0 0 5px rgba(22,48,44,.07); } }
-        @keyframes mn-pulse-soft { 0%,100% { box-shadow: 0 0 0 0 rgba(15,93,84,0); } 50% { box-shadow: 0 0 0 4px rgba(15,93,84,.08); } }
-        @keyframes mn-pulse-hot { 0%,100% { box-shadow: 0 0 0 0 rgba(176,122,43,0); border-color: var(--mn-brass); } 50% { box-shadow: 0 0 0 6px rgba(176,122,43,.22); border-color: var(--mn-brass); } }
+        /* calm-state toggle: a visible teal ping */
+        @keyframes mn-pulse-soft { 0% { box-shadow: 0 0 0 0 rgba(15,93,84,.40); } 70% { box-shadow: 0 0 0 9px rgba(15,93,84,0); } 100% { box-shadow: 0 0 0 0 rgba(15,93,84,0); } }
+        /* hot-state toggle (screens 4 & 6): a constant brass halo + bold outward ping */
+        @keyframes mn-pulse-hot {
+          0%   { box-shadow: 0 0 0 2px rgba(176,122,43,.55), 0 0 0 2px rgba(176,122,43,.60); }
+          70%  { box-shadow: 0 0 0 2px rgba(176,122,43,.55), 0 0 0 16px rgba(176,122,43,0); }
+          100% { box-shadow: 0 0 0 2px rgba(176,122,43,.55), 0 0 0 0 rgba(176,122,43,0); }
+        }
         @keyframes mn-coach-in { from { opacity:0; transform: translateY(-4px);} to { opacity:1; transform:none;} }
       `}} />
       {/* Top nav */}
@@ -169,9 +175,11 @@ export function MyndlabFlow() {
         {/* Founder toggle */}
         <div style={{
           display: "flex", alignItems: "center", gap: "1px",
-          background: "#F4EDE1", borderRadius: "8px", padding: "3px",
-          flexShrink: 0, border: "1px solid #E6DBCB", position: "relative",
-          animation: toggleHot ? "mn-pulse-hot 1.6s ease-in-out infinite" : "mn-pulse-soft 2.8s ease-in-out infinite",
+          background: toggleHot ? "var(--mn-gold-light)" : "#F4EDE1", borderRadius: "8px", padding: "3px",
+          flexShrink: 0,
+          border: toggleHot ? "2px solid var(--mn-brass)" : "1px solid #E6DBCB",
+          position: "relative",
+          animation: toggleHot ? "mn-pulse-hot 1.3s ease-out infinite" : "mn-pulse-soft 2s ease-out infinite",
         }}>
           <button onClick={() => setIsTechnical(false)} style={{
             display: "flex", alignItems: "center", gap: "5px",
@@ -212,28 +220,6 @@ export function MyndlabFlow() {
           Next →
         </button>
       </div>
-
-      {/* Toggle coachmark banner — only on the screens the toggle actually rebuilds */}
-      {toggleHot && (
-        <div style={{
-          flexShrink: 0,
-          display: "flex", alignItems: "center", justifyContent: "center", gap: "10px",
-          padding: "9px 16px",
-          background: "var(--mn-gold-light)",
-          borderBottom: "1px solid var(--mn-border)",
-          animation: "mn-coach-in .25s ease",
-        }}>
-          <span style={{
-            fontFamily: "var(--mn-mono)", fontSize: "10px", letterSpacing: "1.5px",
-            color: "var(--mn-gold-hover)", fontWeight: 600, flexShrink: 0,
-          }}>
-            TRY THE TOGGLE&nbsp;↗
-          </span>
-          <span style={{ fontSize: "13px", color: "var(--mn-text)", lineHeight: 1.4 }}>
-            Switch <strong style={{ fontWeight: 600 }}>Non-tech&nbsp;↔&nbsp;Technical</strong> (top right) and watch this step rebuild itself — one product, two journeys.
-          </span>
-        </div>
-      )}
 
       {/* Body: prototype screen + strategy rail */}
       <div style={{ flex: 1, display: "flex", minHeight: 0, position: "relative" }}>

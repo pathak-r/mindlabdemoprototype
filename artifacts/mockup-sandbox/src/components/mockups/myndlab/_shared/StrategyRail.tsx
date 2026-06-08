@@ -1,7 +1,7 @@
 import React from "react";
 import "../_group.css";
 import { StarMark } from "./TopNav";
-import { ChevronLeft, ChevronRight, PanelRightClose, Star } from "lucide-react";
+import { ChevronLeft, ChevronRight, PanelRightClose, Star, MousePointerClick } from "lucide-react";
 
 /* ──────────────────────────────────────────────────────────────────────────
    Strategy companion — 10 "punchy" frames distilled from the PM strategy doc.
@@ -16,6 +16,7 @@ export interface Frame {
   title: string;
   lines: string[];
   rec?: { label: string; text: string };
+  toggleHint?: string;
   screen: number | null;
 }
 
@@ -72,6 +73,8 @@ export const FRAMES: Frame[] = [
       "Three pre-written prompts as real founder stories, plus a prompt-quality coach: Basic → Good → Detailed.",
       "The AI Adviser turns a rough idea into a buildable spec instead of leaving the founder to guess.",
     ],
+    toggleHint:
+      "Flip the toggle (top right) to Technical on this screen to reveal the tech-stack options — frontend, backend and build settings like Next.js and Supabase — kept hidden from the non-technical founder.",
     screen: 3,
   },
   {
@@ -96,6 +99,8 @@ export const FRAMES: Frame[] = [
       label: "2ND MOST IMPORTANT RECOMMENDATION",
       text: "The distribution layer no Western competitor offers. Own the last mile they all leave open.",
     },
+    toggleHint:
+      "Flip the toggle (top right) to Technical here to reveal the developer deploy options — deploy to Vercel, connect GitHub and download source — alongside the one-tap PWA publish.",
     screen: 5,
   },
   {
@@ -290,6 +295,37 @@ export function StrategyRail({
             </div>
             <div style={{ fontSize: "13.5px", lineHeight: 1.5, color: "var(--mn-text)", fontWeight: 500 }}>
               {f.rec.text}
+            </div>
+          </div>
+        )}
+
+        {f.toggleHint && (
+          <div
+            style={{
+              marginTop: "22px",
+              background: "var(--mn-gold-light)",
+              border: "1px solid var(--mn-brass)",
+              borderRadius: "11px",
+              padding: "13px 15px",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                fontFamily: "var(--mn-mono)",
+                fontSize: "10px",
+                letterSpacing: "1px",
+                color: "var(--mn-gold-hover)",
+                fontWeight: 600,
+                marginBottom: "6px",
+              }}
+            >
+              <MousePointerClick size={12} /> TRY THE TOGGLE&nbsp;↗ (TOP&nbsp;RIGHT)
+            </div>
+            <div style={{ fontSize: "13.5px", lineHeight: 1.5, color: "var(--mn-text)" }}>
+              {f.toggleHint}
             </div>
           </div>
         )}
