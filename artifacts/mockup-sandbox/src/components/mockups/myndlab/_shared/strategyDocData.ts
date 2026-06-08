@@ -2,13 +2,16 @@
    Consumed by StrategyDoc.tsx (the in-app reader) and by the PDF generator,
    so the on-screen reader and the downloadable PDF never drift apart. */
 
-export type Block =
+// `only` scopes a block to one output: "pdf" (standalone doc) or "reader"
+// (in-prototype overlay). Omitted = appears in both.
+export type Block = (
   | { t: "p"; text: string }
   | { t: "h3"; text: string }
   | { t: "ul"; items: string[] }
   | { t: "callout"; text: string }
   | { t: "quote"; text: string }
-  | { t: "table"; head: string[]; rows: string[][] };
+  | { t: "table"; head: string[]; rows: string[][] }
+) & { only?: "pdf" | "reader" };
 
 export interface DocPage {
   part: string;
@@ -129,6 +132,9 @@ export const DOC: DocPage[] = [
         ["Templates", "Launch with 12 GCC-specific templates: food delivery, booking, property listings, service marketplace, community directory, events, retail catalogue, gym/fitness, professional services, restaurant menu, school parent portal, freelancer portfolio. Each shows live output before commit."],
         ["Confidence & trust", "Live counter (\"X apps built by GCC founders this week\"). After first deploy, plain-English security summary: RLS configured, inputs sanitised, PII encrypted."],
       ] },
+      { t: "h3", text: "The non-technical journey, end to end" },
+      { t: "p", text: "This clickable prototype demonstrates the full non-technical journey end to end." },
+      { t: "p", text: "See it working — clickable prototype: https://pathak-r.github.io/mindlabdemoprototype/", only: "pdf" },
     ],
   },
   {

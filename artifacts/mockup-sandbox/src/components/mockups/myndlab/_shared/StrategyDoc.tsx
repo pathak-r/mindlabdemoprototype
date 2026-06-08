@@ -181,7 +181,7 @@ export function StrategyDoc({ onClose }: { onClose: () => void }) {
               </div>
             )}
             {!p.meta && <div style={{ height: "18px" }} />}
-            {p.blocks.map((b, i) => (
+            {p.blocks.filter((b) => b.only !== "pdf").map((b, i) => (
               <BlockView key={i} b={b} />
             ))}
           </div>
