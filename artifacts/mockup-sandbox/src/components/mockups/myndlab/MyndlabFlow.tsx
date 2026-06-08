@@ -11,7 +11,8 @@ import { PromptExperience } from "./PromptExperience";
 import { LastMile } from "./LastMile";
 import { Store } from "./Store";
 import { StrategyRail, NotesReopen, FRAMES } from "./_shared/StrategyRail";
-import { Code2, Rocket } from "lucide-react";
+import { StrategyDoc } from "./_shared/StrategyDoc";
+import { Code2, Rocket, FileText } from "lucide-react";
 
 const SCREENS = [
   { label: "Hero",           hint: "GCC · Benefits · CTA",              component: "Landing" },
@@ -55,6 +56,7 @@ export function MyndlabFlow() {
   const [onboardingAnswers, setOnboardingAnswers] = useState<OnboardingAnswers | null>(null);
   const [animDir, setAnimDir] = useState<"left" | "right" | null>(null);
   const [notesOpen, setNotesOpen] = useState(true);
+  const [docOpen, setDocOpen] = useState(false);
   // Frame index into FRAMES (10 notes). Screen i ↔ frame with screen === i.
   const frameForScreen = (s: number) => FRAMES.findIndex(f => f.screen === s);
   const [frameIdx, setFrameIdx] = useState(() => frameForScreen(0));
@@ -138,17 +140,28 @@ export function MyndlabFlow() {
         background: "#FFFFFF", borderBottom: "1px solid #E6DBCB", gap: "12px",
         boxShadow: "0 1px 3px rgba(28,43,43,0.05)",
       }}>
-        {/* Prev */}
-        <button onClick={prev} disabled={current === 0} style={{
-          display: "flex", alignItems: "center", gap: "5px",
-          background: current === 0 ? "transparent" : "#FFFFFF", border: "1px solid #E6DBCB",
-          color: current === 0 ? "#D6C8B4" : "#16302C",
-          padding: "6px 12px", borderRadius: "7px", fontSize: "13px", fontWeight: 500,
-          cursor: current === 0 ? "default" : "pointer", flexShrink: 0, transition: "all 0.15s",
-          animation: current === 0 ? "none" : "mn-pulse-back 1.7s ease-in-out infinite",
-        }}>
-          ← Back
-        </button>
+        {/* Left cluster: full-strategy + Back */}
+        <div style={{ display: "flex", alignItems: "center", gap: "8px", flexShrink: 0 }}>
+          <button onClick={() => setDocOpen(true)} title="Read the full strategy document" style={{
+            display: "flex", alignItems: "center", gap: "6px",
+            background: "#FFFFFF", border: "1px solid #D6C8B4",
+            color: "#0F5D54", padding: "6px 11px", borderRadius: "7px",
+            fontFamily: "var(--mn-mono)", fontSize: "11.5px", fontWeight: 500, letterSpacing: "0.2px",
+            cursor: "pointer", whiteSpace: "nowrap",
+          }}>
+            <FileText size={13} /> Full strategy ↗
+          </button>
+          <button onClick={prev} disabled={current === 0} style={{
+            display: "flex", alignItems: "center", gap: "5px",
+            background: current === 0 ? "transparent" : "#FFFFFF", border: "1px solid #E6DBCB",
+            color: current === 0 ? "#D6C8B4" : "#16302C",
+            padding: "6px 12px", borderRadius: "7px", fontSize: "13px", fontWeight: 500,
+            cursor: current === 0 ? "default" : "pointer", transition: "all 0.15s",
+            animation: current === 0 ? "none" : "mn-pulse-back 1.7s ease-in-out infinite",
+          }}>
+            ← Back
+          </button>
+        </div>
 
         {/* Center */}
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "5px", flex: 1, minWidth: 0 }}>
@@ -249,6 +262,8 @@ export function MyndlabFlow() {
           <NotesReopen onOpen={() => setNotesOpen(true)} />
         )}
       </div>
+
+      {docOpen && <StrategyDoc onClose={() => setDocOpen(false)} />}
     </div>
   );
 }
