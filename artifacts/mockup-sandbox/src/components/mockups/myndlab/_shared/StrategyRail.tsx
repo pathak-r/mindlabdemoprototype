@@ -221,7 +221,8 @@ export function StrategyRail({
       >
         <style
           dangerouslySetInnerHTML={{
-            __html: `@keyframes rail-fade { from { opacity:0; transform: translateY(8px);} to {opacity:1; transform:none;} }`,
+            __html: `@keyframes rail-fade { from { opacity:0; transform: translateY(8px);} to {opacity:1; transform:none;} }
+              @keyframes mn-note-pop { 0%,100% { box-shadow: 0 6px 18px rgba(176,122,43,.30); } 50% { box-shadow: 0 8px 24px rgba(176,122,43,.50), 0 0 0 5px rgba(176,122,43,.18); } }`,
           }}
         />
         <div
@@ -302,29 +303,29 @@ export function StrategyRail({
         {f.toggleHint && (
           <div
             style={{
-              marginTop: "22px",
-              background: "var(--mn-gold-light)",
-              border: "1px solid var(--mn-brass)",
-              borderRadius: "11px",
-              padding: "13px 15px",
+              marginTop: "24px",
+              background: "#A06E22",
+              borderRadius: "12px",
+              padding: "15px 16px",
+              animation: "mn-note-pop 1.8s ease-in-out infinite",
             }}
           >
             <div
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "6px",
+                gap: "7px",
                 fontFamily: "var(--mn-mono)",
-                fontSize: "10px",
-                letterSpacing: "1px",
-                color: "var(--mn-gold-hover)",
+                fontSize: "10.5px",
+                letterSpacing: "1.2px",
+                color: "#FBF6EE",
                 fontWeight: 600,
-                marginBottom: "6px",
+                marginBottom: "8px",
               }}
             >
-              <MousePointerClick size={12} /> TRY THE TOGGLE&nbsp;↗ (TOP&nbsp;RIGHT)
+              <MousePointerClick size={13} /> TRY THE TOGGLE&nbsp;↗ (TOP&nbsp;RIGHT)
             </div>
-            <div style={{ fontSize: "13.5px", lineHeight: 1.5, color: "var(--mn-text)" }}>
+            <div style={{ fontSize: "14px", lineHeight: 1.55, color: "#FFFFFF", fontWeight: 400 }}>
               {f.toggleHint}
             </div>
           </div>
