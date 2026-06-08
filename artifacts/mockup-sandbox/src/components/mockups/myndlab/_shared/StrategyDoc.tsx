@@ -44,6 +44,12 @@ function BlockView({ b }: { b: Block }) {
       return <p style={{ fontSize: "15.5px", lineHeight: 1.7, color: "#33433F", margin: "0 0 14px" }}><RichText value={b.runs} /></p>;
     case "note":
       return <p style={{ fontSize: "13px", lineHeight: 1.6, color: "var(--mn-text-muted)", fontStyle: "italic", margin: "0 0 14px" }}><RichText value={b.runs} /></p>;
+    case "callout":
+      return (
+        <div style={{ background: "rgba(178,58,46,0.07)", borderLeft: "3px solid #B23A2E", borderRadius: "0 10px 10px 0", padding: "14px 17px", margin: "10px 0 20px" }}>
+          <div style={{ fontSize: "16px", lineHeight: 1.5, fontWeight: 600, color: "#B23A2E" }}><RichText value={b.runs} /></div>
+        </div>
+      );
     case "ul":
       return (
         <ul style={{ listStyle: "none", padding: 0, margin: "0 0 16px", display: "flex", flexDirection: "column", gap: "10px" }}>

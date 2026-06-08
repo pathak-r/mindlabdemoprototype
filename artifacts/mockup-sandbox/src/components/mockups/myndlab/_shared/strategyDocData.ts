@@ -9,6 +9,7 @@ export type Block = (
   | { t: "h3"; text: string }
   | { t: "note"; runs: Rich }
   | { t: "ul"; items: Rich[] }
+  | { t: "callout"; runs: Rich; tone?: "crit" }
   | { t: "table"; head: string[]; rows: Rich[][] }
 ) & { only?: "pdf" | "reader" };
 
@@ -107,14 +108,14 @@ export const DOC: DocPage[] = [
       ] },
       { t: "h3", text: "The one decision that shapes everything" },
       { t: "p", runs: [{ text: "One question at sign-up splits every user into one of two experiences. ", b: true, i: true, em: "key" }] },
-      { t: "p", runs: [{ text: "!! This is the most important recommendation in this document !!", b: true, em: "crit" }] },
+      { t: "callout", tone: "crit", runs: [{ text: "This is the most important recommendation in this document", b: true, em: "crit" }] },
       { t: "p", runs: [{ text: "The question: " }, { text: "“Would you call yourself a technical founder or a non-technical founder?”", b: true, em: "crit" }] },
       { t: "ul", items: [
         [{ text: "Non-technical path — friction removed. ", b: true }, { text: "No tech-stack choices, no jargon. Smart defaults handle every infrastructure decision silently." }],
         [{ text: "Technical path — full control. ", b: true }, { text: "Stack selection, GitHub integration, deployment options. Stays entirely out of the non-technical founder’s way." }],
       ] },
       { t: "p", runs: [{ text: "Prototype — ", b: true }, { text: "Clickable prototype demonstrates the full journey. " }, { text: "Try the toggle switch between technical and non-technical paths at the top right of the screen. ", i: true, em: "crit" }] },
-      { t: "p", runs: [{ text: "See it working: clickable prototype ", b: true, em: "crit" }, { text: "→ https://pathak-r.github.io/mindlabdemoprototype/", b: true }] },
+      { t: "p", runs: [{ text: "See it working: clickable prototype ", b: true, em: "crit" }, { text: "→ https://pathak-r.github.io/mindlabdemoprototype/", b: true }], only: "pdf" },
       { t: "h3", text: "The non-technical journey, end to end" },
       { t: "table", head: ["Stage", "The fix"], rows: [
         ["Landing page", "Open with “Never Get Stuck. Build in Arabic or English. Publish in minutes. No code. No agency. No App Store waiting room.” Add a 30-second demo above the fold."],
