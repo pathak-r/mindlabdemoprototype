@@ -113,15 +113,15 @@ export function MyndlabFlow() {
       background: "#F4EDE1", fontFamily: "var(--font-main, 'Inter', sans-serif)", overflow: "hidden",
     }}>
       <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes mn-pulse-next { 0%,100% { box-shadow: 0 2px 6px rgba(15,93,84,.28); } 50% { box-shadow: 0 2px 6px rgba(15,93,84,.28), 0 0 0 7px rgba(15,93,84,.14); } }
-        @keyframes mn-pulse-back { 0%,100% { box-shadow: 0 0 0 0 rgba(22,48,44,0); } 50% { box-shadow: 0 0 0 5px rgba(22,48,44,.07); } }
+        @keyframes mn-pulse-next { 0%,100% { box-shadow: 0 2px 6px rgba(15,93,84,.38); } 50% { box-shadow: 0 2px 6px rgba(15,93,84,.38), 0 0 0 14px rgba(15,93,84,.32); } }
+        @keyframes mn-pulse-back { 0%,100% { box-shadow: 0 0 0 0 rgba(22,48,44,0); } 50% { box-shadow: 0 0 0 12px rgba(22,48,44,.22); } }
         /* calm-state toggle: a visible teal ping */
-        @keyframes mn-pulse-soft { 0% { box-shadow: 0 0 0 0 rgba(15,93,84,.40); } 70% { box-shadow: 0 0 0 9px rgba(15,93,84,0); } 100% { box-shadow: 0 0 0 0 rgba(15,93,84,0); } }
+        @keyframes mn-pulse-soft { 0% { box-shadow: 0 0 0 0 rgba(15,93,84,.60); } 70% { box-shadow: 0 0 0 16px rgba(15,93,84,0); } 100% { box-shadow: 0 0 0 0 rgba(15,93,84,0); } }
         /* hot-state toggle (screens 4 & 6): a constant brass halo + bold outward ping */
         @keyframes mn-pulse-hot {
-          0%   { box-shadow: 0 0 0 2px rgba(176,122,43,.55), 0 0 0 2px rgba(176,122,43,.60); }
-          70%  { box-shadow: 0 0 0 2px rgba(176,122,43,.55), 0 0 0 16px rgba(176,122,43,0); }
-          100% { box-shadow: 0 0 0 2px rgba(176,122,43,.55), 0 0 0 0 rgba(176,122,43,0); }
+          0%   { box-shadow: 0 0 0 2px rgba(176,122,43,.62), 0 0 0 2px rgba(176,122,43,.67); }
+          70%  { box-shadow: 0 0 0 2px rgba(176,122,43,.62), 0 0 0 19px rgba(176,122,43,0); }
+          100% { box-shadow: 0 0 0 2px rgba(176,122,43,.62), 0 0 0 0 rgba(176,122,43,0); }
         }
         @keyframes mn-coach-in { from { opacity:0; transform: translateY(-4px);} to { opacity:1; transform:none;} }
       `}} />
@@ -139,7 +139,7 @@ export function MyndlabFlow() {
           color: current === 0 ? "#D6C8B4" : "#16302C",
           padding: "6px 12px", borderRadius: "7px", fontSize: "13px", fontWeight: 500,
           cursor: current === 0 ? "default" : "pointer", flexShrink: 0, transition: "all 0.15s",
-          animation: current === 0 ? "none" : "mn-pulse-back 2.4s ease-in-out infinite",
+          animation: current === 0 ? "none" : "mn-pulse-back 1.7s ease-in-out infinite",
         }}>
           ← Back
         </button>
@@ -179,7 +179,7 @@ export function MyndlabFlow() {
           flexShrink: 0,
           border: toggleHot ? "2px solid var(--mn-brass)" : "1px solid #E6DBCB",
           position: "relative",
-          animation: toggleHot ? "mn-pulse-hot 1.3s ease-out infinite" : "mn-pulse-soft 2s ease-out infinite",
+          animation: toggleHot ? "mn-pulse-hot 1.15s ease-out infinite" : "mn-pulse-soft 1.5s ease-out infinite",
         }}>
           <button onClick={() => setIsTechnical(false)} style={{
             display: "flex", alignItems: "center", gap: "5px",
@@ -215,7 +215,7 @@ export function MyndlabFlow() {
           cursor: isLast ? "default" : "pointer",
           flexShrink: 0, transition: "all 0.15s",
           boxShadow: isLast ? "none" : "0 2px 6px rgba(15,93,84,0.28)",
-          animation: isLast ? "none" : "mn-pulse-next 2.2s ease-in-out infinite",
+          animation: isLast ? "none" : "mn-pulse-next 1.6s ease-in-out infinite",
         }}>
           Next →
         </button>
