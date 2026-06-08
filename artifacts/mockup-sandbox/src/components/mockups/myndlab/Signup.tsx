@@ -1,12 +1,13 @@
 import React from 'react';
 import { Apple, Mail, Rocket, Code2, Check } from 'lucide-react';
 import './_group.css';
+import { StarMark } from './_shared/TopNav';
 
 export function Signup() {
   return (
     <div style={{
-      backgroundColor: '#F5EFE6', minHeight: '100vh', width: '100%',
-      fontFamily: 'var(--font-main)', color: '#1C2B2B',
+      backgroundColor: '#F4EDE1', minHeight: '100vh', width: '100%',
+      fontFamily: 'var(--font-main)', color: '#16302C',
       display: 'flex', flexDirection: 'column', alignItems: 'center',
       padding: '56px 24px 80px', boxSizing: 'border-box',
     }}>
@@ -16,7 +17,7 @@ export function Signup() {
         .su-d1 { animation-delay: 0ms; }
         .su-d2 { animation-delay: 120ms; }
         .su-d3 { animation-delay: 240ms; }
-        .su-sso-btn:hover { background: #F5EFE6 !important; border-color: #D4C9BC !important; }
+        .su-sso-btn:hover { background: #F4EDE1 !important; border-color: #D6C8B4 !important; }
         .su-founder-card { transition: all 0.2s ease; }
         .su-founder-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(28,43,43,0.12) !important; }
         @keyframes spin { to { transform: rotate(360deg); } }
@@ -24,23 +25,17 @@ export function Signup() {
       `}} />
 
       {/* Logo */}
-      <div className="su-block su-d1" style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '48px' }}>
-        <div style={{
-          width: '38px', height: '38px', borderRadius: '11px',
-          background: 'linear-gradient(135deg, #1A6B6B, #C8963E)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-        }}>
-          <span style={{ color: '#fff', fontWeight: 800, fontSize: '20px' }}>M</span>
-        </div>
-        <span style={{ fontSize: '22px', fontWeight: 800, letterSpacing: '-0.5px', color: '#1C2B2B' }}>Myndlab</span>
+      <div className="su-block su-d1" style={{ display: 'flex', alignItems: 'center', gap: '11px', marginBottom: '48px' }}>
+        <StarMark size={34} />
+        <span style={{ fontSize: '22px', fontWeight: 600, letterSpacing: '-0.5px', color: '#16302C' }}>Mynd<span style={{ color: '#0F5D54' }}>lab</span></span>
       </div>
 
       {/* Auth */}
       <div className="su-block su-d1" style={{ width: '100%', maxWidth: '420px', marginBottom: '72px' }}>
-        <h1 style={{ fontSize: '32px', fontWeight: 800, letterSpacing: '-0.8px', margin: '0 0 8px 0', textAlign: 'center', color: '#1C2B2B' }}>
+        <h1 style={{ fontFamily: 'var(--mn-display)', fontSize: '36px', fontWeight: 600, letterSpacing: '-0.8px', margin: '0 0 8px 0', textAlign: 'center', color: '#16302C' }}>
           Let's get you building.
         </h1>
-        <p style={{ fontSize: '16px', color: '#6B7B7B', margin: '0 0 36px 0', textAlign: 'center' }}>
+        <p style={{ fontSize: '16px', color: '#5E6F6A', margin: '0 0 36px 0', textAlign: 'center' }}>
           Free to start. No credit card needed.
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -57,13 +52,13 @@ export function Signup() {
               label: 'Continue with Google',
             },
             { icon: <Apple size={22} />, label: 'Continue with Apple' },
-            { icon: <Mail size={22} color="#6B7B7B" />, label: 'Continue with email' },
+            { icon: <Mail size={22} color="#5E6F6A" />, label: 'Continue with email' },
           ].map((btn, i) => (
             <button key={i} className="su-sso-btn" style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px',
               width: '100%', padding: '14px 20px', background: '#FFFFFF',
-              border: '1px solid #E8DDD0', borderRadius: '12px', fontSize: '15px', fontWeight: 600,
-              color: '#1C2B2B', cursor: 'pointer', boxShadow: '0 1px 3px rgba(28,43,43,0.05)',
+              border: '1px solid #E6DBCB', borderRadius: '12px', fontSize: '15px', fontWeight: 600,
+              color: '#16302C', cursor: 'pointer', boxShadow: '0 1px 3px rgba(28,43,43,0.05)',
               position: 'relative', transition: 'all 0.15s ease',
             }}>
               <span style={{ position: 'absolute', left: '20px', display: 'flex' }}>{btn.icon}</span>
@@ -76,40 +71,40 @@ export function Signup() {
       {/* Founder type */}
       <div className="su-block su-d2" style={{ width: '100%', maxWidth: '560px', marginBottom: '72px' }}>
         <div style={{ display: 'flex', gap: '6px', marginBottom: '28px', justifyContent: 'center' }}>
-          <div style={{ width: '28px', height: '5px', borderRadius: '3px', background: '#1A6B6B' }} />
-          <div style={{ width: '28px', height: '5px', borderRadius: '3px', background: '#1A6B6B' }} />
-          <div style={{ width: '28px', height: '5px', borderRadius: '3px', background: '#E8DDD0' }} />
+          <div style={{ width: '28px', height: '5px', borderRadius: '3px', background: '#0F5D54' }} />
+          <div style={{ width: '28px', height: '5px', borderRadius: '3px', background: '#0F5D54' }} />
+          <div style={{ width: '28px', height: '5px', borderRadius: '3px', background: '#E6DBCB' }} />
         </div>
 
-        <h2 style={{ fontSize: '26px', fontWeight: 700, letterSpacing: '-0.5px', margin: '0 0 6px 0', textAlign: 'center', color: '#1C2B2B' }}>
+        <h2 style={{ fontFamily: 'var(--mn-display)', fontSize: '28px', fontWeight: 600, letterSpacing: '-0.5px', margin: '0 0 6px 0', textAlign: 'center', color: '#16302C' }}>
           One quick question
         </h2>
-        <p style={{ fontSize: '15px', color: '#6B7B7B', margin: '0 0 28px 0', textAlign: 'center' }}>
+        <p style={{ fontSize: '15px', color: '#5E6F6A', margin: '0 0 28px 0', textAlign: 'center' }}>
           We'll tailor your experience based on your answer.
         </p>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
           {/* Non-technical */}
           <div className="su-founder-card" style={{
-            background: '#E8F3F3', border: '2px solid #1A6B6B',
+            background: '#E3F0EC', border: '2px solid #0F5D54',
             borderRadius: '20px', padding: '28px 24px', cursor: 'pointer',
             position: 'relative', boxShadow: '0 4px 16px rgba(26,107,107,0.12)',
           }}>
-            <div style={{ position: 'absolute', top: '16px', right: '16px', width: '20px', height: '20px', borderRadius: '50%', background: '#1A6B6B', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ position: 'absolute', top: '16px', right: '16px', width: '20px', height: '20px', borderRadius: '50%', background: '#0F5D54', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Check size={11} color="#fff" strokeWidth={3} />
             </div>
-            <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: '#1A6B6B', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }}>
+            <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: '#0F5D54', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }}>
               <Rocket size={24} color="#fff" />
             </div>
-            <div style={{ fontSize: '16px', fontWeight: 700, color: '#1C2B2B', marginBottom: '8px', lineHeight: 1.3 }}>
+            <div style={{ fontSize: '16px', fontWeight: 700, color: '#16302C', marginBottom: '8px', lineHeight: 1.3 }}>
               Non-technical founder
             </div>
-            <p style={{ fontSize: '13px', color: '#6B7B7B', margin: '0 0 16px 0', lineHeight: 1.5 }}>
+            <p style={{ fontSize: '13px', color: '#5E6F6A', margin: '0 0 16px 0', lineHeight: 1.5 }}>
               I have a great idea and want to build fast without worrying about the tech.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
               {['Simple, guided setup', 'AI makes the choices', 'PWA-first distribution'].map((f, i) => (
-                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '7px', fontSize: '12px', fontWeight: 600, color: '#1A6B6B' }}>
+                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '7px', fontSize: '12px', fontWeight: 600, color: '#0F5D54' }}>
                   <Check size={12} strokeWidth={3} /> {f}
                 </div>
               ))}
@@ -118,17 +113,17 @@ export function Signup() {
 
           {/* Technical */}
           <div className="su-founder-card" style={{
-            background: '#FFFFFF', border: '2px solid #E8DDD0',
+            background: '#FFFFFF', border: '2px solid #E6DBCB',
             borderRadius: '20px', padding: '28px 24px', cursor: 'pointer',
             boxShadow: '0 2px 8px rgba(28,43,43,0.05)',
           }}>
-            <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: '#F5EFE6', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }}>
-              <Code2 size={24} color="#1C2B2B" />
+            <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: '#F4EDE1', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }}>
+              <Code2 size={24} color="#16302C" />
             </div>
-            <div style={{ fontSize: '16px', fontWeight: 700, color: '#1C2B2B', marginBottom: '8px', lineHeight: 1.3 }}>
+            <div style={{ fontSize: '16px', fontWeight: 700, color: '#16302C', marginBottom: '8px', lineHeight: 1.3 }}>
               Technical founder
             </div>
-            <p style={{ fontSize: '13px', color: '#6B7B7B', margin: '0 0 16px 0', lineHeight: 1.5 }}>
+            <p style={{ fontSize: '13px', color: '#5E6F6A', margin: '0 0 16px 0', lineHeight: 1.5 }}>
               I want control over my stack, deployments, GitHub, and source code.
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '7px 8px' }}>
@@ -141,8 +136,8 @@ export function Signup() {
               ].map(([left, right], row) => (
                 <React.Fragment key={row}>
                   {[left, right].map((f, col) => f && (
-                    <div key={col} style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '11.5px', fontWeight: 500, color: '#6B7B7B', whiteSpace: 'nowrap', gridColumn: !right ? '1 / -1' : undefined }}>
-                      <Check size={11} color="#9BA8A8" strokeWidth={2.5} style={{ flexShrink: 0 }} /> {f}
+                    <div key={col} style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '11.5px', fontWeight: 500, color: '#5E6F6A', whiteSpace: 'nowrap', gridColumn: !right ? '1 / -1' : undefined }}>
+                      <Check size={11} color="#92A09B" strokeWidth={2.5} style={{ flexShrink: 0 }} /> {f}
                     </div>
                   ))}
                 </React.Fragment>
@@ -153,9 +148,9 @@ export function Signup() {
 
         <button style={{
           marginTop: '24px', width: '100%', padding: '15px',
-          background: '#C8963E', color: '#fff', border: 'none',
-          borderRadius: '12px', fontSize: '16px', fontWeight: 700,
-          cursor: 'pointer', boxShadow: '0 4px 12px rgba(200,150,62,0.35)',
+          background: '#0F5D54', color: '#fff', border: 'none',
+          borderRadius: '12px', fontSize: '16px', fontWeight: 600,
+          cursor: 'pointer', boxShadow: '0 4px 12px rgba(15,93,84,0.3)',
           letterSpacing: '-0.2px',
         }}>
           Continue →
@@ -165,19 +160,19 @@ export function Signup() {
       {/* Loading */}
       <div className="su-block su-d3" style={{ width: '100%', maxWidth: '420px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
         <div style={{ display: 'flex', gap: '6px', marginBottom: '28px', justifyContent: 'center' }}>
-          <div style={{ width: '28px', height: '5px', borderRadius: '3px', background: '#1A6B6B' }} />
-          <div style={{ width: '28px', height: '5px', borderRadius: '3px', background: '#1A6B6B' }} />
-          <div style={{ width: '28px', height: '5px', borderRadius: '3px', background: '#1A6B6B' }} />
+          <div style={{ width: '28px', height: '5px', borderRadius: '3px', background: '#0F5D54' }} />
+          <div style={{ width: '28px', height: '5px', borderRadius: '3px', background: '#0F5D54' }} />
+          <div style={{ width: '28px', height: '5px', borderRadius: '3px', background: '#0F5D54' }} />
         </div>
 
         <div style={{ position: 'relative', width: '72px', height: '72px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
-          <div style={{ position: 'absolute', inset: 0, borderRadius: '50%', background: '#E8F3F3', animation: 'pulseRing 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite' }} />
-          <div style={{ width: '36px', height: '36px', border: '3px solid #1A6B6B', borderTopColor: 'transparent', borderRadius: '50%', animation: 'spin 0.9s linear infinite', position: 'relative', zIndex: 1 }} />
+          <div style={{ position: 'absolute', inset: 0, borderRadius: '50%', background: '#E3F0EC', animation: 'pulseRing 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite' }} />
+          <div style={{ width: '36px', height: '36px', border: '3px solid #0F5D54', borderTopColor: 'transparent', borderRadius: '50%', animation: 'spin 0.9s linear infinite', position: 'relative', zIndex: 1 }} />
         </div>
-        <div style={{ fontSize: '18px', fontWeight: 700, color: '#1C2B2B', marginBottom: '6px' }}>
+        <div style={{ fontSize: '18px', fontWeight: 700, color: '#16302C', marginBottom: '6px' }}>
           Setting up your workspace…
         </div>
-        <p style={{ fontSize: '14px', color: '#9BA8A8', margin: 0 }}>
+        <p style={{ fontSize: '14px', color: '#92A09B', margin: 0 }}>
           This takes a few seconds.
         </p>
       </div>

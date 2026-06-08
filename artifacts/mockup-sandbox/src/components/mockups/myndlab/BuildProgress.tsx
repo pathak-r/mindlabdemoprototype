@@ -3,8 +3,8 @@ import { Check, Shield } from 'lucide-react';
 import './_group.css';
 
 const StarMotif = () => (
-  <svg width="320" height="320" viewBox="0 0 100 100" fill="#1A6B6B" style={{ opacity: 0.06, position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', pointerEvents: 'none' }}>
-    <polygon points="50,5 57.3,32.4 81.8,18.2 67.6,42.7 95,50 67.6,57.3 81.8,81.8 57.3,67.6 50,95 42.7,67.6 18.2,81.8 32.4,57.3 5,50 32.4,42.7 18.2,18.2 42.7,32.4" />
+  <svg width="320" height="320" viewBox="0 0 100 100" fill="#0F5D54" style={{ opacity: 0.06, position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', pointerEvents: 'none' }}>
+    <polygon points="50,4 61,28 86,18 76,43 96,50 76,57 86,82 61,72 50,96 39,72 14,82 24,57 4,50 24,43 14,18 39,28" />
   </svg>
 );
 
@@ -30,7 +30,7 @@ export function BuildProgress() {
       style={{
         minHeight: '100vh', width: '100%', display: 'flex', flexDirection: 'column',
         alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden',
-        background: 'linear-gradient(135deg, #F5EFE6 0%, #FDFAF6 60%, #F0E8D8 100%)',
+        background: 'linear-gradient(135deg, #F4EDE1 0%, #FBF6EE 60%, #ECE2D2 100%)',
         fontFamily: 'var(--font-main)',
       }}
     >
@@ -53,10 +53,10 @@ export function BuildProgress() {
       <div style={{ position: 'relative', zIndex: 10, width: '100%', maxWidth: '480px', margin: '0 auto', padding: '0 24px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-          <h1 style={{ fontSize: 'clamp(28px, 5vw, 36px)', fontWeight: 700, marginBottom: '8px', letterSpacing: '-0.5px', color: '#1C2B2B' }}>
+          <h1 style={{ fontFamily: 'var(--mn-display)', fontSize: 'clamp(28px, 5vw, 38px)', fontWeight: 600, marginBottom: '8px', letterSpacing: '-0.5px', color: '#16302C' }}>
             Dubai PT Booking App
           </h1>
-          <p style={{ fontSize: '16px', color: '#6B7B7B', margin: 0 }}>
+          <p style={{ fontSize: '16px', color: '#5E6F6A', margin: 0 }}>
             Building your app...
           </p>
         </div>
@@ -65,11 +65,11 @@ export function BuildProgress() {
         <div style={{
           width: '100%', maxWidth: '420px', borderRadius: '20px', padding: '32px',
           marginBottom: '24px', position: 'relative',
-          backgroundColor: '#FFFFFF', border: '1px solid #E8DDD0',
+          backgroundColor: '#FFFFFF', border: '1px solid #E6DBCB',
           boxShadow: '0 2px 12px rgba(28,43,43,0.07)',
         }}>
-          <div style={{ position: 'absolute', left: '47px', top: '48px', bottom: '48px', width: '2px', borderRadius: '999px', backgroundColor: '#E8DDD0' }} />
-          <div style={{ position: 'absolute', left: '47px', top: '48px', height: '40%', width: '2px', borderRadius: '999px', backgroundColor: '#1A6B6B' }} />
+          <div style={{ position: 'absolute', left: '47px', top: '48px', bottom: '48px', width: '2px', borderRadius: '999px', backgroundColor: '#E6DBCB' }} />
+          <div style={{ position: 'absolute', left: '47px', top: '48px', height: '40%', width: '2px', borderRadius: '999px', backgroundColor: '#0F5D54' }} />
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', position: 'relative' }}>
             {/* Done */}
@@ -78,11 +78,11 @@ export function BuildProgress() {
               { label: 'Designing your app structure', done: true },
             ].map((step, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
-                <div style={{ width: '32px', height: '32px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: 10, flexShrink: 0, backgroundColor: '#1A6B6B', color: '#FFFFFF' }}>
+                <div style={{ width: '32px', height: '32px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: 10, flexShrink: 0, backgroundColor: '#0F5D54', color: '#FFFFFF' }}>
                   <Check size={16} strokeWidth={3} />
                 </div>
                 <div style={{ paddingTop: '4px' }}>
-                  <span style={{ fontSize: '16px', fontWeight: 700, color: '#1C2B2B' }}>{step.label}</span>
+                  <span style={{ fontSize: '16px', fontWeight: 700, color: '#16302C' }}>{step.label}</span>
                 </div>
               </div>
             ))}
@@ -90,10 +90,10 @@ export function BuildProgress() {
             {/* Active */}
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
               <div style={{ width: '32px', height: '32px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: 10, flexShrink: 0, backgroundColor: 'transparent' }}>
-                <div className="pulse-dot-teal" style={{ width: '16px', height: '16px', borderRadius: '50%', backgroundColor: '#1A6B6B' }} />
+                <div className="pulse-dot-teal" style={{ width: '16px', height: '16px', borderRadius: '50%', backgroundColor: '#0F5D54' }} />
               </div>
               <div style={{ paddingTop: '4px' }}>
-                <span style={{ fontSize: '16px', fontWeight: 700, color: '#1A6B6B' }}>Setting up your database</span>
+                <span style={{ fontSize: '16px', fontWeight: 700, color: '#0F5D54' }}>Setting up your database</span>
               </div>
             </div>
 
@@ -104,9 +104,9 @@ export function BuildProgress() {
               'Final polish',
             ].map((label, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
-                <div style={{ width: '32px', height: '32px', borderRadius: '50%', position: 'relative', zIndex: 10, flexShrink: 0, backgroundColor: '#E8DDD0' }} />
+                <div style={{ width: '32px', height: '32px', borderRadius: '50%', position: 'relative', zIndex: 10, flexShrink: 0, backgroundColor: '#E6DBCB' }} />
                 <div style={{ paddingTop: '4px' }}>
-                  <span style={{ fontSize: '16px', color: '#9BA8A8' }}>{label}</span>
+                  <span style={{ fontSize: '16px', color: '#92A09B' }}>{label}</span>
                 </div>
               </div>
             ))}
@@ -118,11 +118,11 @@ export function BuildProgress() {
           padding: '16px 24px', borderRadius: '14px', display: 'flex',
           alignItems: 'center', justifyContent: 'center', gap: '12px',
           width: '100%', maxWidth: '420px',
-          backgroundColor: '#FFFFFF', border: '1px solid #E8DDD0',
+          backgroundColor: '#FFFFFF', border: '1px solid #E6DBCB',
           boxShadow: '0 2px 8px rgba(28,43,43,0.05)',
         }}>
-          <Shield size={20} style={{ color: '#1A6B6B', flexShrink: 0 }} />
-          <p key={activeReassurance} className="italic text-sm reassurance-enter" style={{ fontSize: '14px', fontStyle: 'italic', color: '#6B7B7B', margin: 0 }}>
+          <Shield size={20} style={{ color: '#0F5D54', flexShrink: 0 }} />
+          <p key={activeReassurance} className="italic text-sm reassurance-enter" style={{ fontSize: '14px', fontStyle: 'italic', color: '#5E6F6A', margin: 0 }}>
             {reassurances[activeReassurance]}
           </p>
         </div>

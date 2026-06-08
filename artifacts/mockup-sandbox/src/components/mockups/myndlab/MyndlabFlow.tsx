@@ -76,20 +76,20 @@ export function MyndlabFlow() {
   return (
     <div style={{
       display: "flex", flexDirection: "column", height: "100vh",
-      background: "#F5EFE6", fontFamily: "var(--font-main, 'Inter', sans-serif)", overflow: "hidden",
+      background: "#F4EDE1", fontFamily: "var(--font-main, 'Inter', sans-serif)", overflow: "hidden",
     }}>
       {/* Top nav */}
       <div style={{
         display: "flex", alignItems: "center", justifyContent: "space-between",
         padding: "0 16px", height: "56px", flexShrink: 0,
-        background: "#FFFFFF", borderBottom: "1px solid #E8DDD0", gap: "12px",
+        background: "#FFFFFF", borderBottom: "1px solid #E6DBCB", gap: "12px",
         boxShadow: "0 1px 3px rgba(28,43,43,0.05)",
       }}>
         {/* Prev */}
         <button onClick={prev} disabled={current === 0} style={{
           display: "flex", alignItems: "center", gap: "5px",
-          background: "transparent", border: "1px solid #E8DDD0",
-          color: current === 0 ? "#D4C9BC" : "#1C2B2B",
+          background: "transparent", border: "1px solid #E6DBCB",
+          color: current === 0 ? "#D6C8B4" : "#16302C",
           padding: "6px 12px", borderRadius: "7px", fontSize: "13px", fontWeight: 500,
           cursor: current === 0 ? "default" : "pointer", flexShrink: 0, transition: "all 0.15s",
         }}>
@@ -103,16 +103,16 @@ export function MyndlabFlow() {
               <button key={i} onClick={() => go(i)} title={s.label} style={{
                 width: i === current ? "22px" : "7px", height: "7px",
                 borderRadius: "4px",
-                background: i === current ? "#1A6B6B" : i < current ? "#A8D1D1" : "#E8DDD0",
+                background: i === current ? "#0F5D54" : i < current ? "#9DC7BF" : "#E6DBCB",
                 border: "none", cursor: "pointer", padding: 0, transition: "all 0.2s",
               }} />
             ))}
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: "6px", minWidth: 0 }}>
-            <span style={{ color: "#1C2B2B", fontSize: "12px", fontWeight: 600, whiteSpace: "nowrap" }}>
+            <span style={{ color: "#16302C", fontSize: "12px", fontWeight: 600, whiteSpace: "nowrap" }}>
               {current + 1}/{SCREENS.length} — {SCREENS[current].label}
             </span>
-            <span style={{ color: "#9BA8A8", fontSize: "11px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+            <span style={{ color: "#92A09B", fontSize: "11px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
               {SCREENS[current].hint}
             </span>
           </div>
@@ -121,14 +121,14 @@ export function MyndlabFlow() {
         {/* Founder toggle */}
         <div style={{
           display: "flex", alignItems: "center", gap: "1px",
-          background: "#F5EFE6", borderRadius: "8px", padding: "3px",
-          flexShrink: 0, border: "1px solid #E8DDD0",
+          background: "#F4EDE1", borderRadius: "8px", padding: "3px",
+          flexShrink: 0, border: "1px solid #E6DBCB",
         }}>
           <button onClick={() => setIsTechnical(false)} style={{
             display: "flex", alignItems: "center", gap: "5px",
             padding: "5px 10px", borderRadius: "6px", border: "none",
             background: !isTechnical ? "#FFFFFF" : "transparent",
-            color: !isTechnical ? "#1A6B6B" : "#6B7B7B",
+            color: !isTechnical ? "#0F5D54" : "#5E6F6A",
             fontSize: "11px", fontWeight: 700, cursor: "pointer",
             boxShadow: !isTechnical ? "0 1px 3px rgba(28,43,43,0.08)" : "none",
             transition: "all 0.15s",
@@ -139,7 +139,7 @@ export function MyndlabFlow() {
             display: "flex", alignItems: "center", gap: "5px",
             padding: "5px 10px", borderRadius: "6px", border: "none",
             background: isTechnical ? "#FFFFFF" : "transparent",
-            color: isTechnical ? "#1A6B6B" : "#6B7B7B",
+            color: isTechnical ? "#0F5D54" : "#5E6F6A",
             fontSize: "11px", fontWeight: 700, cursor: "pointer",
             boxShadow: isTechnical ? "0 1px 3px rgba(28,43,43,0.08)" : "none",
             transition: "all 0.15s",
@@ -151,13 +151,13 @@ export function MyndlabFlow() {
         {/* Next */}
         <button onClick={next} disabled={isLast} style={{
           display: "flex", alignItems: "center", gap: "5px",
-          background: isLast ? "transparent" : "#C8963E",
-          border: isLast ? "1px solid #E8DDD0" : "none",
-          color: isLast ? "#D4C9BC" : "#FFFFFF",
+          background: isLast ? "transparent" : "#0F5D54",
+          border: isLast ? "1px solid #E6DBCB" : "none",
+          color: isLast ? "#D6C8B4" : "#FFFFFF",
           padding: "6px 12px", borderRadius: "7px", fontSize: "13px", fontWeight: 600,
           cursor: isLast ? "default" : "pointer",
           flexShrink: 0, transition: "all 0.15s",
-          boxShadow: isLast ? "none" : "0 2px 6px rgba(200,150,62,0.3)",
+          boxShadow: isLast ? "none" : "0 2px 6px rgba(15,93,84,0.28)",
         }}>
           Next →
         </button>

@@ -1,44 +1,111 @@
-/* Inter is pre-loaded globally via index.html — no @import needed here */
+/* ──────────────────────────────────────────────────────────────────────────
+   MyndLab design system — "Heritage Modern"
+   Fonts are pre-loaded globally via index.html (no @import here).
+
+   Type roles:
+     --mn-display  Source Serif 4   → headlines (calligraphic thick/thin contrast)
+     --mn-sans     IBM Plex Sans    → body + UI (humanist, dev-credible)
+     --mn-mono     IBM Plex Mono    → eyebrows, labels, metadata, technical mode
+     --mn-arabic   IBM Plex Sans Arabic → RTL / bilingual labels
+
+   Palette: warm paper canvas, deep pine-teal as the single signature accent,
+   brass used as INK (rules, marks, small emphasis) — never as a rainbow gradient.
+   ────────────────────────────────────────────────────────────────────────── */
 
 :root {
-  --mn-bg: #F5EFE6;
-  --mn-bg-alt: #FDFAF6;
-  --mn-surface: #FFFFFF;
-  --mn-surface-2: #F5EFE6;
-  --mn-surface-3: #F0E8D8;
-  --mn-text: #1C2B2B;
-  --mn-text-muted: #6B7B7B;
-  --mn-text-dim: #9BA8A8;
-  --mn-teal: #1A6B6B;
-  --mn-teal-hover: #155858;
-  --mn-teal-light: #E8F3F3;
-  --mn-teal-mid: #A8D1D1;
-  --mn-gold: #C8963E;
-  --mn-gold-hover: #B07D2E;
-  --mn-gold-light: #FDF3E3;
-  --mn-green: #10B981;
-  --mn-green-light: #ECFDF5;
-  --mn-border: #E8DDD0;
-  --mn-border-strong: #D4C9BC;
-  --mn-shadow-sm: 0 1px 3px rgba(28,43,43,0.06), 0 1px 2px rgba(28,43,43,0.04);
-  --mn-shadow-md: 0 2px 12px rgba(28,43,43,0.07);
-  --mn-shadow-lg: 0 8px 32px rgba(28,43,43,0.1), 0 2px 8px rgba(28,43,43,0.05);
-  --mn-teal-glow: 0 0 0 3px rgba(26,107,107,0.15);
-  --font-main: 'Inter', sans-serif;
+  /* ---- Canvas & surfaces ---- */
+  --mn-bg:           #F4EDE1;   /* warm paper */
+  --mn-bg-alt:       #FBF6EE;   /* lighter paper */
+  --mn-surface:      #FFFFFF;
+  --mn-surface-2:    #F4EDE1;
+  --mn-surface-3:    #ECE2D2;
+
+  /* ---- Ink (text) ---- */
+  --mn-text:         #16302C;   /* deep pine-ink */
+  --mn-text-muted:   #5E6F6A;
+  --mn-text-dim:     #92A09B;
+
+  /* ---- Signature teal ---- */
+  --mn-teal:         #0F5D54;
+  --mn-teal-hover:   #0A4A43;
+  --mn-teal-deep:    #0A3D38;
+  --mn-teal-light:   #E3F0EC;
+  --mn-teal-mid:     #9DC7BF;
+
+  /* ---- Brass (gold-as-ink) ---- */
+  --mn-gold:         #B07A2B;
+  --mn-gold-hover:   #946420;
+  --mn-gold-light:   #F4E8D2;
+  --mn-brass:        #B07A2B;
+
+  /* ---- Status ---- */
+  --mn-green:        #0F9D6E;
+  --mn-green-light:  #E6F6EF;
+
+  /* ---- Lines ---- */
+  --mn-border:        #E6DBCB;
+  --mn-border-strong: #D6C8B4;
+
+  /* ---- Elevation ---- */
+  --mn-shadow-sm: 0 1px 2px rgba(22,48,44,0.05);
+  --mn-shadow-md: 0 4px 18px rgba(22,48,44,0.07);
+  --mn-shadow-lg: 0 18px 48px rgba(22,48,44,0.12), 0 4px 12px rgba(22,48,44,0.06);
+  --mn-teal-glow: 0 0 0 3px rgba(15,93,84,0.16);
+
+  /* ---- Type ---- */
+  --mn-display: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --mn-sans:    'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --mn-mono:    'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace;
+  --mn-arabic:  'IBM Plex Sans Arabic', 'IBM Plex Sans', sans-serif;
+
+  /* back-compat: existing screens reference --font-main */
+  --font-main:  'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+
+  /* ---- Girih geometry: an 8-point star tessellation, teal at low opacity.
+          Use as `background-image: var(--mn-girih)`. ---- */
+  --mn-girih: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%230F5D54' stroke-width='1' stroke-opacity='0.10'%3E%3Cpath d='M60 14 L70 36 L94 38 L78 56 L84 80 L60 70 L36 80 L42 56 L26 38 L50 36 Z'/%3E%3Cpath d='M0 60 L10 50 L0 40 M120 60 L110 50 L120 40 M60 0 L50 10 L40 0 M60 120 L50 110 L40 120'/%3E%3C/g%3E%3C/svg%3E");
 }
 
-/* Apply Inter to every element in any component that imports this file */
+/* Default everything in MyndLab screens to the sans face + border-box. */
 *,
 *::before,
 *::after {
-  font-family: 'Inter', sans-serif;
+  font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
   box-sizing: border-box;
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
   padding: 0;
+}
+
+/* ---- Reusable signature helpers (opt-in classes) ---- */
+
+/* Mono eyebrow / kicker label */
+.mn-kicker {
+  font-family: var(--mn-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--mn-teal);
+}
+
+/* Serif display headline */
+.mn-display {
+  font-family: var(--mn-display);
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  color: var(--mn-text);
+}
+
+/* A thin brass rule used to underline / mark headings */
+.mn-rule {
+  height: 2px;
+  width: 44px;
+  background: var(--mn-brass);
+  border-radius: 2px;
 }
