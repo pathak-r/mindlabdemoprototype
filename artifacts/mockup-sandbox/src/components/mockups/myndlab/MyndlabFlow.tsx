@@ -8,6 +8,7 @@ import { BuildProgress } from "./BuildProgress";
 import { BuildComplete } from "./BuildComplete";
 import { ShareApp } from "./ShareApp";
 import { PromptExperience } from "./PromptExperience";
+import { StrategyRail, NotesReopen, FRAMES } from "./_shared/StrategyRail";
 import { Code2, Rocket } from "lucide-react";
 
 const SCREENS = [
@@ -47,6 +48,10 @@ export function MyndlabFlow() {
   const [isTechnical, setIsTechnical] = useState(false);
   const [onboardingAnswers, setOnboardingAnswers] = useState<OnboardingAnswers | null>(null);
   const [animDir, setAnimDir] = useState<"left" | "right" | null>(null);
+  const [notesOpen, setNotesOpen] = useState(true);
+  // Frame index into FRAMES (10 notes). Screen i ↔ frame with screen === i.
+  const frameForScreen = (s: number) => FRAMES.findIndex(f => f.screen === s);
+  const [frameIdx, setFrameIdx] = useState(() => frameForScreen(0));
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const go = (index: number) => {
@@ -57,6 +62,21 @@ export function MyndlabFlow() {
       setAnimDir(null);
       if (scrollRef.current) scrollRef.current.scrollTop = 0;
     }, 180);
+  };
+
+  // Prototype screen changes → sync the rail to the matching frame.
+  useEffect(() => {
+    const fi = frameForScreen(current);
+    if (fi !== -1) setFrameIdx(fi);
+  }, [current]);
+
+  // Rail nav. If the target frame is bound to a screen, move the prototype too;
+  // bookend frames (screen === null) just change the note.
+  const railTo = (fi: number) => {
+    if (fi < 0 || fi >= FRAMES.length) return;
+    setFrameIdx(fi);
+    const s = FRAMES[fi].screen;
+    if (s !== null && s !== current) go(s);
   };
 
   const handleOnboardingComplete = (answers: OnboardingAnswers) => {
@@ -163,14 +183,27 @@ export function MyndlabFlow() {
         </button>
       </div>
 
-      {/* Screen */}
-      <div ref={scrollRef} style={{
-        flex: 1, overflow: "auto",
-        opacity: animDir ? 0 : 1,
-        transform: animDir === "left" ? "translateX(-18px)" : animDir === "right" ? "translateX(18px)" : "translateX(0)",
-        transition: "opacity 0.18s ease, transform 0.18s ease",
-      }}>
-        {renderScreen(SCREENS[current].component, isTechnical, onboardingAnswers, handleOnboardingComplete)}
+      {/* Body: prototype screen + strategy rail */}
+      <div style={{ flex: 1, display: "flex", minHeight: 0, position: "relative" }}>
+        <div ref={scrollRef} style={{
+          flex: 1, overflow: "auto", minWidth: 0,
+          opacity: animDir ? 0 : 1,
+          transform: animDir === "left" ? "translateX(-18px)" : animDir === "right" ? "translateX(18px)" : "translateX(0)",
+          transition: "opacity 0.18s ease, transform 0.18s ease",
+        }}>
+          {renderScreen(SCREENS[current].component, isTechnical, onboardingAnswers, handleOnboardingComplete)}
+        </div>
+
+        {notesOpen ? (
+          <StrategyRail
+            frameIdx={frameIdx}
+            onPrev={() => railTo(frameIdx - 1)}
+            onNext={() => railTo(frameIdx + 1)}
+            onClose={() => setNotesOpen(false)}
+          />
+        ) : (
+          <NotesReopen onOpen={() => setNotesOpen(true)} />
+        )}
       </div>
     </div>
   );
