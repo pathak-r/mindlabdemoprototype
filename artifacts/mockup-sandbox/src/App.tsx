@@ -1,6 +1,7 @@
 import { useEffect, useState, type ComponentType } from "react";
 
 import { modules as discoveredModules } from "./.generated/mockup-components";
+import { MyndlabFlow } from "./components/mockups/myndlab/MyndlabFlow";
 
 type ModuleMap = Record<string, () => Promise<Record<string, unknown>>>;
 
@@ -128,8 +129,6 @@ function getPreviewPath(): string | null {
   return match ? match[1] : null;
 }
 
-const PRODUCTION_FLOW = "myndlab/MyndlabFlow";
-
 function App() {
   const previewPath = getPreviewPath();
 
@@ -143,12 +142,7 @@ function App() {
   }
 
   if (import.meta.env.PROD) {
-    return (
-      <PreviewRenderer
-        componentPath={PRODUCTION_FLOW}
-        modules={discoveredModules}
-      />
-    );
+    return <MyndlabFlow />;
   }
 
   return <Gallery />;
