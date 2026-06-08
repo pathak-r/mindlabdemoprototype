@@ -2,6 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Check, Shield } from 'lucide-react';
 import './_group.css';
 
+const StarMotif = () => (
+  <svg width="320" height="320" viewBox="0 0 100 100" fill="#1A6B6B" style={{ opacity: 0.06, position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', pointerEvents: 'none' }}>
+    <polygon points="50,5 57.3,32.4 81.8,18.2 67.6,42.7 95,50 67.6,57.3 81.8,81.8 57.3,67.6 50,95 42.7,67.6 18.2,81.8 32.4,57.3 5,50 32.4,42.7 18.2,18.2 42.7,32.4" />
+  </svg>
+);
+
 export function BuildProgress() {
   const [activeReassurance, setActiveReassurance] = useState(0);
 
@@ -20,197 +26,103 @@ export function BuildProgress() {
   }, [reassurances.length]);
 
   return (
-    <div 
-      className="min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden"
-      style={{ 
-        backgroundColor: '#FAFBFF',
-        fontFamily: 'var(--font-main, sans-serif)'
+    <div
+      style={{
+        minHeight: '100vh', width: '100%', display: 'flex', flexDirection: 'column',
+        alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden',
+        background: 'linear-gradient(135deg, #F5EFE6 0%, #FDFAF6 60%, #F0E8D8 100%)',
+        fontFamily: 'var(--font-main)',
       }}
     >
       <style dangerouslySetInnerHTML={{__html: `
-        @keyframes pulse-blue {
-          0% { box-shadow: 0 0 0 0 rgba(0, 102, 255, 0.4); transform: scale(1); }
-          70% { box-shadow: 0 0 0 10px rgba(0, 102, 255, 0); transform: scale(1.1); }
-          100% { box-shadow: 0 0 0 0 rgba(0, 102, 255, 0); transform: scale(1); }
+        @keyframes pulse-teal {
+          0% { box-shadow: 0 0 0 0 rgba(26, 107, 107, 0.4); transform: scale(1); }
+          70% { box-shadow: 0 0 0 10px rgba(26, 107, 107, 0); transform: scale(1.1); }
+          100% { box-shadow: 0 0 0 0 rgba(26, 107, 107, 0); transform: scale(1); }
         }
-        .pulse-dot-blue {
-          animation: pulse-blue 2s infinite cubic-bezier(0.66, 0, 0, 1);
-        }
-        .reassurance-enter {
-          animation: fade-in-up 0.5s ease-out forwards;
-        }
+        .pulse-dot-teal { animation: pulse-teal 2s infinite cubic-bezier(0.66, 0, 0, 1); }
         @keyframes fade-in-up {
           from { opacity: 0; transform: translateY(10px); }
           to { opacity: 1; transform: translateY(0); }
         }
+        .reassurance-enter { animation: fade-in-up 0.5s ease-out forwards; }
       `}} />
 
-      {/* Background Decoration */}
-      <div 
-        className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full blur-[100px] pointer-events-none opacity-40"
-        style={{ background: '#0066FF' }}
-      />
-      <div 
-        className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full blur-[100px] pointer-events-none opacity-30"
-        style={{ background: '#FF9F0A' }}
-      />
+      <StarMotif />
 
-      <div className="relative z-10 w-full max-w-md mx-auto px-6 flex flex-col items-center">
+      <div style={{ position: 'relative', zIndex: 10, width: '100%', maxWidth: '480px', margin: '0 auto', padding: '0 24px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         {/* Header */}
-        <div className="text-center mb-10">
-          <h1 
-            className="text-3xl md:text-4xl font-bold mb-2 tracking-tight"
-            style={{ color: '#0F172A' }}
-          >
+        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+          <h1 style={{ fontSize: 'clamp(28px, 5vw, 36px)', fontWeight: 700, marginBottom: '8px', letterSpacing: '-0.5px', color: '#1C2B2B' }}>
             Dubai PT Booking App
           </h1>
-          <p 
-            className="text-base"
-            style={{ color: '#64748B' }}
-          >
+          <p style={{ fontSize: '16px', color: '#6B7B7B', margin: 0 }}>
             Building your app...
           </p>
         </div>
 
         {/* Timeline Card */}
-        <div 
-          className="w-full max-w-[420px] rounded-2xl p-8 mb-8 relative"
-          style={{ 
-            backgroundColor: '#FFFFFF',
-            border: '1px solid #E2E8F0',
-            boxShadow: '0 4px 16px rgba(0,0,0,0.08)'
-          }}
-        >
-          <div 
-            className="absolute left-[47px] top-[48px] bottom-[48px] w-[2px] rounded-full"
-            style={{ backgroundColor: '#E2E8F0' }}
-          ></div>
-          
-          <div 
-            className="absolute left-[47px] top-[48px] h-[40%] w-[2px] rounded-full"
-            style={{ backgroundColor: '#0066FF' }}
-          ></div>
+        <div style={{
+          width: '100%', maxWidth: '420px', borderRadius: '20px', padding: '32px',
+          marginBottom: '24px', position: 'relative',
+          backgroundColor: '#FFFFFF', border: '1px solid #E8DDD0',
+          boxShadow: '0 2px 12px rgba(28,43,43,0.07)',
+        }}>
+          <div style={{ position: 'absolute', left: '47px', top: '48px', bottom: '48px', width: '2px', borderRadius: '999px', backgroundColor: '#E8DDD0' }} />
+          <div style={{ position: 'absolute', left: '47px', top: '48px', height: '40%', width: '2px', borderRadius: '999px', backgroundColor: '#1A6B6B' }} />
 
-          <div className="space-y-8 relative">
-            {/* Step 1: Completed */}
-            <div className="flex items-start gap-4">
-              <div 
-                className="w-8 h-8 rounded-full flex items-center justify-center relative z-10 flex-shrink-0"
-                style={{ backgroundColor: '#0066FF', color: '#FFFFFF' }}
-              >
-                <Check size={16} strokeWidth={3} />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', position: 'relative' }}>
+            {/* Done */}
+            {[
+              { label: 'Understanding your idea', done: true },
+              { label: 'Designing your app structure', done: true },
+            ].map((step, i) => (
+              <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
+                <div style={{ width: '32px', height: '32px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: 10, flexShrink: 0, backgroundColor: '#1A6B6B', color: '#FFFFFF' }}>
+                  <Check size={16} strokeWidth={3} />
+                </div>
+                <div style={{ paddingTop: '4px' }}>
+                  <span style={{ fontSize: '16px', fontWeight: 700, color: '#1C2B2B' }}>{step.label}</span>
+                </div>
               </div>
-              <div className="pt-1">
-                <span 
-                  className="text-base font-bold"
-                  style={{ color: '#0F172A' }}
-                >
-                  Understanding your idea
-                </span>
+            ))}
+
+            {/* Active */}
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
+              <div style={{ width: '32px', height: '32px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: 10, flexShrink: 0, backgroundColor: 'transparent' }}>
+                <div className="pulse-dot-teal" style={{ width: '16px', height: '16px', borderRadius: '50%', backgroundColor: '#1A6B6B' }} />
+              </div>
+              <div style={{ paddingTop: '4px' }}>
+                <span style={{ fontSize: '16px', fontWeight: 700, color: '#1A6B6B' }}>Setting up your database</span>
               </div>
             </div>
 
-            {/* Step 2: Completed */}
-            <div className="flex items-start gap-4">
-              <div 
-                className="w-8 h-8 rounded-full flex items-center justify-center relative z-10 flex-shrink-0"
-                style={{ backgroundColor: '#0066FF', color: '#FFFFFF' }}
-              >
-                <Check size={16} strokeWidth={3} />
+            {/* Pending */}
+            {[
+              'Building your Arabic checkout',
+              'Running security checks',
+              'Final polish',
+            ].map((label, i) => (
+              <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
+                <div style={{ width: '32px', height: '32px', borderRadius: '50%', position: 'relative', zIndex: 10, flexShrink: 0, backgroundColor: '#E8DDD0' }} />
+                <div style={{ paddingTop: '4px' }}>
+                  <span style={{ fontSize: '16px', color: '#9BA8A8' }}>{label}</span>
+                </div>
               </div>
-              <div className="pt-1">
-                <span 
-                  className="text-base font-bold"
-                  style={{ color: '#0F172A' }}
-                >
-                  Designing your app structure
-                </span>
-              </div>
-            </div>
-
-            {/* Step 3: Active */}
-            <div className="flex items-start gap-4">
-              <div className="w-8 h-8 rounded-full flex items-center justify-center relative z-10 flex-shrink-0">
-                <div 
-                  className="w-4 h-4 rounded-full pulse-dot-blue"
-                  style={{ backgroundColor: '#0066FF' }}
-                ></div>
-              </div>
-              <div className="pt-1">
-                <span 
-                  className="text-base font-bold"
-                  style={{ color: '#0066FF' }}
-                >
-                  Setting up your database
-                </span>
-              </div>
-            </div>
-
-            {/* Step 4: Pending */}
-            <div className="flex items-start gap-4">
-              <div 
-                className="w-8 h-8 rounded-full flex items-center justify-center relative z-10 flex-shrink-0"
-                style={{ backgroundColor: '#E2E8F0' }}
-              ></div>
-              <div className="pt-1">
-                <span 
-                  className="text-base"
-                  style={{ color: '#94A3B8' }}
-                >
-                  Building your Arabic checkout
-                </span>
-              </div>
-            </div>
-
-            {/* Step 5: Pending */}
-            <div className="flex items-start gap-4">
-              <div 
-                className="w-8 h-8 rounded-full flex items-center justify-center relative z-10 flex-shrink-0"
-                style={{ backgroundColor: '#E2E8F0' }}
-              ></div>
-              <div className="pt-1">
-                <span 
-                  className="text-base"
-                  style={{ color: '#94A3B8' }}
-                >
-                  Running security checks
-                </span>
-              </div>
-            </div>
-
-            {/* Step 6: Pending */}
-            <div className="flex items-start gap-4">
-              <div 
-                className="w-8 h-8 rounded-full flex items-center justify-center relative z-10 flex-shrink-0"
-                style={{ backgroundColor: '#E2E8F0' }}
-              ></div>
-              <div className="pt-1">
-                <span 
-                  className="text-base"
-                  style={{ color: '#94A3B8' }}
-                >
-                  Final polish
-                </span>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 
-        {/* Reassurance Message */}
-        <div 
-          className="px-6 py-4 rounded-xl flex items-center justify-center gap-3 w-full max-w-[420px]"
-          style={{ 
-            backgroundColor: '#FFFFFF',
-            border: '1px solid #E2E8F0',
-            boxShadow: '0 4px 16px rgba(0,0,0,0.04)'
-          }}
-        >
-          <Shield size={20} style={{ color: '#0066FF' }} className="flex-shrink-0" />
-          <p 
-            key={activeReassurance}
-            className="italic text-sm reassurance-enter m-0"
-            style={{ color: '#64748B' }}
-          >
+        {/* Reassurance */}
+        <div style={{
+          padding: '16px 24px', borderRadius: '14px', display: 'flex',
+          alignItems: 'center', justifyContent: 'center', gap: '12px',
+          width: '100%', maxWidth: '420px',
+          backgroundColor: '#FFFFFF', border: '1px solid #E8DDD0',
+          boxShadow: '0 2px 8px rgba(28,43,43,0.05)',
+        }}>
+          <Shield size={20} style={{ color: '#1A6B6B', flexShrink: 0 }} />
+          <p key={activeReassurance} className="italic text-sm reassurance-enter" style={{ fontSize: '14px', fontStyle: 'italic', color: '#6B7B7B', margin: 0 }}>
             {reassurances[activeReassurance]}
           </p>
         </div>

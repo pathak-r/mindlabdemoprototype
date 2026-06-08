@@ -1,0 +1,37 @@
+I want you to redesign it visually using a new design system. Do not change any functionality, copy, layout structure, or screen flow. Only change the visual design — colors, typography, backgrounds, and decorative elements.
+Apply this design system to every screen:
+Colors
+
+Page backgrounds: #F5EFE6 (warm sand) or #FDFAF6 (light cream). Never use cold white or #F8F9FA or any grey-white.
+Primary / interactive elements: #1A6B6B (deep teal)
+CTA buttons and progress indicators: #C8963E (warm gold)
+Text primary: #1C2B2B (dark teal-black)
+Text secondary: #6B7B7B
+Card backgrounds: #FFFFFF with a very subtle warm shadow — box-shadow: 0 2px 12px rgba(28, 43, 43, 0.07)
+Borders: #E8DDD0 (warm sand border, never cool grey)
+Never use blue. Not for buttons, links, highlights, progress dots, or any interactive state. Replace every instance with teal or gold depending on context.
+
+Typography
+
+Import Inter from Google Fonts. Use Inter for everything.
+Never use system-ui, -apple-system, or any fallback sans-serif as the primary font.
+Arabic text where it appears should use the same Inter or Noto Sans Arabic — same weight and visual rhythm as the English. It should look native, not like an afterthought.
+Font weights: 700 for headlines, 500 for labels and buttons, 400 for body.
+
+Decorative elements
+
+Add one subtle geometric SVG motif — an 8-point star or interlocking geometric pattern drawn from Islamic tile design — used only in these two ways: as a very light watermark in empty states, or as a thin decorative divider between sections. Opacity 0.06 maximum. Never as a background pattern or wallpaper.
+The motif should be teal #1A6B6B at 6% opacity.
+
+Specific replacements
+
+Every blue button → gold #C8963E background, white text
+Every blue progress indicator or stepper dot → teal #1A6B6B
+Every blue link or highlight → teal #1A6B6B
+The green WhatsApp button → keep green, this is a brand colour
+Cold white backgrounds → warm sand #F5EFE6
+Cool grey borders → warm sand border #E8DDD0
+The gradient background on the build progress screen (blue-to-peach) → replace with a warm sand-to-cream gradient: linear-gradient(135deg, #F5EFE6 0%, #FDFAF6 60%, #F0E8D8 100%)
+
+The overall feel
+Every screen should feel like it was designed in Abu Dhabi and happens to work in English. Warm, considered, premium but not cold. Not generic SaaS. Not Silicon Valley blue.
