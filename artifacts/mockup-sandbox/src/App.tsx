@@ -128,6 +128,8 @@ function getPreviewPath(): string | null {
   return match ? match[1] : null;
 }
 
+const PRODUCTION_FLOW = "myndlab/MyndlabFlow";
+
 function App() {
   const previewPath = getPreviewPath();
 
@@ -135,6 +137,15 @@ function App() {
     return (
       <PreviewRenderer
         componentPath={previewPath}
+        modules={discoveredModules}
+      />
+    );
+  }
+
+  if (import.meta.env.PROD) {
+    return (
+      <PreviewRenderer
+        componentPath={PRODUCTION_FLOW}
         modules={discoveredModules}
       />
     );
