@@ -1,10 +1,36 @@
 import React, { useState, useEffect } from "react";
 import "../_group.css";
 import { StarMark } from "./TopNav";
-import { DOC, DOC_TITLE, type Block } from "./strategyDocData";
+import { DOC, DOC_TITLE, type Block, type Rich, type Run } from "./strategyDocData";
 import { X, Download, ChevronLeft, ChevronRight } from "lucide-react";
 
 const PDF_HREF = `${import.meta.env.BASE_URL}myndlab-strategy.pdf`;
+
+const EM_COLOR: Record<string, string> = {
+  key: "#0F5D54", // brand deep teal — the document's navy "key statement" tier
+  crit: "#B23A2E", // brand-mapped red — the document's "critical / most important" tier
+  muted: "var(--mn-text-dim)",
+};
+
+function runStyle(r: Run): React.CSSProperties {
+  const s: React.CSSProperties = {};
+  if (r.b) s.fontWeight = 600;
+  if (r.i) s.fontStyle = "italic";
+  if (r.em) s.color = EM_COLOR[r.em];
+  if (r.em === "muted") s.fontSize = "0.86em";
+  return s;
+}
+
+function RichText({ value }: { value: Rich }) {
+  if (typeof value === "string") return <>{value}</>;
+  return (
+    <>
+      {value.map((r, i) => (
+        <span key={i} style={runStyle(r)}>{r.text}</span>
+      ))}
+    </>
+  );
+}
 
 function BlockView({ b }: { b: Block }) {
   switch (b.t) {
@@ -15,29 +41,19 @@ function BlockView({ b }: { b: Block }) {
         </h3>
       );
     case "p":
-      return <p style={{ fontSize: "15.5px", lineHeight: 1.7, color: "#33433F", margin: "0 0 14px" }}>{b.text}</p>;
+      return <p style={{ fontSize: "15.5px", lineHeight: 1.7, color: "#33433F", margin: "0 0 14px" }}><RichText value={b.runs} /></p>;
+    case "note":
+      return <p style={{ fontSize: "13px", lineHeight: 1.6, color: "var(--mn-text-muted)", fontStyle: "italic", margin: "0 0 14px" }}><RichText value={b.runs} /></p>;
     case "ul":
       return (
         <ul style={{ listStyle: "none", padding: 0, margin: "0 0 16px", display: "flex", flexDirection: "column", gap: "10px" }}>
           {b.items.map((it, i) => (
             <li key={i} style={{ display: "flex", gap: "11px", fontSize: "15.5px", lineHeight: 1.6, color: "#33433F" }}>
               <span style={{ color: "var(--mn-brass)", flexShrink: 0, fontWeight: 700 }}>—</span>
-              <span>{it}</span>
+              <span><RichText value={it} /></span>
             </li>
           ))}
         </ul>
-      );
-    case "callout":
-      return (
-        <div style={{ background: "var(--mn-gold-light)", borderLeft: "3px solid var(--mn-brass)", borderRadius: "0 10px 10px 0", padding: "13px 16px", margin: "0 0 16px", fontSize: "14.5px", lineHeight: 1.6, color: "var(--mn-text)", fontStyle: "italic" }}>
-          {b.text}
-        </div>
-      );
-    case "quote":
-      return (
-        <div style={{ background: "var(--mn-teal-light)", borderLeft: "3px solid var(--mn-teal)", borderRadius: "0 10px 10px 0", padding: "15px 18px", margin: "6px 0 18px", fontSize: "16px", lineHeight: 1.55, color: "var(--mn-text)", fontWeight: 600 }}>
-          {b.text}
-        </div>
       );
     case "table":
       return (
@@ -65,9 +81,10 @@ function BlockView({ b }: { b: Block }) {
                       borderBottom: ri < b.rows.length - 1 ? "1px solid var(--mn-border)" : "none",
                       borderLeft: ci > 0 ? "1px solid var(--mn-border)" : "none",
                       verticalAlign: "top",
+                      whiteSpace: "pre-line",
                       minWidth: ci === 0 ? "120px" : undefined,
                     }}>
-                      {cell}
+                      <RichText value={cell} />
                     </td>
                   ))}
                 </tr>
@@ -98,6 +115,8 @@ export function StrategyDoc({ onClose }: { onClose: () => void }) {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [onClose]);
+
+  const kicker = page === 0 ? "MYNDLAB.AI" : `${p.part ? p.part + " · " : ""}${p.tag}`;
 
   return (
     <div
@@ -170,7 +189,7 @@ export function StrategyDoc({ onClose }: { onClose: () => void }) {
         <div key={page} style={{ flex: 1, overflowY: "auto", padding: "32px 40px 40px", animation: "mn-doc-page .28s ease" }}>
           <div style={{ maxWidth: "680px", margin: "0 auto" }}>
             <div style={{ fontFamily: "var(--mn-mono)", fontSize: "11px", letterSpacing: "1.6px", color: "var(--mn-text-dim)", marginBottom: "12px" }}>
-              {p.part === "00" ? "" : `PART ${p.part} · `}{p.tag}
+              {kicker}
             </div>
             <h2 style={{ fontFamily: "var(--mn-display)", fontSize: "30px", fontWeight: 600, letterSpacing: "-0.7px", lineHeight: 1.15, color: "var(--mn-text)", margin: "0 0 8px" }}>
               {p.title}
