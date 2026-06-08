@@ -92,26 +92,48 @@ export function MyndlabFlow() {
   }, [current]);
 
   const isLast = current === SCREENS.length - 1;
+  // The toggle only rebuilds the screen on Prompt Home (idx 3) and App Ready (idx 5).
+  const toggleHot = current === 3 || current === 5;
+
+  // Keyboard navigation — makes the "← →" hint literally true.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      const el = document.activeElement as HTMLElement | null;
+      if (el && (el.tagName === "INPUT" || el.tagName === "TEXTAREA" || el.isContentEditable)) return;
+      if (e.key === "ArrowRight") next();
+      else if (e.key === "ArrowLeft") prev();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  });
 
   return (
     <div style={{
       display: "flex", flexDirection: "column", height: "100vh",
       background: "#F4EDE1", fontFamily: "var(--font-main, 'Inter', sans-serif)", overflow: "hidden",
     }}>
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes mn-pulse-next { 0%,100% { box-shadow: 0 2px 6px rgba(15,93,84,.28); } 50% { box-shadow: 0 2px 6px rgba(15,93,84,.28), 0 0 0 7px rgba(15,93,84,.12); } }
+        @keyframes mn-pulse-back { 0%,100% { box-shadow: 0 0 0 0 rgba(22,48,44,0); } 50% { box-shadow: 0 0 0 5px rgba(22,48,44,.07); } }
+        @keyframes mn-pulse-soft { 0%,100% { box-shadow: 0 0 0 0 rgba(15,93,84,0); } 50% { box-shadow: 0 0 0 4px rgba(15,93,84,.08); } }
+        @keyframes mn-pulse-hot { 0%,100% { box-shadow: 0 0 0 0 rgba(176,122,43,0); border-color: var(--mn-brass); } 50% { box-shadow: 0 0 0 6px rgba(176,122,43,.22); border-color: var(--mn-brass); } }
+        @keyframes mn-coach-in { from { opacity:0; transform: translateY(-4px);} to { opacity:1; transform:none;} }
+      `}} />
       {/* Top nav */}
       <div style={{
         display: "flex", alignItems: "center", justifyContent: "space-between",
-        padding: "0 16px", height: "56px", flexShrink: 0,
+        padding: "0 16px", height: "64px", flexShrink: 0,
         background: "#FFFFFF", borderBottom: "1px solid #E6DBCB", gap: "12px",
         boxShadow: "0 1px 3px rgba(28,43,43,0.05)",
       }}>
         {/* Prev */}
         <button onClick={prev} disabled={current === 0} style={{
           display: "flex", alignItems: "center", gap: "5px",
-          background: "transparent", border: "1px solid #E6DBCB",
+          background: current === 0 ? "transparent" : "#FFFFFF", border: "1px solid #E6DBCB",
           color: current === 0 ? "#D6C8B4" : "#16302C",
           padding: "6px 12px", borderRadius: "7px", fontSize: "13px", fontWeight: 500,
           cursor: current === 0 ? "default" : "pointer", flexShrink: 0, transition: "all 0.15s",
+          animation: current === 0 ? "none" : "mn-pulse-back 2.4s ease-in-out infinite",
         }}>
           ← Back
         </button>
@@ -136,13 +158,20 @@ export function MyndlabFlow() {
               {SCREENS[current].hint}
             </span>
           </div>
+          <div style={{
+            fontFamily: "var(--mn-mono)", fontSize: "10px", letterSpacing: "0.4px",
+            color: "#92A09B", whiteSpace: "nowrap",
+          }}>
+            <span style={{ color: "#0F5D54", fontWeight: 600 }}>Back</span> / <span style={{ color: "#0F5D54", fontWeight: 600 }}>Next</span> · or press <span style={{ color: "#16302C", fontWeight: 600 }}>←</span> <span style={{ color: "#16302C", fontWeight: 600 }}>→</span> to move
+          </div>
         </div>
 
         {/* Founder toggle */}
         <div style={{
           display: "flex", alignItems: "center", gap: "1px",
           background: "#F4EDE1", borderRadius: "8px", padding: "3px",
-          flexShrink: 0, border: "1px solid #E6DBCB",
+          flexShrink: 0, border: "1px solid #E6DBCB", position: "relative",
+          animation: toggleHot ? "mn-pulse-hot 1.6s ease-in-out infinite" : "mn-pulse-soft 2.8s ease-in-out infinite",
         }}>
           <button onClick={() => setIsTechnical(false)} style={{
             display: "flex", alignItems: "center", gap: "5px",
@@ -178,10 +207,33 @@ export function MyndlabFlow() {
           cursor: isLast ? "default" : "pointer",
           flexShrink: 0, transition: "all 0.15s",
           boxShadow: isLast ? "none" : "0 2px 6px rgba(15,93,84,0.28)",
+          animation: isLast ? "none" : "mn-pulse-next 2.2s ease-in-out infinite",
         }}>
           Next →
         </button>
       </div>
+
+      {/* Toggle coachmark banner — only on the screens the toggle actually rebuilds */}
+      {toggleHot && (
+        <div style={{
+          flexShrink: 0,
+          display: "flex", alignItems: "center", justifyContent: "center", gap: "10px",
+          padding: "9px 16px",
+          background: "var(--mn-gold-light)",
+          borderBottom: "1px solid var(--mn-border)",
+          animation: "mn-coach-in .25s ease",
+        }}>
+          <span style={{
+            fontFamily: "var(--mn-mono)", fontSize: "10px", letterSpacing: "1.5px",
+            color: "var(--mn-gold-hover)", fontWeight: 600, flexShrink: 0,
+          }}>
+            TRY THE TOGGLE&nbsp;↗
+          </span>
+          <span style={{ fontSize: "13px", color: "var(--mn-text)", lineHeight: 1.4 }}>
+            Switch <strong style={{ fontWeight: 600 }}>Non-tech&nbsp;↔&nbsp;Technical</strong> (top right) and watch this step rebuild itself — one product, two journeys.
+          </span>
+        </div>
+      )}
 
       {/* Body: prototype screen + strategy rail */}
       <div style={{ flex: 1, display: "flex", minHeight: 0, position: "relative" }}>
