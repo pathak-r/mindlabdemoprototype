@@ -9,6 +9,7 @@ import { BuildComplete } from "./BuildComplete";
 import { ShareApp } from "./ShareApp";
 import { PromptExperience } from "./PromptExperience";
 import { LastMile } from "./LastMile";
+import { Store } from "./Store";
 import { StrategyRail, NotesReopen, FRAMES } from "./_shared/StrategyRail";
 import { Code2, Rocket } from "lucide-react";
 
@@ -22,6 +23,7 @@ const SCREENS = [
   { label: "You're Live",    hint: "Share · WhatsApp · QR",             component: "ShareApp" },
   { label: "Dashboard",      hint: "My Apps · Portfolio",               component: "PromptExperience" },
   { label: "The Last Mile",  hint: "Your customer's view · Install",     component: "LastMile" },
+  { label: "The Store",      hint: "Public directory · Discovery",       component: "Store" },
 ];
 
 type ScreenKey = typeof SCREENS[number]["component"];
@@ -42,6 +44,7 @@ function renderScreen(
     case "ShareApp":         return <ShareApp />;
     case "PromptExperience": return <PromptExperience />;
     case "LastMile":         return <LastMile />;
+    case "Store":            return <Store />;
     default:                 return null;
   }
 }

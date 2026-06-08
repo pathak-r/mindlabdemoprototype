@@ -22,21 +22,12 @@ export interface Frame {
 
 export const FRAMES: Frame[] = [
   {
-    part: "00",
-    tag: "THE BRIEF",
+    part: "01",
+    tag: "THE THESIS · POSITIONING",
     title: "Resolve the identity crisis first.",
     lines: [
-      "Myndlab asks for a tech stack at the first prompt and deployment options at the end — speaking to two users, capturing neither.",
-      "Every recommendation here assumes one commitment: the non-technical GCC founder is the primary ICP.",
-    ],
-    screen: null,
-  },
-  {
-    part: "01",
-    tag: "POSITIONING",
-    title: "Never get stuck. Get your app out there.",
-    lines: [
-      "Idea to a live, distributed app — in Arabic or English — no code, no agency, no App Store queue.",
+      "Today the product asks for a tech stack at the first prompt and deployment options at the end — speaking to two users, converting neither. Every fix here assumes one commitment: the non-technical GCC founder is the primary ICP.",
+      "Then the promise lands: idea to a live, distributed app — Arabic or English, no code, no agency, no App Store queue.",
       "The white space: full-stack build · zero jargon · GCC Arabic-first · end-to-end PWA distribution. No competitor owns all four.",
     ],
     screen: 0,
@@ -124,15 +115,24 @@ export const FRAMES: Frame[] = [
     screen: 7,
   },
   {
-    part: "05",
+    part: "02",
     tag: "THE LAST MILE",
     title: "Own the last mile.",
     lines: [
       "Tap a WhatsApp link → Add to Home Screen → live on the phone. No App Store — the gap every Western competitor leaves open.",
       "The “Built with Myndlab” badge turns every install into a doorway to the next founder.",
-      "The Day-90 test: real GCC founders sharing real apps with real users. If that's happening, retention and revenue follow.",
     ],
     screen: 8,
+  },
+  {
+    part: "05",
+    tag: "NETWORK EFFECTS",
+    title: "From one app to a directory.",
+    lines: [
+      "Every published app is listed in a public, GCC-native directory — browsable by category and country. A compounding, network-effects asset (the Month-6 horizon).",
+      "The Day-90 test: are real GCC founders shipping real apps that real users discover and install? If yes, retention and revenue follow.",
+    ],
+    screen: 9,
   },
 ];
 
