@@ -24,7 +24,7 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
-      - run: pnpm install
+      - run: pnpm install --no-frozen-lockfile
       - run: BASE_PATH=/mindlabdemoprototype/ pnpm --filter @workspace/mockup-sandbox run build
       - uses: actions/upload-pages-artifact@v3
         with:
