@@ -125,13 +125,14 @@ export const FRAMES: Frame[] = [
   },
   {
     part: "05",
-    tag: "DAY 90",
-    title: "The honest test at Day 90.",
+    tag: "THE LAST MILE",
+    title: "Own the last mile.",
     lines: [
-      "≈20% of sign-ups publish a live app end-to-end — 40%+ sign-up → build, 50%+ build → publish.",
-      "Are real GCC founders sharing real apps with real users over WhatsApp? If yes, retention and revenue follow.",
+      "Tap a WhatsApp link → Add to Home Screen → live on the phone. No App Store — the gap every Western competitor leaves open.",
+      "The “Built with Myndlab” badge turns every install into a doorway to the next founder.",
+      "The Day-90 test: real GCC founders sharing real apps with real users. If that's happening, retention and revenue follow.",
     ],
-    screen: null,
+    screen: 8,
   },
 ];
 
