@@ -306,16 +306,17 @@ export function StrategyRail({
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "7px",
+                gap: "8px",
                 fontFamily: "var(--mn-mono)",
-                fontSize: "10.5px",
-                letterSpacing: "1.2px",
-                color: "#FBF6EE",
-                fontWeight: 600,
+                fontSize: "13px",
+                letterSpacing: "1.6px",
+                color: "#FFFFFF",
+                fontWeight: 700,
                 marginBottom: "8px",
+                textShadow: "0 1px 2px rgba(0,0,0,0.18)",
               }}
             >
-              <MousePointerClick size={13} /> TRY THE TOGGLE&nbsp;↗ (TOP&nbsp;RIGHT)
+              <MousePointerClick size={16} strokeWidth={2.5} /> TRY THE TOGGLE&nbsp;↗ (TOP&nbsp;RIGHT)
             </div>
             <div style={{ fontSize: "14px", lineHeight: 1.55, color: "#FFFFFF", fontWeight: 400 }}>
               {f.toggleHint}

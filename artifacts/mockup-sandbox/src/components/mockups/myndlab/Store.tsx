@@ -81,7 +81,7 @@ export function Store() {
             Discover
           </h1>
           <p style={{ fontSize: "15px", color: "var(--mn-text-muted)", margin: 0, lineHeight: 1.55, maxWidth: "640px" }}>
-            <strong style={{ color: "var(--mn-text)", fontWeight: 600 }}>Not an app store.</strong> Every app installs straight from a link — Add to Home Screen, works offline, no App Store queue. Built by GCC founders, browsable by category and country.
+            <strong style={{ color: "var(--mn-text)", fontWeight: 600 }}>Not an app store.</strong> Every app installs straight from a link — Add to Home Screen, works offline, no App Store queue. Built by GCC founders <strong style={{ color: "var(--mn-text)", fontWeight: 600 }}>using MyndLab</strong>, browsable by category and country.
           </p>
         </div>
 
