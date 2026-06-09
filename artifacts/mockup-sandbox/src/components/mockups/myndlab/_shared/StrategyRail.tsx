@@ -115,24 +115,15 @@ export const FRAMES: Frame[] = [
     screen: 7,
   },
   {
-    part: "02",
+    part: "05",
     tag: "THE LAST MILE",
     title: "Own the last mile.",
     lines: [
-      "Tap a WhatsApp link → Add to Home Screen → live on the phone. No App Store — the gap every Western competitor leaves open.",
-      "The “Built with Myndlab” badge turns every install into a doorway to the next founder.",
+      "Not an app store — a PWA distribution store. Tap a WhatsApp link → Add to Home Screen → live on the phone, no App Store queue (the gap every Western competitor leaves open).",
+      "Every published app lists in a public, GCC-native directory and carries a “Built with Myndlab” badge — each install is a doorway to the next founder. A compounding network-effects asset.",
+      "The Day-90 test: real GCC founders shipping real apps that real users discover and install. If yes, retention and revenue follow.",
     ],
     screen: 8,
-  },
-  {
-    part: "05",
-    tag: "NETWORK EFFECTS",
-    title: "From one app to a directory.",
-    lines: [
-      "Every published app is listed in a public, GCC-native directory — browsable by category and country. A compounding, network-effects asset (the Month-6 horizon).",
-      "The Day-90 test: are real GCC founders shipping real apps that real users discover and install? If yes, retention and revenue follow.",
-    ],
-    screen: 9,
   },
 ];
 

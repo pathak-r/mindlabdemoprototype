@@ -75,13 +75,13 @@ export function Store() {
         {/* Header */}
         <div style={{ marginBottom: "28px" }}>
           <div style={{ fontFamily: "var(--mn-mono)", fontSize: "11px", letterSpacing: "2px", color: "var(--mn-teal)", marginBottom: "10px" }}>
-            THE MYNDLAB STORE
+            PWA DISTRIBUTION STORE
           </div>
-          <h1 style={{ fontFamily: "var(--mn-display)", fontSize: "34px", fontWeight: 600, letterSpacing: "-0.8px", margin: "0 0 6px", color: "var(--mn-text)" }}>
+          <h1 style={{ fontFamily: "var(--mn-display)", fontSize: "34px", fontWeight: 600, letterSpacing: "-0.8px", margin: "0 0 8px", color: "var(--mn-text)" }}>
             Discover
           </h1>
-          <p style={{ fontSize: "15px", color: "var(--mn-text-muted)", margin: 0 }}>
-            Apps built by GCC founders — browse by category and country.
+          <p style={{ fontSize: "15px", color: "var(--mn-text-muted)", margin: 0, lineHeight: 1.55, maxWidth: "640px" }}>
+            <strong style={{ color: "var(--mn-text)", fontWeight: 600 }}>Not an app store.</strong> Every app installs straight from a link — Add to Home Screen, works offline, no App Store queue. Built by GCC founders, browsable by category and country.
           </p>
         </div>
 
@@ -100,6 +100,12 @@ export function Store() {
             <div style={{ fontSize: "16px", fontWeight: 700, color: "var(--mn-text)" }}>Dubai PT Booking</div>
             <div style={{ fontFamily: "var(--mn-mono)", fontSize: "11.5px", color: "var(--mn-text-muted)", marginTop: "2px" }}>
               Booking · AE · 12 installs
+            </div>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: "5px", marginTop: "9px", background: "rgba(255,255,255,0.7)", border: "1px solid var(--mn-border)", borderRadius: "999px", padding: "3px 9px 3px 6px" }}>
+              <StarMark size={12} />
+              <span style={{ fontSize: "10.5px", fontWeight: 600, color: "var(--mn-text)" }}>
+                Built with <span style={{ color: "var(--mn-teal)" }}>Myndlab</span>
+              </span>
             </div>
           </div>
           <button style={{ background: "var(--mn-teal)", color: "#fff", border: "none", borderRadius: "10px", padding: "10px 18px", fontSize: "14px", fontWeight: 600, fontFamily: "var(--mn-sans)", cursor: "pointer", flexShrink: 0 }}>
