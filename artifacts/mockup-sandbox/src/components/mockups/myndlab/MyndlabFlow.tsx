@@ -132,9 +132,7 @@ export function MyndlabFlow() {
           100% { box-shadow: 0 0 0 2px rgba(176,122,43,.62), 0 0 0 0 rgba(176,122,43,0); }
         }
         @keyframes mn-coach-in { from { opacity:0; transform: translateY(-4px);} to { opacity:1; transform:none;} }
-        /* full-strategy CTA: periodic sheen sweep (not a pulse) */
-        @keyframes mn-sheen { 0% { transform: translateX(-180%) skewX(-18deg); } 16% { transform: translateX(320%) skewX(-18deg); } 100% { transform: translateX(320%) skewX(-18deg); } }
-        .mn-fullstrat:hover { filter: brightness(1.06); box-shadow: 0 4px 14px rgba(176,122,43,0.45); }
+        .mn-fullstrat:hover { filter: brightness(1.04); box-shadow: 0 4px 14px rgba(140,96,32,0.40); }
       `}} />
       {/* Top nav */}
       <div style={{
@@ -146,31 +144,18 @@ export function MyndlabFlow() {
         {/* Left cluster: full-strategy + Back */}
         <div style={{ display: "flex", alignItems: "center", gap: "8px", flexShrink: 0 }}>
           <button className="mn-fullstrat" onClick={() => setDocOpen(true)} title="Read the full strategy document — and download it as a PDF" style={{
-            position: "relative", overflow: "hidden",
-            display: "flex", alignItems: "center", gap: "9px",
-            background: "linear-gradient(180deg, #BA862F 0%, #A06E22 100%)",
-            border: "1px solid #8A5E1C",
-            color: "#FFF7E9", padding: "7px 15px", borderRadius: "9px",
+            display: "flex", alignItems: "center", gap: "10px",
+            background: "#A4762C",
+            border: "1px solid #86601F",
+            color: "#FFF7E9", padding: "10px 18px", borderRadius: "10px",
+            fontFamily: "var(--mn-sans)", fontSize: "14px", fontWeight: 600, letterSpacing: "0.1px",
             cursor: "pointer", whiteSpace: "nowrap",
-            boxShadow: "0 2px 8px rgba(176,122,43,0.35)",
+            boxShadow: "0 2px 8px rgba(140,96,32,0.26)",
             transition: "filter 0.15s, box-shadow 0.15s",
           }}>
-            <FileText size={17} color="#FFF7E9" style={{ flexShrink: 0 }} />
-            <span style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", lineHeight: 1.12 }}>
-              <span style={{ fontFamily: "var(--mn-sans)", fontSize: "13px", fontWeight: 700, letterSpacing: "0.1px" }}>
-                Full strategy <span style={{ fontSize: "11px" }}>↗</span>
-              </span>
-              <span style={{ fontFamily: "var(--mn-mono)", fontSize: "9.5px", letterSpacing: "0.3px", color: "rgba(255,247,233,0.82)" }}>
-                Read it · download as PDF
-              </span>
-            </span>
-            <span aria-hidden style={{
-              position: "absolute", top: 0, bottom: 0, left: 0, width: "45%",
-              background: "linear-gradient(105deg, transparent 0%, rgba(255,255,255,0.40) 50%, transparent 100%)",
-              transform: "translateX(-180%) skewX(-18deg)",
-              animation: "mn-sheen 5s ease-in-out infinite",
-              pointerEvents: "none",
-            }} />
+            <FileText size={18} color="#FFF7E9" style={{ flexShrink: 0 }} />
+            Full strategy — read it · download as PDF
+            <span style={{ fontSize: "13px", marginLeft: "1px" }}>↗</span>
           </button>
           <button onClick={prev} disabled={current === 0} style={{
             display: "flex", alignItems: "center", gap: "5px",
