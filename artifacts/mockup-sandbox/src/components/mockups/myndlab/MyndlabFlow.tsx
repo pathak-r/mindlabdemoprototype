@@ -151,7 +151,7 @@ export function MyndlabFlow() {
             transition: "filter 0.15s, box-shadow 0.15s",
           }}>
             <FileText size={18} color="#FFF7E9" style={{ flexShrink: 0 }} />
-            Full strategy — read it · download as PDF
+            Full strategy — read it OR download as PDF
             <span style={{ fontSize: "13px", marginLeft: "1px" }}>↗</span>
           </button>
           <button onClick={prev} disabled={current === 0} style={{
