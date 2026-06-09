@@ -253,8 +253,8 @@ export const DOC: DocPage[] = [
     tag: "THE TEST",
     title: "What success looks like at Day 90",
     blocks: [
-      { t: "p", runs: [{ text: "Roughly 20% of users who sign up publish a live app end-to-end. That’s the number to put in front of leadership.", b: true, i: true, em: "key" }] },
-      { t: "p", runs: "It breaks into two component rates, both baselined in Week 1: sign-up → first build completed (40%+) and first build → PWA published (50%+)." },
+      { t: "p", runs: [{ text: "By Day 90, success looks like momentum you can feel.", b: true, i: true, em: "key" }] },
+      { t: "p", runs: "Founders who used to stall now go from idea to a live, shared app without hitting a wall. Real apps are out in the world, installed from a WhatsApp link, carrying the Myndlab badge, and the founders behind them are telling other founders how they did it. The leaks that defined the old funnel, the blank canvas, the jargon wall, the distribution dead-end are gone. What leadership should see is a repeatable machine: a clear path from idea to distributed app that works the same way for the next founder, and the one after that." },
       { t: "table", head: ["Category", "Targets"], rows: [
         ["Funnel health", "Abandonment below 20%. Time to first template-based build under 5 min. Sign-up → published ≈ 20% end-to-end."],
         ["Distribution working", "30%+ of PWA publishers share externally. 50+ Myndlab-badged apps live and public. 5+ published GCC founder case studies with real numbers."],
