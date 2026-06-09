@@ -385,34 +385,56 @@ function navBtn(disabled: boolean): React.CSSProperties {
   };
 }
 
-/* Collapsed reopen tab */
+/* Collapsed reopen control — prominent, filled, slide-in. Unmissable so a viewer
+   who closed the notes always knows the commentary track is one click away. */
 export function NotesReopen({ onOpen }: { onOpen: () => void }) {
   return (
-    <button
-      onClick={onOpen}
-      style={{
-        position: "absolute",
-        top: "78px",
-        right: "16px",
-        zIndex: 40,
-        display: "flex",
-        alignItems: "center",
-        gap: "8px",
-        background: "var(--mn-surface)",
-        border: "1px solid var(--mn-border-strong)",
-        borderRadius: "10px",
-        padding: "8px 14px",
-        cursor: "pointer",
-        boxShadow: "var(--mn-shadow-md)",
-        fontFamily: "var(--mn-mono)",
-        fontSize: "11px",
-        letterSpacing: "1px",
-        color: "var(--mn-teal)",
-        fontWeight: 500,
-      }}
-      title="Show strategy notes"
-    >
-      <StarMark size={16} /> STRATEGY NOTES
-    </button>
+    <>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            @keyframes mn-notes-in { from { opacity: 0; transform: translateX(28px); } to { opacity: 1; transform: none; } }
+            .mn-notes-reopen:hover { filter: brightness(1.06); box-shadow: 0 9px 26px rgba(15,93,84,0.45) !important; }
+          `,
+        }}
+      />
+      <button
+        onClick={onOpen}
+        className="mn-notes-reopen"
+        title="Reopen the strategy notes panel"
+        style={{
+          position: "absolute",
+          top: "76px",
+          right: "18px",
+          zIndex: 40,
+          display: "flex",
+          alignItems: "center",
+          gap: "10px",
+          background: "#0F5D54",
+          border: "1px solid #0A4A43",
+          borderRadius: "12px",
+          padding: "11px 16px",
+          cursor: "pointer",
+          color: "#FFFFFF",
+          boxShadow: "0 6px 20px rgba(15,93,84,0.34)",
+          animation: "mn-notes-in .42s cubic-bezier(.2,.8,.2,1) both",
+          transition: "filter .15s, box-shadow .15s",
+        }}
+      >
+        {/* White star — mirrors the rail header, readable on teal */}
+        <svg width="18" height="18" viewBox="0 0 100 100" aria-hidden style={{ flexShrink: 0 }}>
+          <polygon
+            points="50,4 61,28 86,18 76,43 96,50 76,57 86,82 61,72 50,96 39,72 14,82 24,57 4,50 24,43 14,18 39,28"
+            fill="#FFFFFF"
+          />
+          <circle cx="50" cy="50" r="10" fill="#0F5D54" />
+          <circle cx="50" cy="50" r="4.5" fill="#EBD3A3" />
+        </svg>
+        <span style={{ fontFamily: "var(--mn-sans)", fontSize: "13px", fontWeight: 600, letterSpacing: "0.1px", whiteSpace: "nowrap" }}>
+          Strategy notes hidden — <span style={{ fontWeight: 700 }}>click to reopen</span>
+        </span>
+        <span style={{ fontSize: "17px", lineHeight: 1, marginTop: "-1px" }}>‹</span>
+      </button>
+    </>
   );
 }

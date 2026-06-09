@@ -16,14 +16,14 @@ export type Block = (
 export interface DocPage { part: string; tag: string; title: string; meta?: string; blocks: Block[]; }
 
 export const DOC_TITLE = "Product Strategy & Market Clarity";
-export const DOC_SUBTITLE = "MYNDLAB.AI · Senior PM Task · Rohit · June 2026";
+export const DOC_SUBTITLE = "MYNDLAB.AI · Senior PM Task · Rohit Pathak · June 2026";
 
 export const DOC: DocPage[] = [
   {
     part: "",
     tag: "THE BRIEF",
     title: "Product Strategy & Market Clarity",
-    meta: "Senior PM Task  ·  Rohit  ·  June 2026",
+    meta: "Senior PM Task  ·  Rohit Pathak  ·  June 2026",
     blocks: [
       { t: "p", runs: [{ text: "The single most important decision Myndlab must make, before optimising anything else, is resolving its identity crisis.", b: true, i: true, em: "key" }] },
       { t: "p", runs: "The platform asks for a tech stack at the very first prompt step, and detailed deployment options at the end. It is trying to speak to two users at once — the non-technical GCC founder and the technical developer — and capturing neither." },
