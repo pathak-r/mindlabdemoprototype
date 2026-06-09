@@ -69,9 +69,10 @@ export const DOC: DocPage[] = [
       { t: "h3", text: "Competitive landscape" },
       { t: "table", head: ["Competitor", "What it is"], rows: [
         ["Cursor / Claude Code", "Developer tools."],
-        ["v0 / Lovable", "Frontend-first, not full-stack."],
-        ["Bolt", "The closest Western competitor."],
-        [[{ text: "Base44", b: true, em: "key" }], [{ text: "The one to watch in the GCC context.", b: true, em: "key" }]],
+        ["v0 (Vercel)", "UI / front-end generation."],
+        ["Lovable", "Full-stack (React + Supabase), one-click deploy, GitHub sync."],
+        ["Bolt (StackBlitz)", "Full-stack, browser-based, instant deploy — also among the closest Western builders (with Replit)."],
+        ["Base44", "Israeli-built, acquired by Wix (~$80M); a fast-growing global builder — not GCC-native."],
       ] },
       { t: "p", runs: [{ text: "No competitor owns all four at once: ", b: true }, { text: "full-stack build · zero-jargon UX · GCC-native Arabic-first · end-to-end PWA distribution." }] },
       { t: "p", runs: [{ text: "That intersection is Myndlab’s white space.", b: true, i: true, em: "key" }] },
